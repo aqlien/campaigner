@@ -1,24 +1,18 @@
-# README
+## Campaigner ##
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Campaigner is a web-based application, designed to assist in the management of events and volunteers for local activism.
 
-Things you may want to cover:
+The application is in the development stage, and is not currently ready for use.
 
-* Ruby version
+---
 
-* System dependencies
+Planned features for the final product include:
+* Event scheduling
 
-* Configuration
+* Customizable user surveys
 
-* Database creation
+* User filtering, based on survey responses
 
-* Database initialization
+* Mass import/export of user data
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Dynamic display of data, based on scheduled events
