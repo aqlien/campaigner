@@ -4,7 +4,7 @@
   = f.password_field :password_confirmation
   = f.text_field :name, label: t('activerecord.label.user.name')
   = f.text_field :short_name, label: t('activerecord.label.user.short_name')
-  - if current_user.admin?
+  - if current_user.present? && current_user.admin?
     = f.check_box :admin
     - if !@user.new_record?
       = f.check_box :active
