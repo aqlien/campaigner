@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :short_name
       t.string :pronoun
-      t.boolean :active
+      t.boolean :active, default: true
       t.boolean :admin
 
       t.timestamps
