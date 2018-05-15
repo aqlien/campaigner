@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/bootstrap-ruby/bootstrap_form.git
+  revision: 96ce4f73197adfd54651be364b90bf5ce32f1ac9
+  branch: master
+  specs:
+    bootstrap_form (4.0.0.dev)
+      rails (>= 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,8 +49,13 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
+    autoprefixer-rails (6.4.1.1)
+      execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap (4.0.0.alpha4)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     builder (3.2.3)
     byebug (10.0.2)
     coderay (1.1.2)
@@ -70,6 +83,8 @@ GEM
       factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
     ffi (1.9.23)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -226,10 +241,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap
+  bootstrap_form!
   byebug
   coffee-rails (~> 4.2)
   devise
   factory_girl_rails
+  font-awesome-rails
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails

@@ -1,17 +1,13 @@
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
-
-  %fieldset
-    = f.label :email, 'Email Address'
-    = f.text_field :email
-  %fieldset
-    = f.label :name, 'Name'
-    = f.text_field :name
+= bootstrap_form_for @user, layout: :horizontal do |f|
+  = f.email_field :email
+  = f.password_field :password
+  = f.password_field :password_confirmation
+  = f.text_field :name, label: t('activerecord.label.user.name')
+  = f.text_field :short_name, label: t('activerecord.label.user.short_name')
+  - if current_user.admin?
+    = f.check_box :admin
+    - if !@user.new_record?
+      = f.check_box :active
 
   .actions
     = f.submit 'Save'
