@@ -24,16 +24,17 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe UsersController, type: :controller do
+  login_admin
 
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { email: "sample#{User.count+1}@test.com" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { email: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,19 +98,20 @@ RSpec.describe UsersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { email: "new_email#{User.count+1}@test.com", password: 'NewPassword123', password_confirmation: 'NewPassword123' }
       }
 
       it "updates the requested user" do
+        new_email = new_attributes[:email]
         user = User.create! valid_attributes
         put :update, params: {id: user.to_param, user: new_attributes}, session: valid_session
         user.reload
-        skip("Add assertions for updated state")
+        expect(user.email).to eq new_email
       end
 
       it "redirects to the user" do
         user = User.create! valid_attributes
-        put :update, params: {id: user.to_param, user: valid_attributes}, session: valid_session
+        put :update, params: {id: user.to_param, user: new_attributes}, session: valid_session
         expect(response).to redirect_to(user)
       end
     end
