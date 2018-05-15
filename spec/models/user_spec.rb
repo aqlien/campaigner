@@ -6,6 +6,6 @@ RSpec.describe User, type: :model do
   end
 
   it 'does not require a password for new users, so that admins can create them' do
-    pending
+    expect(User.new(email: 'test@test.com', password: nil).valid?).to be true
   end
 end
