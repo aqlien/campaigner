@@ -11,3 +11,5 @@ en:
       user:
         name: 'Full Name'
         short_name: 'Display Name'
+  welcome:
+    main: 'Welcome.'

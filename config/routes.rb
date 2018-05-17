@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   end
   resources :organizations
 
-  root 'users#index'
+  root 'welcome#index'
 end
