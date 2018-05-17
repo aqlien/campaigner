@@ -1,0 +1,7 @@
+= bootstrap_form_for @organization, layout: :horizontal do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.text_field :name
+  = f.text_field :short_name, label: t('activerecord.label.organization.short_name')
+
+  .actions
+    = f.submit 'Save'

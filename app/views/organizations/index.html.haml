@@ -1,0 +1,23 @@
+%h1 Listing organizations
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th= t('activerecord.label.organization.short_name')
+      %th.actions
+
+  %tbody
+    - @organizations.each do |organization|
+      %tr
+        %td= organization.name
+        %td= organization.short_name
+        %td
+          = link_to organization, title: 'Show', class: 'icon' do
+            = fa_icon 'eye'
+          = link_to edit_organization_path(organization), title: 'Edit', class: 'icon' do
+            = fa_icon 'wrench'
+          = link_to organization, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+            = fa_icon 'times'
+
+= link_to 'New Organization', new_organization_path
