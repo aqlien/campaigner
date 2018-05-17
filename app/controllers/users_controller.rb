@@ -32,6 +32,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    # Clear password if user is not changing it
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
