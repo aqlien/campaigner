@@ -18,15 +18,21 @@ gem 'puma'
 gem 'devise'
 
 # Use Bootstrap for page layout and content enhancement
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.1.1'
+# Bootstrap requires Popper JS and Sprockets
+gem 'popper_js', '~> 1.12.9'
+gem 'sprockets-rails', '>= 2.3.2'
+
 # Use Bootstrap Form for form styling --- Github release necessary for Rails 5/Bootstrap 4 support as of 2018/05/15
 gem "bootstrap_form",
     git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
     branch: "master"
+
 # Add Font Awesome icons
 gem "font-awesome-rails"
 # use HAML for view templates
 gem 'haml-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

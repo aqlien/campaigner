@@ -1,0 +1,14 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  %ul.nav.navbar-nav
+    %li.nav-item
+      = link_to 'home', root_path, class: 'navbar-brand', id: 'homepage_link'
+
+  %ul.nav.navbar-nav.justify-content-center
+    - if current_user && current_user.admin?
+      = navbar_link 'Users', users_path, title: 'User List'
+    = navbar_link 'Organizations', organizations_path, title: 'Organization List'
+
+  %ul.nav.navbar-nav.justify-content-end.pull-right
+    - if current_user.present?
+      %li= navbar_link fa_icon('user-circle-o'), user_path(current_user), title: 'Profile'
+      %li= navbar_link fa_icon('user-times'), destroy_user_session_path, method: :delete, title: 'Sign Out'
