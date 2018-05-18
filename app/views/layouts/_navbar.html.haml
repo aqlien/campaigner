@@ -7,6 +7,7 @@
     - if current_user && current_user.admin?
       = navbar_link 'Users', users_path, title: 'User List'
     = navbar_link 'Organizations', organizations_path, title: 'Organization List'
+    = navbar_link 'Events', events_path, title: 'Event List'
 
   %ul.nav.navbar-nav.justify-content-end.pull-right
     - if current_user.present?

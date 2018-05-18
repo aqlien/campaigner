@@ -1,0 +1,10 @@
+= bootstrap_form_for @event do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.text_field :name
+  = f.datetime_select :start_date
+  = f.datetime_select :end_date
+  %hr
+  = f.date_select :leadup_date
+  = f.date_select :followup_date
+  .actions
+    = f.submit 'Save'
