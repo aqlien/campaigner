@@ -7,6 +7,15 @@
   %b Short name:
   = @organization.short_name
 
+- if @organization.users.any?
+  %p
+    %b Users:
+    %ul
+      - @organization.users.each do |user|
+        %li
+          = user.name
+          = link_to user.email, user_path(user)
+
 = link_to 'Edit', edit_organization_path(@organization)
 \|
 = link_to 'Back', organizations_path
