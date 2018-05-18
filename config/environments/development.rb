@@ -26,11 +26,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -54,5 +49,14 @@ Rails.application.configure do
 
   # Mail options, necessary for Devise and other emails to go through
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Use Letter Opener to psuedo-send emails by displaying them in the browser
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
+  # Default false - Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = false
 
 end

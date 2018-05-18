@@ -59,6 +59,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  # use rails12factor for Heroku deployment
+  gem 'rails_12factor'
+  # use SendGrid as the mail service
+  gem 'sendgrid-ruby'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
