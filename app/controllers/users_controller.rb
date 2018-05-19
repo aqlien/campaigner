@@ -4,21 +4,25 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.order(created_at: :asc)
+    authorize @users
   end
 
   def show
+    authorize @user
   end
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
   def create
     @user = User.new(user_params)
-
+    authorize @user
     respond_to do |format|
       if @user.save
         sign_in @user unless current_user.present?
@@ -32,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize @user
     # Clear password if user is not changing it
     if params[:user][:password].blank?
       params[:user].delete(:password)
@@ -50,6 +55,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }

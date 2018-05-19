@@ -142,6 +142,8 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.2)
     puma (3.11.4)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
@@ -276,6 +278,7 @@ DEPENDENCIES
   popper_js (~> 1.12.9)
   pry-rails
   puma
+  pundit
   rails (~> 5.0.7)
   rails_12factor
   rspec-rails

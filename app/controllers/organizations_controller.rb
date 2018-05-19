@@ -3,21 +3,25 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
+    authorize @organizations
   end
 
   def show
+    authorize @organization
   end
 
   def new
     @organization = Organization.new
+    authorize @organization
   end
 
   def edit
+    authorize @organization
   end
 
   def create
     @organization = Organization.new(organization_params)
-
+    authorize @organization
     respond_to do |format|
       if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
@@ -30,6 +34,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
+    authorize @organization
     respond_to do |format|
       if @organization.update(organization_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
@@ -42,6 +47,7 @@ class OrganizationsController < ApplicationController
   end
 
   def destroy
+    authorize @organization
     @organization.destroy
     respond_to do |format|
       format.html { redirect_to organizations_url, notice: 'Organization was successfully destroyed.' }

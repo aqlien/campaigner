@@ -4,11 +4,14 @@
       = link_to 'home', root_path, class: 'navbar-brand', id: 'homepage_link'
 
   %ul.nav.navbar-nav.justify-content-center
-    - if current_user && current_user.admin?
+    - if policy(:user).index?
       = navbar_link 'Users', users_path, title: 'User List'
-    = navbar_link 'Organizations', organizations_path, title: 'Organization List'
-    = navbar_link 'Events', events_path, title: 'Event List'
-    = navbar_link 'Surveys', surveys_path, title: 'Survey List'
+    - if policy(:organization).index?
+      = navbar_link 'Organizations', organizations_path, title: 'Organization List'
+    - if policy(:event).index?
+      = navbar_link 'Events', events_path, title: 'Event List'
+    - if policy(:survey).index?
+      = navbar_link 'Surveys', surveys_path, title: 'Survey List'
 
   %ul.nav.navbar-nav.justify-content-end.pull-right
     - if current_user.present?

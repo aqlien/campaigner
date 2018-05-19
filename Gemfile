@@ -18,6 +18,8 @@ gem 'puma'
 
 # use Devise for user authentication
 gem 'devise'
+# use Pundit for authorization
+gem 'pundit'
 
 # Use Bootstrap for page layout and content enhancement
 gem 'bootstrap', '~> 4.1.1'

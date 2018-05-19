@@ -3,21 +3,25 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    authorize @events
   end
 
   def show
+    authorize @event
   end
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def edit
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
-
+    authorize @event
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -30,6 +34,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    authorize @event
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -42,6 +47,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    authorize @event
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

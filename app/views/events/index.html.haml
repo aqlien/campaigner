@@ -19,13 +19,16 @@
         %td= event.leadup_date
         %td= event.followup_date
         %td
-          = link_to event, title: 'Show', class: 'icon' do
-            = fa_icon 'eye'
-          = link_to edit_event_path(event), title: 'Edit', class: 'icon' do
-            = fa_icon 'wrench'
-          = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
-            = fa_icon 'times'
+          - if policy(:event).show?
+            = link_to event, title: 'Show', class: 'icon' do
+              = fa_icon 'eye'
+          - if policy(:event).edit?
+            = link_to edit_event_path(event), title: 'Edit', class: 'icon' do
+              = fa_icon 'wrench'
+          - if policy(:event).destroy?
+            = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+              = fa_icon 'times'
 
 %br
-
-= link_to 'New Event', new_event_path
+-if policy(:event).new?
+  = link_to 'New Event', new_event_path

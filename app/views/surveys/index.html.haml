@@ -15,13 +15,16 @@
         %td= survey.user.email
         %td= survey.event.name
         %td
-          = link_to survey, title: 'Show', class: 'icon' do
-            = fa_icon 'eye'
-          = link_to edit_survey_path(survey), title: 'Edit', class: 'icon' do
-            = fa_icon 'wrench'
-          = link_to survey, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
-            = fa_icon 'times'
+          - if policy(:survey).show?
+            = link_to survey, title: 'Show', class: 'icon' do
+              = fa_icon 'eye'
+          - if policy(:survey).edit?
+            = link_to edit_survey_path(survey), title: 'Edit', class: 'icon' do
+              = fa_icon 'wrench'
+          - if policy(:survey).destroy?
+            = link_to survey, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+              = fa_icon 'times'
 
 %br
-
-= link_to 'New Survey', new_survey_path
+-if policy(:survey).new?
+  = link_to 'New Survey', new_event_path
