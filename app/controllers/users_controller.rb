@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create] #Will need this to register
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :asc)
   end
 
   def show

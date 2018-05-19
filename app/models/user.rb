@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :organization, optional: true
+  has_many :surveys, dependent: :destroy
 
   validates :email, presence: true, email_format: true, if: (:email_changed? || :new_record?)
     # uniqueness: true (already checked by Devise)
