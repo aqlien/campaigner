@@ -1,0 +1,10 @@
+%p
+  %b User:
+  = @survey.user_id
+%p
+  %b Event:
+  = @survey.event_id
+
+= link_to 'Edit', edit_survey_path(@survey)
+\|
+= link_to 'Back', surveys_path

@@ -1,0 +1,6 @@
+= bootstrap_form_for @survey, layout: :horizontal do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.collection_select :event_id, Event.all, :id, :name, { include_blank: true }, {class: 'form-control', data_placeholder: 'Select event:'}
+  = f.collection_select :user_id, User.all, :id, :email, { include_blank: true }, {class: 'form-control', data_placeholder: 'Select user:'}
+  .actions
+    = f.submit 'Save'

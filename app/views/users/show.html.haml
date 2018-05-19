@@ -1,5 +1,18 @@
-%p#notice= notice
+%p
+  %b Name:
+  = @user.name
+%p
+  %b Short name:
+  = @user.short_name
 
+%p
+  %b Email:
+  = @user.email
+
+- if @user.organization.present?
+  %p
+    %b Organization:
+    = @user.organization.display_name
 
 = link_to 'Edit', edit_user_path(@user)
 \|

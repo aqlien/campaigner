@@ -8,9 +8,7 @@
       %th End date
       %th Leadup date
       %th Followup date
-      %th
-      %th
-      %th
+      %th.actions
 
   %tbody
     - @events.each do |event|
@@ -20,9 +18,13 @@
         %td= event.end_date
         %td= event.leadup_date
         %td= event.followup_date
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = link_to event, title: 'Show', class: 'icon' do
+            = fa_icon 'eye'
+          = link_to edit_event_path(event), title: 'Edit', class: 'icon' do
+            = fa_icon 'wrench'
+          = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+            = fa_icon 'times'
 
 %br
 
