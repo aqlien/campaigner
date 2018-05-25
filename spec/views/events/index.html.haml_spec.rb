@@ -10,6 +10,10 @@ RSpec.describe "events/index", type: :view do
         :name => "Name"
       )
     ])
+
+    allow(view).to receive(:policy) do |record|
+      Pundit.policy(User.find_or_create_by(email: 'admin@test.com', admin: true), record)
+    end
   end
 
   it "renders a list of events" do

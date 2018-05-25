@@ -3,6 +3,7 @@ class ApplicationPolicy
 
   def initialize(user, record)
     @user = user
+    @user ||= User.new #set a temporary User if no User present
     @record = record
   end
 
