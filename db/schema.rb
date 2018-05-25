@@ -36,12 +36,10 @@ ActiveRecord::Schema.define(version: 20180518233319) do
 
   create_table "surveys", force: :cascade do |t|
     t.string   "type"
-    t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_surveys_on_event_id", using: :btree
-    t.index ["user_id"], name: "index_surveys_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

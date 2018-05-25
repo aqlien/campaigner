@@ -7,11 +7,11 @@ RSpec.describe SurveysController, type: :controller do
   # Survey. As you add validations to Survey, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { event_id: 1, user_id: 1 }
+    { event_id: 1 }
   }
 
   let(:invalid_attributes) {
-    { event_id: nil, user_id: nil }
+    { event_id: nil }
   }
 
   # This should return the minimal set of values that should be in the session
