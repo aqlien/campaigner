@@ -1,0 +1,8 @@
+.nested-fields
+  .row
+    .col-md-2
+    .col-md-8
+      = f.input :text_output
+    .col-md-2
+      = f.input :raw_value
+      = link_to_remove_association fa_icon('minus'), f

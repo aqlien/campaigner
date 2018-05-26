@@ -1,0 +1,14 @@
+.nested-fields
+  .row
+    .col-md-9
+      = f.input :text
+    .col-md-2
+      = f.input :question_type
+    .col-md-1
+      = f.input :order
+      = link_to_remove_association fa_icon('minus'), f
+  #survey_choices
+    = f.simple_fields_for :survey_choices do |choice|
+      = render 'survey_choice_fields', f: choice
+    .links
+      = link_to_add_association fa_icon('plus'), f, :survey_choices

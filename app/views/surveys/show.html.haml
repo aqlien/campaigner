@@ -1,6 +1,16 @@
 %p
   %b Event:
-  = @survey.event_id
+  = @survey.event.name
+%hr
+- @survey.survey_questions.order(:order).each do |question|
+  %p
+    = question.text
+    %ul
+      - question.survey_choices.each do |choice|
+        - unless choice.text_output.blank?
+          %li= choice.text_output
+        - else
+          %li= choice.raw_value
 
 = link_to 'Edit', edit_survey_path(@survey)
 \|

@@ -29,6 +29,8 @@ gem 'sprockets-rails', '>= 2.3.2'
 
 # Use Simple Form for form styling
 gem'simple_form'
+#Use Cocoon for nested forms
+gem 'cocoon'
 
 # Add Font Awesome icons
 gem "font-awesome-rails"

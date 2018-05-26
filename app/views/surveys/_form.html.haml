@@ -1,8 +1,10 @@
 = simple_form_for @survey do |f|
   = f.association :event, collection: Event.all.order(:name), prompt: "Choose an Event", input_html: {class: 'form-control'}
-  = f.simple_fields_for :survey_questions do |q|
-    = q.input :text
-    = q.input :question_type
-    = q.input :order
+  %h3 Questions
+  #survey_questions
+    = f.simple_fields_for :survey_questions do |question|
+      = render 'survey_question_fields', f: question
+    .links
+      = link_to_add_association fa_icon('plus'), f, :survey_questions
   .actions
     = f.button :submit, class: 'btn btn-primary'
