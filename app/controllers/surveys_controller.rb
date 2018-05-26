@@ -13,6 +13,7 @@ class SurveysController < ApplicationController
   def new
     @survey = Survey.new
     authorize @survey
+    @survey.survey_questions.build
   end
 
   def edit
@@ -61,6 +62,7 @@ class SurveysController < ApplicationController
     end
 
     def survey_params
-      params.require(:survey).permit(:type, :event_id)
+      params.require(:survey).permit(:type, :event_id,
+        survey_questions_attributes: [:text, :order, :question_type])
     end
 end

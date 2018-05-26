@@ -4,9 +4,7 @@
   %thead
     %tr
       %th Event
-      %th
-      %th
-      %th
+      %th.actions
 
   %tbody
     - @surveys.each do |survey|
@@ -25,4 +23,4 @@
 
 %br
 -if policy(:survey).new?
-  = link_to 'New Survey', new_event_path
+  = link_to 'New Survey', new_survey_path
