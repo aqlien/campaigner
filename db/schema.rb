@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180518233319) do
+ActiveRecord::Schema.define(version: 20180526003205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,25 @@ ActiveRecord::Schema.define(version: 20180518233319) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_organizations_on_name", using: :btree
     t.index ["short_name"], name: "index_organizations_on_short_name", using: :btree
+  end
+
+  create_table "survey_choices", force: :cascade do |t|
+    t.integer  "survey_question_id"
+    t.integer  "raw_value"
+    t.text     "text_output"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["survey_question_id"], name: "index_survey_choices_on_survey_question_id", using: :btree
+  end
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.integer  "survey_id"
+    t.text     "text"
+    t.integer  "order"
+    t.string   "question_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["survey_id"], name: "index_survey_questions_on_survey_id", using: :btree
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -65,4 +84,6 @@ ActiveRecord::Schema.define(version: 20180518233319) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "survey_choices", "survey_questions"
+  add_foreign_key "survey_questions", "surveys"
 end
