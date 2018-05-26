@@ -1,15 +1,13 @@
-= bootstrap_form_for @user, layout: :horizontal do |f|
-  = f.alert_message "Please fix the errors below."
-  = f.email_field :email
-  = f.password_field :password
-  = f.password_field :password_confirmation
-  = f.text_field :name, label: t('activerecord.label.user.name')
-  = f.text_field :short_name, label: t('activerecord.label.user.short_name')
-  = f.collection_select :organization_id, Organization.all, :id, :display_name, { include_blank: true }, {class: 'form-control', data_placeholder: 'Choose an organization'}
+= simple_form_for @user do |f|
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :name, label: t('activerecord.label.user.name')
+  = f.input :short_name, label: t('activerecord.label.user.short_name')
+  = f.association :organization, collection: Organization.all.order(:name), label_method: 'display_name', prompt: "Choose an Organization", input_html: {class: 'form-control'}
   - if current_user.present? && current_user.admin?
-    = f.check_box :admin
+    = f.input :admin
     - if !@user.new_record?
-      = f.check_box :active
-
+      = f.input :active
   .actions
-    = f.submit 'Save'
+    = f.button :submit, class: 'btn btn-primary'

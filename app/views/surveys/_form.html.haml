@@ -1,10 +1,8 @@
-= bootstrap_form_for @survey, layout: :horizontal do |f|
-  = f.alert_message "Please fix the errors below."
-  = f.collection_select :event_id, Event.all, :id, :name, { include_blank: true }, {class: 'form-control', data_placeholder: 'Select event:'}
-  = f.fields_for_with_bootstrap :survey_questions do |q|
-    = q.text_field :text
-    = q.text_field :question_type
-    = q.number_field :order
-
+= simple_form_for @survey do |f|
+  = f.association :event, collection: Event.all.order(:name), prompt: "Choose an Event", input_html: {class: 'form-control'}
+  = f.simple_fields_for :survey_questions do |q|
+    = q.input :text
+    = q.input :question_type
+    = q.input :order
   .actions
-    = f.submit 'Save'
+    = f.button :submit, class: 'btn btn-primary'

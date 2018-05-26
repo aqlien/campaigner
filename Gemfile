@@ -27,10 +27,8 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'popper_js', '~> 1.12.9'
 gem 'sprockets-rails', '>= 2.3.2'
 
-# Use Bootstrap Form for form styling --- Github release necessary for Rails 5/Bootstrap 4 support as of 2018/05/15
-gem "bootstrap_form",
-    git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
-    branch: "master"
+# Use Simple Form for form styling
+gem'simple_form'
 
 # Add Font Awesome icons
 gem "font-awesome-rails"

@@ -1,10 +1,13 @@
-= bootstrap_form_for @event do |f|
-  = f.alert_message "Please fix the errors below."
-  = f.text_field :name
-  = f.datetime_select :start_date
-  = f.datetime_select :end_date
+= simple_form_for @event do |f|
+  = f.input :name
+  = f.input :start_date, as: :date, start_day: Date.today.day - 100,
+                              end_day: Date.today.day + 500
+  = f.input :end_date, as: :date, start_day: Date.today.day - 100,
+                              end_day: Date.today.day + 500
   %hr
-  = f.date_select :leadup_date
-  = f.date_select :followup_date
+  = f.input :leadup_date, as: :date, start_day: Date.today.day - 100,
+                              end_day: Date.today.day + 500
+  = f.input :followup_date, as: :date, start_day: Date.today.day - 100,
+                              end_day: Date.today.day + 500
   .actions
-    = f.submit 'Save'
+    = f.button :submit, 'Save', class: 'btn btn-primary'
