@@ -20,6 +20,8 @@ gem 'puma'
 gem 'devise'
 # use Pundit for authorization
 gem 'pundit'
+# Use UUIDTools, needed for Surveyor redo 
+gem 'uuidtools'
 
 # Use Bootstrap for page layout and content enhancement
 gem 'bootstrap', '~> 4.1.1'
