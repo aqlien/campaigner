@@ -1,4 +1,5 @@
 class ValidationCondition < ApplicationRecord
+  include ActsAsResponse
   belongs_to :validation
 
   validates_presence_of :operator, :rule_key

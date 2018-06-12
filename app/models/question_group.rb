@@ -1,4 +1,5 @@
 class QuestionGroup < ApplicationRecord
+  include MustacheContext
   has_many :questions
   has_one :dependency
 

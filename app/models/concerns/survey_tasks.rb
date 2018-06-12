@@ -21,4 +21,10 @@ module SurveyTasks
   def self.generate_api_id
     UUIDTools::UUID.random_create.to_s
   end
+
+private
+  def csv_impl
+    require 'csv'
+    @csv_impl ||= CSV
+  end
 end

@@ -12,14 +12,11 @@ class Survey < ApplicationRecord
   before_save :generate_access_code
   before_save :increment_version
 
-  module ClassMethods
-    def normalize_string(value)
-      # replace non-alphanumeric with "-". remove repeat "-"s. don't start or end with "-"
-      value.to_s.downcase.gsub(/[^a-z0-9]/,"-").gsub(/-+/,"-").gsub(/-$|^-/,"")
-    end
+  def self.normalize_string(value)
+    # replace non-alphanumeric with "-". remove repeat "-"s. don't start or end with "-"
+    value.to_s.downcase.gsub(/[^a-z0-9]/,"-").gsub(/-+/,"-").gsub(/-$|^-/,"")
   end
 
-  # Instance methods
   def initialize(*args)
     super(*args)
     default_args
@@ -50,7 +47,7 @@ class Survey < ApplicationRecord
 
   def as_json(options = nil)
     template_paths = ActionController::Base.view_paths.collect(&:to_path)
-    ::Rabl.render(filtered_for_json, 'surveyor/export.json', :view_path => template_paths, :format => "hash")
+    ::Rabl.render(filtered_for_json, 'surveys/export.json', :view_path => template_paths, :format => "hash")
   end
 
   ##

@@ -69,6 +69,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    database_cleaner (1.7.0)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -128,6 +129,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    mustache (1.0.5)
     mustermann (1.0.2)
     nio4r (2.3.1)
     nokogiri (1.8.2)
@@ -144,6 +146,8 @@ GEM
     puma (3.11.4)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
+    rabl (0.13.1)
+      activesupport (>= 2.3.14)
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
@@ -219,6 +223,8 @@ GEM
       ruby_http_client (~> 3.2)
       sinatra (>= 1.4.7, < 3)
     sexp_processor (4.11.0)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -267,6 +273,7 @@ DEPENDENCIES
   bootstrap_form!
   byebug
   coffee-rails (~> 4.2)
+  database_cleaner
   devise
   factory_girl_rails
   font-awesome-rails
@@ -275,16 +282,19 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   listen (~> 3.0.5)
+  mustache
   pg
   popper_js (~> 1.12.9)
   pry-rails
   puma
   pundit
+  rabl
   rails (~> 5.0.7)
   rails_12factor
   rspec-rails
   sass-rails (~> 5.0)
   sendgrid-ruby
+  shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails (>= 2.3.2)

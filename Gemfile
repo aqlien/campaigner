@@ -20,7 +20,7 @@ gem 'puma'
 gem 'devise'
 # use Pundit for authorization
 gem 'pundit'
-# Use UUIDTools, needed for Surveyor redo 
+# Use UUIDTools, needed for Surveyor redo
 gem 'uuidtools'
 
 # Use Bootstrap for page layout and content enhancement
@@ -38,6 +38,8 @@ gem "bootstrap_form",
 gem "font-awesome-rails"
 # use HAML for view templates
 gem 'haml-rails'
+# Use Mustache for templating
+gem 'mustache'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -93,6 +95,9 @@ group :test do
   gem 'rspec-rails'
   # FactoryGirl replaces fixtures and provides dynamically loaded content for optimal testing
   gem 'factory_girl_rails', require: false
+  gem 'database_cleaner' # cleans database in between tests
+  gem 'shoulda-matchers' # allows 'should' in testing DSL
+  gem 'rabl' # needed for survey specs
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

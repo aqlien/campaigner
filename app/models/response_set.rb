@@ -1,3 +1,5 @@
+require 'csv'
+
 class ResponseSet < ApplicationRecord
   belongs_to :survey
   belongs_to :user
@@ -11,12 +13,10 @@ class ResponseSet < ApplicationRecord
   before_validation :ensure_start_timestamp, on: :create
   before_validation :ensure_identifiers, on: :create
 
-  module ClassMethods
-    def has_blank_value?(hash)
-      return true if hash["answer_id"].blank?
-      return false if (q = Question.find_by_id(hash["question_id"])) and q.pick == "one"
-      hash.any?{|k,v| v.is_a?(Array) ? v.all?{|x| x.to_s.blank?} : v.to_s.blank?}
-    end
+  def self.has_blank_value?(hash)
+    return true if hash["answer_id"].blank?
+    return false if (q = Question.find_by_id(hash["question_id"])) and q.pick == "one"
+    hash.any?{|k,v| v.is_a?(Array) ? v.all?{|x| x.to_s.blank?} : v.to_s.blank?}
   end
 
   def ensure_start_timestamp
@@ -48,14 +48,14 @@ class ResponseSet < ApplicationRecord
 
   %w(question answer response).each do |model|
     define_method "csv_#{model}_columns" do
-      surveyor_model = "Surveyor::#{model.capitalize}"
+      surveyor_model = "#{model.capitalize}"
       surveyor_model.constantize.content_columns.map(&:name) - (model == "response" ? [] : %w(created_at updated_at))
     end
   end
 
   def as_json(options = nil)
     template_paths = ActionController::Base.view_paths.collect(&:to_path)
-    Rabl.render(self, 'surveyor/show.json', view_path: template_paths, format: "hash")
+    Rabl.render(self, 'surveys/show.json', view_path: template_paths, format: "hash")
   end
 
   def complete!
@@ -174,7 +174,7 @@ class ResponseSet < ApplicationRecord
 
   def dependencies(question_ids = nil)
     question_ids = survey.sections.map(&:questions).flatten.map(&:id) if responses.blank? and question_ids.blank?
-    deps = Dependency.includes(:dependency_conditions).where({ surveyor_dependency_conditions: { question_id: question_ids || responses.map(&:question_id) } })
+    deps = Dependency.includes(:dependency_conditions).where({ dependency_conditions: { question_id: question_ids || responses.map(&:question_id) } })
     # this is a work around for a bug in active_record in rails 2.3 which incorrectly eager-loads associatins when a
     # condition clause includes an association limiter
     deps.each{ |d| d.dependency_conditions.reload }

@@ -1,22 +1,23 @@
 class DependencyCondition < ApplicationRecord
+  include ActsAsResponse
   belongs_to :answer
   belongs_to :dependency
-  belongs_to :dependent_question, foreign_key: :question_id, class_name: :question
   belongs_to :question
+  # belongs_to :dependent_question, foreign_key: :question_id, class_name: :question
+  alias_attribute :dependent_question_id, :question_id
+  alias_method :dependent_question, :question
 
   validates_presence_of :operator, :rule_key
   validate :validates_operator
   validates_uniqueness_of :rule_key, scope: :dependency_id
 
-  module ClassMethods
-    def operators
-      SurveyTasks::OPERATORS
-    end
+  def self.operators
+    SurveyTasks::OPERATORS
   end
 
   def to_hash(response_set)
     # all responses to associated question
-    responses = question.blank? ? [] : response_set.responses.where("surveyor_responses.answer_id in (?)", question.answer_ids)
+    responses = question.blank? ? [] : response_set.responses.where("responses.answer_id in (?)", question.answer_ids)
     if self.operator.match /^count(>|>=|<|<=|==|!=)\d+$/
       op, i = self.operator.scan(/^count(>|>=|<|<=|==|!=)(\d+)$/).flatten
       # logger.warn({rule_key.to_sym => responses.count.send(op, i.to_i)})

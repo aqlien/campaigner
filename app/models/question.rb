@@ -1,9 +1,10 @@
 class Question < ApplicationRecord
+  include MustacheContext
   belongs_to :survey_section
   belongs_to :question_group, dependent: :destroy
   has_many :answers, dependent: :destroy # it might not always have answers
   has_one :dependency, dependent: :destroy
-  belongs_to :correct_answer, class_name: "Answer", dependent: :destroy
+  belongs_to :correct_answer, class_name: "Answer", dependent: :destroy, optional: true
 
   validates_presence_of :text, :display_order
   validates_inclusion_of :is_mandatory, in: [true, false]

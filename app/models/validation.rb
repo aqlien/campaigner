@@ -1,4 +1,4 @@
-class Validation < ApplcationRecord
+class Validation < ApplicationRecord
   belongs_to :answer
   has_many :validation_conditions, dependent: :destroy
 
