@@ -13,3 +13,18 @@ en:
         short_name: 'Display Name'
   welcome:
     main: 'Welcome.'
+
+  surveys:
+    take_these_surveys: "You may take these surveys"
+    take_it: "Take it"
+    completed_survey: "Completed survey"
+    unable_to_find_your_responses: "Unable to find your responses to the survey"
+    unable_to_update_survey: "Unable to update survey"
+    unable_to_find_that_survey: "Unable to find that survey"
+    survey_started_success: "Survey started successfully"
+    click_here_to_finish: "Click here to finish"
+    previous_section: "&laquo; Previous section"
+    next_section: "Next section &raquo;"
+    select_one: "Select one ..."
+    sections: "Sections"
+    language: "Language"

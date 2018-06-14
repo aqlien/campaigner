@@ -98,6 +98,7 @@ group :test do
   gem 'database_cleaner' # cleans database in between tests
   gem 'shoulda-matchers' # allows 'should' in testing DSL
   gem 'rabl' # needed for survey specs
+  gem 'rails-controller-testing' # needed for survey controller specs
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
