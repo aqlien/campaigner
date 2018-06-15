@@ -1,6 +1,6 @@
 class DependencyCondition < ApplicationRecord
   include ActsAsResponse
-  belongs_to :answer
+  belongs_to :answer, optional: true  # condition may be unrelated to specific answer selection
   belongs_to :dependency
   belongs_to :question
   # belongs_to :dependent_question, foreign_key: :question_id, class_name: :question

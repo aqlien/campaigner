@@ -1,11 +1,11 @@
 class Survey < ApplicationRecord
-  belongs_to :event
+  belongs_to :event, optional: true # TODO: make non-optional
 
   has_many :sections, class_name: 'SurveySection', dependent: :destroy
   has_many :response_sets
   has_many :translations, class_name: 'SurveyTranslation'
 
-  validates :event, presence: true
+  # validates :event, presence: true TODO: re-enable
   validates :title, presence: true
   validates_uniqueness_of :survey_version, scope: :access_code
 

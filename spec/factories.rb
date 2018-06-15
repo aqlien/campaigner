@@ -58,7 +58,6 @@ FactoryGirl.define do
   sequence(:question_display_order){|n| n }
 
   factory :question, class: Question do
-    association             :question_group
     association             :survey_section  # s.survey_section_id       {}
     # question_group_id       {}
     text                    "What is your favorite color?"

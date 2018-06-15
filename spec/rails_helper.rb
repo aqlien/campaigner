@@ -9,6 +9,9 @@ require 'shoulda/matchers'
 
 require_relative 'support/controller_macros'
 
+# Set fixture surveys path
+TEST_SURVEYS_PATH = "#{File.dirname(__FILE__)}/fixtures/surveys".freeze
+
 # Make sure migrations are up to date
 ActiveRecord::Migration.check_pending!
 

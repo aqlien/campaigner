@@ -240,11 +240,6 @@ RSpec.describe SurveysController, type: :controller do
   context "#export" do
     render_views
 
-    let(:json) {
-      get :export, :survey_code => survey.access_code, :format => 'json'
-      JSON.parse(response.body)
-    }
-
     context "question inside and outside a question group" do
       def question_text(refid)
         <<-SURVEY
@@ -272,20 +267,19 @@ RSpec.describe SurveysController, type: :controller do
           end
         SURVEY
       }
-      let(:survey) { Surveyor::Parser.new.parse(survey_text) }
-      let(:solo_question_json)    { json['sections'][0]['questions_and_groups'][1] }
-      let(:grouped_question_json) { json['sections'][0]['questions_and_groups'][2]['questions'][0] }
+      let(:survey) { Parser.new.parse(survey_text) }
+      let(:json) {
+        get :export, :survey_code => survey.access_code, :format => 'json'
+        JSON.parse(response.body)
+      }
+      let(:solo_question_json)    { json['survey']['sections'][0]['section']['questions_and_groups'][1]['questions_and_group'] }
+      let(:grouped_question_json) { json['survey']['sections'][0]['section']['questions_and_groups'][2]['questions_and_group']['questions'][0]['question'] }
 
-      it "produces identical JSON except for API IDs and question reference identifers" do
-        solo_question_json['answers'].to_json.should be_json_eql( grouped_question_json['answers'].to_json).excluding("uuid", "reference_identifier")
-        solo_question_json['dependency'].to_json.should be_json_eql( grouped_question_json['dependency'].to_json).excluding("uuid", "reference_identifier")
-        solo_question_json.to_json.should be_json_eql( grouped_question_json.to_json).excluding("uuid", "reference_identifier")
-      end
       it "produces the expected reference identifier for the solo question" do
-        solo_question_json['reference_identifier'].should == 'foo_solo'
+        expect(solo_question_json['reference_identifier']).to eq 'foo_solo'
       end
       it "produces the expected reference identifer for the question in the group" do
-        grouped_question_json['reference_identifier'].should == 'foo_grouped'
+        expect(grouped_question_json['reference_identifier']).to eq 'foo_grouped'
       end
     end
   end
