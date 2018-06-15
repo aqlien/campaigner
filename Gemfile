@@ -33,6 +33,7 @@ gem 'sprockets-rails', '>= 2.3.2'
 gem "bootstrap_form",
     git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
     branch: "master"
+gem "formtastic" # needed for surveyor forms, but may update from Bootstrap in the future
 
 # Add Font Awesome icons
 gem "font-awesome-rails"

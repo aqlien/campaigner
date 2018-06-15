@@ -11,7 +11,7 @@
     - if policy(:event).index?
       = navbar_link 'Events', events_path, title: 'Event List'
     - if policy(:survey).index?
-      = navbar_link 'Surveys', surveys_path, title: 'Survey List'
+      = navbar_link 'Surveys', available_surveys_path, title: 'Survey List'
 
   %ul.nav.navbar-nav.justify-content-end.pull-right
     - if current_user.present?
