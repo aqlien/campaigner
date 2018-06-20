@@ -3,7 +3,7 @@
     .surveyor_flash
       = flash_messages(types)
       .close
-  .survey_title= t('surveyor.take_these_surveys')
+  .survey_title= t('surveys.take_these_surveys')
   %br
   #survey_list
     %ul
@@ -16,7 +16,7 @@
             = label_tag :survey_version, 'version:'
             = select_tag(:survey_version, options_for_select([["-- Current version --", ""]] + (surveys.map(&:survey_version) || [])))
             &nbsp;
-            = submit_tag( t('surveyor.take_it'), :default => "Take it" )
+            = submit_tag( t('surveys.take_it'), :default => "Take it" )
 
 :javascript
   $(document).ready(function() {

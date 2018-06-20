@@ -34,6 +34,7 @@ gem "bootstrap_form",
     git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
     branch: "master"
 gem "formtastic" # needed for surveyor forms, but may update from Bootstrap in the future
+gem 'record_tag_helper', '~> 1.0' # used by the `div_for` method in the surveyor partials
 
 # Add Font Awesome icons
 gem "font-awesome-rails"
