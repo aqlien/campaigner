@@ -17,8 +17,7 @@ class SurveysController < ApplicationController
     else
       @survey = surveys.where(:survey_version => params[:survey_version]).first
     end
-    @response_set = ResponseSet.
-      create(:survey => @survey, :user_id => (@current_user.nil? ? @current_user : @current_user.id))
+    @response_set = ResponseSet.create(:survey => @survey, :user_id => (@current_user.nil? ? @current_user : @current_user.id))
     if (@survey && @response_set)
       flash[:notice] = t('surveys.survey_started_success')
       redirect_to(edit_my_survey_path(
@@ -104,7 +103,7 @@ class SurveysController < ApplicationController
       if @response_set
         saved = true
         if params[:r]
-          @response_set.update_from_ui_hash(params[:r])
+          @response_set.update_from_ui_hash(response_params)
         end
         if params[:finish]
           @response_set.complete!
@@ -220,4 +219,9 @@ private
       session[:surveyor_javascript] = "not_enabled"
     end
   end
+
+  def response_params
+    params.require(:r).permit!
+  end
+
 end
