@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true, length: { within: 6..128 }, if: :password_required?
   validates :password_confirmation, presence: true, if: :password_required?
 
+  scope :active, -> { where(active: true) }
+  scope :admin,  -> { where(admin: true) }
+
 private
   # Only used for validations. Overrides Devise's 'password_required?' method.
   # Passwords should not be needed for new records.

@@ -5,7 +5,7 @@
 
   %ul.nav.navbar-nav.justify-content-center
     - if policy(:user).index?
-      = navbar_link 'Users', users_path, title: 'User List'
+      = navbar_link 'Users', filters_path, title: 'User List'
     - if policy(:organization).index?
       = navbar_link 'Organizations', organizations_path, title: 'Organization List'
     - if policy(:event).index?

@@ -1,0 +1,28 @@
+%h1 Listing users
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th.actions
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.email
+        %td
+          - if policy(:user).show?
+            = link_to user, title: 'Show', class: 'icon' do
+              = fa_icon 'eye'
+          - if policy(:user).edit?
+            = link_to edit_user_path(user), title: 'Edit', class: 'icon' do
+              = fa_icon 'wrench'
+          - if policy(:user).destroy?
+            = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+              = fa_icon 'times'
+
+%br
+-if policy(:user).new?
+  = link_to 'New User', new_user_path
