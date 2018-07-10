@@ -1,0 +1,8 @@
+- user ||= @user || current_user
+
+-# TODO: this really should go through an AJAX request in a controller
+- response_codes = ResponseSet.joins(:survey).where(user_id: user.id).order(completed_at: :desc).pluck('surveys.access_code', :access_code)
+
+%ol
+  - response_codes.each do |survey_code, response_set_code|
+    %li= link_to survey_code.titleize, edit_my_survey_path(survey_code, response_set_code)

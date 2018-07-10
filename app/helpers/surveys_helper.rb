@@ -50,7 +50,8 @@ module SurveysHelper
 
   def rc_to_as(type_sym)
     case type_sym.to_s
-    when /(integer|float|date|time|datetime)/ then :string
+    when /(date|time|datetime)/ then :string
+    when /(integer|float)/ then :number
     else type_sym
     end
   end
