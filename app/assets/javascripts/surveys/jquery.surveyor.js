@@ -33,6 +33,8 @@ jQuery(document).ready(function(){
 
   // Default Datepicker uses jQuery UI Datepicker
   jQuery("input[type='text'].datetime").datetimepicker({
+    language: 'en',
+    pick12HourFormat: true,
     showSecond: true,
     showMillisec: false,
     timeFormat: 'HH:mm:ss',
@@ -41,21 +43,27 @@ jQuery(document).ready(function(){
     changeYear: true
   });
   jQuery("li.date input").datepicker({
+    language: 'en',
+    pick12HourFormat: true,
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true
   });
   jQuery("input[type='text'].date").datepicker({
+    language: 'en',
+    pick12HourFormat: true,
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true
   });
   jQuery("input[type='text'].datepicker").datepicker({
+    language: 'en',
+    pick12HourFormat: true,
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true
   });
-  jQuery("input[type='text'].time").timepicker({});
+  // jQuery("input[type='text'].time").timepicker({});
 
   jQuery('.surveyor_check_boxes input[type=text]').change(function(){
     var textValue = $(this).val()

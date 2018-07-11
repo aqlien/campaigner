@@ -1,10 +1,9 @@
-= bootstrap_form_for @event do |f|
-  = f.alert_message "Please fix the errors below."
-  = f.text_field :name
-  = f.datetime_select :start_date
-  = f.datetime_select :end_date
+= semantic_form_for @event do |f|
+  = f.input :name
+  = f.input :start_date, as: :string, input_html: {class: :date}
+  = f.input :end_date, as: :string, input_html: {class: :date}
   %hr
-  = f.date_select :leadup_date
-  = f.date_select :followup_date
+  = f.input :leadup_date, as: :string, input_html: {class: :date}
+  = f.input :followup_date, as: :string, input_html: {class: :date}
   .actions
     = f.submit 'Save'
