@@ -14,10 +14,10 @@
     - @events.each do |event|
       %tr
         %td= event.name
-        %td= event.start_date
-        %td= event.end_date
-        %td= event.leadup_date
-        %td= event.followup_date
+        %td= event.start_date.strftime('%b %d %Y') if event.start_date
+        %td= event.end_date.strftime('%b %d %Y') if event.end_date
+        %td= event.leadup_date.strftime('%b %d %Y') if event.leadup_date
+        %td= event.followup_date.strftime('%b %d %Y') if event.followup_date
         %td
           - if policy(:event).show?
             = link_to event, title: 'Show', class: 'icon' do

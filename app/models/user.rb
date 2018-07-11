@@ -14,6 +14,18 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :admin,  -> { where(admin: true) }
 
+  def self.secure_password
+    secure_password = ''
+    while !valid_password?(secure_password)
+      secure_password = SecureRandom.base64(10).gsub(/=+$/,'')
+    end
+    secure_password
+  end
+
+  def self.valid_password?(password)
+    password.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/) && password.length >= 6
+  end
+
 private
   # Only used for validations. Overrides Devise's 'password_required?' method.
   # Passwords should not be needed for new records.
