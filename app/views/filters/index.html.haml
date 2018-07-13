@@ -5,6 +5,10 @@
     %tr
       %th Name
       %th Email
+      - @current_survey.sections.each do |section|
+        - section.questions.each do |question|
+          -# TODO Change to question.short_text once surveys are fixed to actually have short_text
+          %th= question.text
       %th.actions
 
   %tbody
@@ -12,6 +16,12 @@
       %tr
         %td= user.name
         %td= user.email
+        - @current_survey.sections.each do |section|
+          - section.questions.each do |question|
+            - if (response_set = @response_sets.where(user_id: user.id).take).present? && response_set.responses.present? && (response = response_set.responses.where(question_id: question.id).take).present? && (answer = response.answer).present?
+              %td= answer_text(answer, response)
+            - else
+              %td
         %td
           - if policy(:user).show?
             = link_to user, title: 'Show', class: 'icon' do
