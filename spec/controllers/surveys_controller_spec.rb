@@ -194,7 +194,7 @@ RSpec.describe SurveysController, type: :controller do
 
     context "with form submission" do
       def do_put(extra_params = {})
-        put :update, { params: update_params.merge(extra_params) }
+        put :update, params: update_params.merge(extra_params)
       end
 
       it_behaves_like "#update action"
@@ -219,7 +219,7 @@ RSpec.describe SurveysController, type: :controller do
 
     context 'with ajax' do
       def do_put(extra_params = {})
-        xhr :put, :update, { params: update_params.merge(extra_params) }
+        put :update, params: update_params.merge(extra_params), xhr: true
       end
 
       it_behaves_like "#update action"
@@ -269,7 +269,7 @@ RSpec.describe SurveysController, type: :controller do
       }
       let(:survey) { Parser.new.parse(survey_text) }
       let(:json) {
-        get :export, :survey_code => survey.access_code, :format => 'json'
+        get :export, params: {survey_code: survey.access_code, format: 'json'}
         JSON.parse(response.body)
       }
       let(:solo_question_json)    { json['survey']['sections'][0]['section']['questions_and_groups'][1]['questions_and_group'] }

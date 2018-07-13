@@ -3,7 +3,7 @@
 
 User.find_or_create_by!(name: 'System Admin', short_name: 'Admin', admin: true, email: "admin@#{ENV['ROOT_DOMAIN']}") do |u|
   admin_password = User.secure_password
-  u.password = admin_password,
+  u.password = admin_password
   u.password_confirmation = admin_password
 end
 
