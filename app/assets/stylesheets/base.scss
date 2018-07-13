@@ -4,3 +4,9 @@
 a.icon a.icon:hover, a.icon:focus, a.icon:active, a.icon:visited, a.icon:link{
   text-decoration-line: none;
 }
+
+td, th{
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}

@@ -16,4 +16,5 @@
  *= require_tree .
  *= require_self
  *= stub surveys/reset.css
+ *= stub surveys/results.css
  */
