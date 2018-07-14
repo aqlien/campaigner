@@ -1,6 +1,6 @@
 %h1 Listing users
 
-%table
+%table#user-filter
   %thead
     %tr
       %th Name
@@ -9,6 +9,13 @@
         - section.questions.each do |question|
           -# TODO Change to question.short_text once surveys are fixed to actually have short_text
           %th= question.text
+      %th.actions
+    %tr#column_input
+      %th.text_searchable
+      %th.text_searchable
+      - @current_survey.sections.each do |section|
+        - section.questions.each do |question|
+          %th{class: datatables_searchable_class(question)}
       %th.actions
 
   %tbody

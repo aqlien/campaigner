@@ -1,7 +1,7 @@
 class FiltersController < ApplicationController
 
   def index
-    @users = User.all.active.where(admin: false)
+    @users = User.all.active.where(admin: nil)
     @current_events ||= Event.where("leadup_date <= :start_before AND followup_date >= :end_after", start_before: Date.today, end_after: Date.today)
     @current_survey ||= Survey.where(event_id: @current_events.pluck(:id)).take
     if @current_survey

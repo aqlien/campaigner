@@ -33,6 +33,10 @@ gem 'sprockets-rails', '>= 2.3.2'
 gem "formtastic" # needed for surveyor forms, but may update from Bootstrap in the future
 gem 'record_tag_helper', '~> 1.0' # used by the `div_for` method in the surveyor partials
 
+# DataTables for table sorting, filtering, and pagination
+gem 'jquery-datatables' # note that jquery-datatables depends on gem 'jquery-rails'
+gem 'ajax-datatables-rails' #handles server-side processing
+
 # Add Font Awesome icons
 gem "font-awesome-rails"
 # use HAML for view templates

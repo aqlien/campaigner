@@ -12,6 +12,7 @@
  *
  *= require jquery-ui
  *= require font-awesome
+ *= require datatables
  *= require_tree .
  *= require_self
  *= stub surveys/reset.css

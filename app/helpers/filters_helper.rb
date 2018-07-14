@@ -11,4 +11,16 @@ module FiltersHelper
     end
   end
 
+  def datatables_searchable_class(survey_question)
+    pick_type = survey_question.pick
+    case pick_type
+    when 'one'
+      'select_searchable'
+    when 'any'
+      'multi_select_searchable'
+    when 'none'
+      'text_searchable'
+    end
+  end
+
 end
