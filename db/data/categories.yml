@@ -1,0 +1,41 @@
+categories:
+  1:
+    name: Arts and Performance
+    short_name: Arts
+  2:
+    name: Communities of Color
+  3:
+    name: Environmental and Climate Issues
+    short_name: Environment
+  4:
+    name: Faith Communities
+  5:
+    name: Housing + Poverty + Neighborhoods + Food Justice
+    short_name: Housing
+  6:
+    name: Immigrants + Regugees
+    short_name: Immigration
+  7:
+    name: Labor + Unions + Business
+    short_name: Labor
+  8:
+    name: LGBTQIA+ Communities
+    short_name: LGBTQIA+
+  9:
+    name: Medical Needs + Community Health
+    short_name: Health
+  10:
+    name: Non-Profit Support
+    short_name: Non-Profit
+  11:
+    name: Political Issues + Voting Rights + Civil Rights + Veterans
+    short_name: Civil Rights
+  12:
+    name: Seniors + People with Disabilities
+    short_name: Seniors/Disabilities
+  13:
+    name: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    short_name: Womxn’s Issues
+  14:
+    name: Youth + Education
+    short_name: Youth

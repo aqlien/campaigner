@@ -1,0 +1,949 @@
+organizations:
+  1:
+    name: Art With Heart
+    category: Arts and Performance
+    url: http://www.artwithheart.org/
+  2:
+    name: Bonfire Gallery
+    category: Arts and Performance
+    url: http://www.thisisbonfire.com
+  3:
+    name: HONK! Fest West
+    category: Arts and Performance
+    url: http://www.honkfestwest.org/
+  4:
+    name: Just Add Yoga
+    category: Arts and Performance
+    url: https://www.justaddyogaevents.com/
+  5:
+    name: KEXP
+    category: Arts and Performance
+    url: http://kexp.org/
+  6:
+    name: Northwest Museum of Legends and Lore
+    category: Arts and Performance
+    url: http://nwlegendsmuseum.com/
+  7:
+    name: Powerful Voices
+    category: Arts and Performance
+    url: http://www.powerfulvoices.org/
+  8:
+    name: Rat City Rollergirls
+    category: Arts and Performance
+    url: http://ratcityrollergirls.com/
+  9:
+    name: Seattle Children's Theatre
+    category: Arts and Performance
+    url: https://www.sct.org/
+  10:
+    name: Seattle Shakespeare Company
+    category: Arts and Performance
+    url: http://www.seattleshakespeare.org/
+  11:
+    name: Seattle Peace Chorus Action Ensemble
+    category: Arts and Performance
+    url: http://seattlepeacechorus.org/
+  12:
+    name: Theatre Puget Sound
+    category: Arts and Performance
+    url: http://tpsonline.org/about/mission.php
+  13:
+    name: Bayan-USA Pacific NW
+    category: Communities of Color
+    url: https://bayanusapnw.wordpress.com/
+  14:
+    name: Chief Seattle Club
+    category: Communities of Color
+    url: https://www.chiefseattleclub.org/
+  15:
+    name: Duwamish Tribe
+    category: Communities of Color
+    url: http://www.duwamishtribe.org/
+  16:
+    name: Eleanor Elizabeth Institute for Black Empowerment
+    category: Communities of Color
+    url: http://www.facebook.com/EEIBE
+  17:
+    name: Indigenous Women Resiliency
+    category: Communities of Color
+  18:
+    name: Latino Community Fund
+    category: Communities of Color
+    url: http://www.latinocommunityfund.org/
+  19:
+    name: Na’ah Illahee Fund
+    category: Communities of Color
+    url: http://www.naahillahee.org/
+  20:
+    name: NAACP Pierce County
+    category: Communities of Color
+    url: http://naacp253.org/
+  21:
+    name: Not This Time
+    category: Communities of Color
+    url: http://www.notthistime.global/
+  22:
+    name: Rainier Valley Corps
+    category: Communities of Color
+    url: http://rainiervalleycorps.org/
+  23:
+    name: United Territories of Pacific Islanders Alliance Seattle
+    short_name: UTOPIA Seattle
+    category: Communities of Color
+    url: http://www.utopiaseattlewa.org/
+  24:
+    name: 350 Seattle
+    category: Environmental + Climate Issues
+    url: http://350seattle.org/
+  25:
+    name: CascadiaNow!
+    category: Environmental + Climate Issues
+  26:
+    name: CoolMom
+    category: Environmental + Climate Issues
+    url: http://coolmom.org/
+  27:
+    name: Earth Care not Warfare
+    category: Environmental + Climate Issues
+    url: https://earthcarenotwarfare.wordpress.com/
+  28:
+    name: Got Green
+    category: Environmental + Climate Issues
+    url: http://gotgreenseattle.org/
+  29:
+    name: Plant for the Planet/Climate Change for Families
+    category: Environmental + Climate Issues
+    url: https://www.plant-for-the-planet.org/en/home
+  30:
+    name: Puget Soundkeeper Alliance
+    category: Environmental + Climate Issues
+    url: http://www.pugetsoundkeeper.org/
+  31:
+    name: Race and Climate Justice
+    category: Environmental + Climate Issues
+    url: https://www.facebook.com/RaceAndClimateJustice/
+  32:
+    name: Sierra Club
+    category: Environmental + Climate Issues
+    url: http://www.sierraclub.org/washington
+  33:
+    name: Washington Conservation Voters
+    category: Environmental + Climate Issues
+    url: https://wcvoters.org/
+  34:
+    name: Washington Environmental Council
+    category: Environmental + Climate Issues
+    url: https://wecprotects.org/
+  35:
+    name: Washington Environmental Women’s Alliance
+    category: Environmental + Climate Issues
+    url: http://environmentalwomensalliance.org/
+  36:
+    name: Washington Wild
+    category: Environmental + Climate Issues
+    url: https://wawild.org/
+  37:
+    name: Washington Women for Climate Action Now
+    short_name: Washington Women CAN
+    category: Environmental + Climate Issues
+    url: http://www.washingtonwomencan.org/
+  38:
+    name: Weed Warriors
+    category: Environmental + Climate Issues
+    url: http://weedwarriors.us/
+  39:
+    name: Wilderness Society
+    category: Environmental + Climate Issues
+    url: http://wilderness.org/
+  40:
+    name: Alki United Church of Christ
+    category: Faith Communities
+    url: http://www.alkiucc.org/
+  41:
+    name: Bear Creek United Methodist
+    category: Faith Communities
+    url: http://www.bcumc.org/
+  42:
+    name: "Compassion Games: Survival Of The Kindest"
+    category: Faith Communities
+    url: http://compassiongames.org/
+  43:
+    name: Congregation Kol-Ami
+    category: Faith Communities
+    url: http://www.kolaminw.org/
+  44:
+    name: Earth Ministry
+    category: Faith Communities
+    url: http://earthministry.org/
+  45:
+    name: East Shore Unitarian Church
+    category: Faith Communities
+    url: http://esuc.org/
+  46:
+    name: Faith Action Network
+    category: Faith Communities
+    url: http://fanwa.org/
+  47:
+    name: Faith and Action Climate Team & 1 Sustainable Planet
+    category: Faith Communities
+    url: http://onesustainableplanet.blogspot.com/
+  48:
+    name: Faith in Action, Olympia Unitarian Universalist Congregation
+    category: Faith Communities
+    url: http://ouuc.org/
+  49:
+    name: Gift of Grace Lutheran Church
+    category: Faith Communities
+    url: http://www.giftofgrace.org/
+  50:
+    name: Interfaith Community Sanctuary
+    category: Faith Communities
+    url: http://interfaithcommunitysanctuary.org/
+  51:
+    name: Kadima Jewish Community
+    category: Faith Communities
+    url: http://www.kadima.org/
+  52:
+    name: Kavana Cooperative
+    category: Faith Communities
+    url: https://www.kavana.org/
+  53:
+    name: Kol HaNeshamah
+    category: Faith Communities
+    url: http://khnseattle.org/
+  54:
+    name: Lake Washington UMC Safe Parking
+    category: Faith Communities
+    url: http://www.lwumc.com/do/community-involvement/safe-parking-program/
+  55:
+    name: Muslim Association of Puget Sound
+    short_name: MAPS
+    category: Faith Communities
+    url: https://www.mapsredmond.org/
+  56:
+    name: American Muslim Empowerment Network – Muslim Association of Puget Sound
+    short_name: MAPS-AMEN
+    category: Faith Communities
+    url: https://www.facebook.com/AmericanMuslimEmpowermentNetwork/
+  57:
+    name: Phinney Ridge Lutheran Church
+    category: Faith Communities
+    url: http://prlc.org/
+  58:
+    name: Prays Well With Others
+    category: Faith Communities
+    url: https://www.facebook.com/PraysWellWithOthers/
+  59:
+    name: St. Clare Episcopal Church
+    category: Faith Communities
+    url: http://www.stclareschurch.org/aboutus.php
+  60:
+    name: St. John United Lutheran
+    category: Faith Communities
+    url: http://www.stjohnunited.org/
+  61:
+    name: Satanic Temple – Seattle Chapter
+    category: Faith Communities
+    url: https://thesatanictempleseattle.com/
+  62:
+    name: Seattle area United Methodist Churches
+    category: Faith Communities
+    url: http://www.umc.org/
+  63:
+    name: Secular Jewish Circle of Puget Sound
+    category: Faith Communities
+    url: http://secularjewishcircle.org/
+  64:
+    name: Temple Beth Am
+    category: Faith Communities
+    url: http://www.templebetham.org/
+  65:
+    name: University Unitarian Church
+    category: Faith Communities
+    url: http://www.uuchurch.org/
+  66:
+    name: All Home
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://www.allhomekc.org
+  67:
+    name: Capitol Hill Community Council
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://capitolhillcommunitycouncil.org/
+  68:
+    name: Chief Seattle Club
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://www.chiefseattleclub.org/
+  69:
+    name: Delridge Grocery Co-op
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://www.delridgegrocery.coop
+  70:
+    name: Dignity for Divas
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://dignityfordivas.org/
+  71:
+    name: FareStart
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://www.farestart.org/
+  72:
+    name: Food Lifeline
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://foodlifeline.org/
+  73:
+    name: 'Habitat for Humanity #8211; Seattle & King County'
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://www.habitatskc.org/
+  74:
+    name: Hate Free Delridge
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://www.facebook.com/hatefreedelridge/
+  75:
+    name: Hunger For Humanity
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://hungerforhumanity.com/
+  76:
+    name: Issaquah Food and Clothing Bank
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://issaquahfoodbank.org/
+  Name: Moms Demand Action for Gun Sense
+  77:
+    name: Neighborhood Action Coalition
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://www.neighborhoodaction.info/
+  78:
+    name: Plateaupians for Peace
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://pforpeace.com/
+  79:
+    name: Rainier Beach Neighbors
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://rainierbeachcommunityclub.org/
+  80:
+    name: Seattle Neighborhood Greenways
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://seattlegreenways.org/
+  81:
+    name: The Sophia Way
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://sophiaway.org/
+  82:
+    name: Sukarya USA
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: http://www.sukarya.org/
+  83:
+    name: Village Volunteers
+    category: Housing + Poverty + Neighborhoods + Food Justice
+    url: https://www.villagevolunteers.org/
+  84:
+    name: Casa Latina
+    category: Immigrants + Regugees
+    url: http://casa-latina.org/
+  85:
+    name: El Comite
+    category: Immigrants + Regugees
+    url: https://elcomitewa.wordpress.com/
+  86:
+    name: Interim CDA
+    category: Immigrants + Regugees
+    url: http://interimicda.org/
+  87:
+    name: La Sala
+    category: Immigrants + Regugees
+    url: http://www.lasalaseattle.org/
+  88:
+    name: Legacy of Equality, Leadership, and Organizing
+    short_name: LELO
+    category: Immigrants + Regugees
+    url: http://www.leloseattle.org/
+  89:
+    name: May 1st Action Coalition
+    category: Immigrants + Regugees
+    url: https://www.facebook.com/M1ACSEA/
+  90:
+    name: Northwest Immigrant Rights Project
+    category: Immigrants + Regugees
+    url: https://www.nwirp.org/
+  91:
+    name: OneAmerica
+    category: Immigrants + Regugees
+    url: http://weareoneamerica.org/
+  92:
+    name: Refugee Women’s Alliance
+    short_name: ReWA
+    category: Immigrants + Regugees
+    url: http://www.rewa.org/donate/
+  93:
+    name: Refugees Northwest
+    category: Immigrants + Regugees
+    url: http://www.refugeesnw.org
+  94:
+    name: African Women Business Alliance
+    category: Labor + Unions + Business
+    url: https://www.facebook.com/AWBANW/
+  95:
+    name: American Federation of Teachers Washington
+    category: Labor + Unions + Business
+    url: http://wa.aft.org/
+  96:
+    name: Communications Workers of America
+    short_name: CWA
+    category: Labor + Unions + Business
+    url: http://www.cwa7800.org/
+  97:
+    name: IAM District Lodge 160
+    category: Labor + Unions + Business
+    url: http://www.iam160.com/
+  98:
+    name: M.L. King County Labor Council
+    category: Labor + Unions + Business
+    url: http://www.mlkclc.org/
+  99:
+    name: Northwest Health Law Advocates
+    category: Labor + Unions + Business
+    url: http://nohla.org/
+  100:
+    name: Seattle Industrial Workers of the World
+    short_name: Seattle IWW
+    category: Labor + Unions + Business
+    url: https://iww.org/branches/US/WA
+  101:
+    name: SEIU 775
+    category: Labor + Unions + Business
+    url: http://seiu775.org/
+  102:
+    name: SEIU Healthcare 1199NW
+    category: Labor + Unions + Business
+    url: http://www.seiu1199nw.org/
+  103:
+    name: Sisters in the Building Trades
+    category: Labor + Unions + Business
+    url: http://sitbt.org/
+  104:
+    name: Transit Riders Union
+    category: Labor + Unions + Business
+    url: https://transitriders.org/
+  105:
+    name: Washington State Labor Council, AFL-CIO
+    category: Labor + Unions + Business
+    url: http://www.wslc.org/
+  106:
+    name: Washington State Nurses Association
+    category: Labor + Unions + Business
+    url: https://www.wsna.org/
+  107:
+    name: Washington Women Lawyers-King County Chapter
+    category: Labor + Unions + Business
+    url: http://www.wwl.org/king
+  108:
+    name: Ventures
+    category: Labor + Unions + Business
+    url: http://venturesnonprofit.org/
+  109:
+    name: Capitol Hill Pride Festival
+    category: LGBTQIA+ Communities
+    url: http://www.capitolhillpridefestival.info/
+  110:
+    name: Gender Justice League
+    category: LGBTQIA+ Communities
+    url: http://www.genderjusticeleague.org/
+  111:
+    name: Human Rights Campaign
+    short_name: HRC
+    category: LGBTQIA+ Communities
+    url: http://hrc.org/
+  112:
+    name: LGBTQ Allyship
+    category: LGBTQIA+ Communities
+    url: http://allyship.org/
+  113:
+    name: Lifelong AIDS Alliance
+    category: LGBTQIA+ Communities
+    url: http://lifelongaidsalliance.org/
+  114:
+    name: PFLAG Bellevue/Eastside
+    category: LGBTQIA+ Communities
+    url: https://pflagbellevue.org/
+  115:
+    name: United Territories of Pacific Islanders Alliance Seattle
+    short_name: UTOPIA Seattle
+    category: LGBTQIA+ Communities
+    url: http://www.utopiaseattlewa.org/
+  116:
+    name: Bellevue International Community Health Services
+    category: Medical Needs + Community Health + Health Justice
+    url: https://www.ichs.com/
+  117:
+    name: Cancer Lifeline
+    category: Medical Needs + Community Health + Health Justice
+    url: http://www.cancerlifeline.org/
+  118:
+    name: Doctors for America, National Physicians Alliance
+    category: Medical Needs + Community Health + Health Justice
+    url: http://www.drsforamerica.org/
+  119:
+    name: Easter Seals Washington
+    category: Medical Needs + Community Health + Health Justice
+    url: http://wa.easterseals.com/
+  120:
+    name: Entre Hermanos
+    category: Medical Needs + Community Health + Health Justice
+    url: http://www.entrehermanos.org/
+  121:
+    name: Health Care for All – Washingon
+    category: Medical Needs + Community Health + Health Justice
+    url: http://www.healthcareforallwa.org/
+  122:
+    name: NORML Women of WA
+    category: Medical Needs + Community Health + Health Justice
+    url: http://norml.org/wa/item/norml-women-of-washington
+  123:
+    name: Northwest Health Law Advocates
+    short_name: NoHLA
+    category: Medical Needs + Community Health + Health Justice
+    url: http://nohla.org/
+  124:
+    name: Planned Parenthood
+    category: Medical Needs + Community Health + Health Justice
+    url: https://www.plannedparenthood.org/
+  125:
+    name: Planned Parenthood of the Great Northwest and the Hawaiian Islands
+    category: Medical Needs + Community Health + Health Justice
+    url: https://www.plannedparenthood.org/planned-parenthood-great-northwest-hawaiian-islands
+  126:
+    name: Sea Mar Community Health Centers
+    category: Medical Needs + Community Health + Health Justice
+    url: http://www.wacmhc.org/
+  127:
+    name: Washington Physicians for Social Responsibility
+    category: Medical Needs + Community Health + Health Justice
+    url: http://wwww.wpsr.org/
+  128:
+    name: Wellspring Family Services
+    category: Medical Needs + Community Health + Health Justice
+    url: https://wellspringfs.org/
+  129:
+    name: Whole Washington
+    category: Medical Needs + Community Health + Health Justice
+    url: http://www.Wholewashington.org
+  130:
+    name: 501 Commons
+    category: Non-Profit Support
+    url: https://www.501commons.org/
+  131:
+    name: 34th District Democrats
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.34dems.org/
+  132:
+    name: 32nd Legislative District Democrats
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://32democrats.org/
+  133:
+    name: 37th Legislative District Democrats
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://37dems.org/
+  134:
+    name: ACLU – WA State
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.aclu-wa.org/
+  135:
+    name: Backbone Campaign
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.backbonecampaign.org/
+  136:
+    name: Brady Campaign to Prevent Gun Violence – Seattle
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.bradycampaign.org/content/seattle-brady-chapter?ms=WASEAChapter
+  137:
+    name: City of Seattle
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.seattle.gov/
+  138:
+    name: Coalition of Anti-Racist Whites
+    short_name: CARW
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.carw.org/
+  139:
+    name: Code Pink Seattle
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.codepink.org/
+  140:
+    name: Democratic Legislative District 47
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.47thdistrictdemocrats.com/
+  141:
+    name: Emerge Washington
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.emergeamerica.org/EmergeWA
+  142:
+    name: Fix Democracy First
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://fixdemocracyfirst.org/fdf/volunteer/
+  143:
+    name: Fuse Washington
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://fusewashington.org/
+  144:
+    name: Grandmothers Against Gun Violence
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.grandmothersagainstgunviolence.org/
+  145:
+    name: Grassroots ACTIONS – Whatcom
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+  146:
+    name: Green Party
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.gp.org/
+  147:
+    name: Indivisible Eastside
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://indivisibleeastside.com/
+  148:
+    name: League of Women Voters
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.lwv.org/
+  149:
+    name: 'League of Women Voters #8211; Eastside'
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.seattlelwv.org/
+  150:
+    name: League of Women Voters – Seattle-King County
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.seattlelwv.org/
+  151:
+    name: League of Women Voters – WA State of Washington
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.lwvwa.org/
+  152:
+    name: May Arkwright Hutton Chapter of the Federation of Democratic Women
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.wsfedemwomen.org/
+  153:
+    name: Military Rape Crisis Center
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.protectourdefenders.com/services/military-rape-crisis-center-2/
+  154:
+    name: National Women’s Political Caucus of WA
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.nwpcwa.org/
+  155:
+    name: Northwest Community Bail Fund
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.facebook.com/NorthwestBailFund/
+  156:
+    name: People for Equity in Wenatchee
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+  157:
+    name: Postcard Project
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.screenprintingworkparty.com
+  158:
+    name: POWER (People Of Whidbey Elegantly Resisting)
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+  159:
+    name: Progressive Millennials for Action
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://progressivemillennials.org/
+  160:
+    name: Radical Women
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.radicalwomen.org/seattle.shtml
+  161:
+    name: Seattle City Attorney’s Office
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.seattle.gov/cityattorney
+  162:
+    name: Seattle Indivisible
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.seattleindivisible.com/
+  163:
+    name: Seattle International Socialist Organization
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.pugetsoundsocialists.org/
+  164:
+    name: Seattle Socialist Alternative
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.socialistalternative.org/
+  165:
+    name: South Sound Democratic Socialists of America
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.facebook.com/groups/SouthSoundDSA/
+  166:
+    name: Washington Public Interest Research Group
+    short_name: WashPIRG
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.washpirg.org/
+  167:
+    name: West Seattle Democratic Women
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://westseattledemocraticwomen.org/
+  168:
+    name: Whatcom County Democratic Women
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.whatcomdemocrats.com/
+  169:
+    name: Whatcom County Open Carry
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: https://www.facebook.com/Washington-Open-Carry-Whatcom-County-366874943419858/
+  170:
+    name: Win Win
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://winwinnetwork.org/
+  171:
+    name: Working Washington
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://www.workingwa.org/
+  172:
+    name: YouEqualsMe
+    category: Political Issues + Voting Rights + Civil Rights + Veterans
+    url: http://youequalsme.com/
+  173:
+    name: Puget Sound Advocates for Retirement Action
+    category: Seniors + People with Disabilities
+    url: http://psara.org/
+  174:
+    name: Rooted in Rights
+    category: Seniors + People with Disabilities
+    url: http://rootedinrights.org/
+  175:
+    name: Sound Mental Health
+    category: Seniors + People with Disabilities
+    url: http://www.smh.org/
+  176:
+    name: WA State Alliance for Retired Americans
+    category: Seniors + People with Disabilities
+    url: https://washington.retiredamericans.org/
+  177:
+    name: '#ShoutYourAbortion'
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://shoutyourabortion.com/
+  178:
+    name: 500 Women Scientists
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://500womenscientists.org/#our-pledge
+  179:
+    name: AAUW (American Association of University Women) – WA State
+    short_name: AAUW - WA State
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://aauw-wa.aauw.net/
+  180:
+    name: AAUW (American Association of University Women) – Seattle
+    short_name: AAUW - Seattle
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://seattle-aauw.org/
+  181:
+    name: Badassery Project
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.thebadasseryproject.com/
+  182:
+    name: CAIR Project (Community Abortion Information and Resources Project) – WA State
+    short_name: CAIR - WA State
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://cairproject.org/info/washington/
+  183:
+    name: ChickChat
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://chickchat.net/seattle/
+  184:
+    name: Coalition Ending Gender-Based Violence
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://endgv.org/
+  185:
+    name: Department of Gender, Women & Sexuality Studies, University of Washington
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://gwss.washington.edu/
+  186:
+    name: Dignity for Divas
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://dignityfordivas.org/
+  187:
+    name: Do Good Washington
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+  188:
+    name: Girl Power Hour
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://girlpowerhour.com/
+  189:
+    name: Kirkland Women’s Club
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.kirklandwomansclub.org/home
+  190:
+    name: Ladies in Perpetual Indulgence
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.thesisters.org/
+  191:
+    name: Legal Voice
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.legalvoice.org/
+  192:
+    name: Mary’s Place
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.marysplaceseattle.org/
+  193:
+    name: Melinda Gates & The Gates Foundation
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.gatesfoundation.org/
+  194:
+    name: Mom’s Rising
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://www.momsrising.org/blog/users/kristin
+  195:
+    name: NARAL (National Abortion Rights Action League)-Pro-Choice – WA State
+    short_name: NARAL - WA State
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://www.prochoicewashington.org/get-involved/
+  196:
+    name: New Beginnings
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.newbegin.org/
+  197:
+    name: No Limits for Women
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://www.rc.org/tile/nolimits
+  198:
+    name: NOW (National Organization for Women) – Seattle
+    short_name: NOW - Seattle
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://nowseattle.org/
+  199:
+    name: NOW (National Organization for Women) – WA State
+    short_name: NOW - WA State
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://now.org/chapter/washington-now/
+  200:
+    name: NOW (National Organization for Women) – Thurston County
+    short_name: NOW - Thurston County
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://now.org/chapter/thurston-county-now/
+  201:
+    name: Organization for Prostitution Survivors
+    short_name: OPS
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://seattleops.org/
+  202:
+    name: Planned Parenthood of the Great Northwest and Hawaiian Islands
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://www.plannedparenthood.org/planned-parenthood-great-northwest-hawaiian-islands
+  203:
+    name: Planned Parenthood Votes Northwest
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.ppvotesnw.net/
+  204:
+    name: Port Townsend Women
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+  205:
+    name: Seven Star Women’s Kung Fu
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://sevenstarwomenskungfu.org/
+  206:
+    name: Speak Out Revolution
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://www.facebook.com/speakoutrevolution/
+  207:
+    name: Thursday Walkers
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+  208:
+    name: UniteWomen.org – WA State
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://unitewomen.org/
+  209:
+    name: Washington State Coalition Against Domestic Violence
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://wscadv.org/
+  210:
+    name: Washington Women Lawyers – Capitol Chapter
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.wwl.org/page-1072569
+  211:
+    name: Wholehearted Masculine
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://wholeheartedmasculine.org
+  212:
+    name: Women For One</a> *</li>
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://womenforone.com/
+  213:
+    name: Women of San Juan County
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+  214:
+    name: Women’s Funding Alliance
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.wfalliance.org/
+  215:
+    name: Women’s March Contingent in Pt Townsend
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+  216:
+    name: YWCA Seattle | King | Snohomish
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: https://www.ywcaworks.org/
+  217:
+    name: Zonta Club of Everett
+    category: Womxn’s Issues + Domestic Violence + Reproductive Rights
+    url: http://www.zontaeverett.org/
+  218:
+    name: Children’s Alliance
+    category: Youth + Education
+    url: https://www.childrensalliance.org/
+  219:
+    name: Childhaven
+    category: Youth + Education
+    url: https://childhaven.org/
+  220:
+    name: El Cuento Preschool
+    category: Youth + Education
+    url: http://www.elcuentopreschool.com
+  221:
+    name: Girl Rising
+    category: Youth + Education
+    url: http://girlrising.com/
+  222:
+    name: Girl Rising Regional Ambassadors
+    category: Youth + Education
+    url: http://girlrising.com/ambassadors/
+  223:
+    name: Girl Scouts of Western Washington
+    category: Youth + Education
+    url: https://www.girlscoutsww.org/
+  224:
+    name: "Girl Scouts of Western Washington – Troop #45300"
+    category: Youth + Education
+    url: https://www.girlscoutsww.org/
+  225:
+    name: Issaquah Schools Foundation
+    category: Youth + Education
+    url: http://isfdn.org/
+  226:
+    name: Lake Washington Girls Middle School
+    category: Youth + Education
+    url: http://www.lwgms.org/
+  227:
+    name: Para Los Niños
+    category: Youth + Education
+    url: http://paralosninos.org/
+  228:
+    name: Middle East Peace Camp for Children
+    category: Youth + Education
+    url: http://www.middleeastpeacecamp.org/
+  229:
+    name: Powerful Voices
+    category: Youth + Education
+    url: http://www.powerfulvoices.org/
+  230:
+    name: Rain City Rock Camp for Girls
+    category: Youth + Education
+    url: https://raincityrockcamp.org/
+  231:
+    name: Reel Grrls
+    category: Youth + Education
+    url: http://reelgrrls.org/
+  232:
+    name: Seattle University – Department of Philosophy
+    category: Youth + Education
+    url: https://www.seattleu.edu/artsci/departments/philosophy/
+  233:
+    name: Treehouse
+    category: Youth + Education
+    url: http://www.treehouseforkids.org/
+  234:
+    name: Youth Speaks Seattle
+    category: Youth + Education
+    url: http://youthspeaks206.tumblr.com/

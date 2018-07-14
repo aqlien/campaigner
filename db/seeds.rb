@@ -7,8 +7,28 @@ User.find_or_create_by!(name: 'System Admin', short_name: 'Admin', admin: true, 
   u.password_confirmation = admin_password
 end
 
-if ENV['SEED_WITH'] == 'events'
-  Event.create!(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
+if ENV['SEED_WITH'] == 'existing_data'
+  # import categories
+  categories_list = YAML.load_file(File.join(Rails.root, 'db', 'data', 'categories.yml'))['categories']
+  categories_list.each do |index, hash|
+    Category.find_or_create_by(name: hash['name']) do |c|
+      c.short_name = hash['short_name']
+    end
+  end
+
+  # import events
+  # Event.create!(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
+
+  # import organizations
+  categories = Category.all.order(name: :asc)
+  organizations_list = YAML.load_file(File.join(Rails.root, 'db', 'data', 'organizations.yml'))['organizations']
+  organizations_list.each do |index, hash|
+    Organization.find_or_create_by(name: hash['name']) do |o|
+      o.short_name = hash['short_name']
+      o.url = hash['url']
+      o.categories << categories.find_or_create_by(name: hash['category'])
+    end
+  end
 end
 
 if ENV['SEED_WITH'] == 'fake_users'

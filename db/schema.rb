@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601163515) do
+ActiveRecord::Schema.define(version: 20180714012424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 20180601163515) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["api_id"], name: "index_answers_on_api_id", unique: true, using: :btree
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_organizations", id: false, force: :cascade do |t|
+    t.integer "organization_id", null: false
+    t.integer "category_id",     null: false
+    t.index ["category_id"], name: "index_categories_organizations_on_category_id", using: :btree
+    t.index ["organization_id"], name: "index_categories_organizations_on_organization_id", using: :btree
   end
 
   create_table "dependencies", force: :cascade do |t|
@@ -82,6 +96,7 @@ ActiveRecord::Schema.define(version: 20180601163515) do
     t.string   "short_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url"
     t.index ["name"], name: "index_organizations_on_name", using: :btree
     t.index ["short_name"], name: "index_organizations_on_short_name", using: :btree
   end
