@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/bootstrap-ruby/bootstrap_form.git
-  revision: 96ce4f73197adfd54651be364b90bf5ce32f1ac9
-  branch: master
-  specs:
-    bootstrap_form (4.0.0.dev)
-      rails (>= 5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -280,7 +272,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.1.1)
-  bootstrap_form!
   byebug
   coffee-rails (~> 4.2)
   database_cleaner

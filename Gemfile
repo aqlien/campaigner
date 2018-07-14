@@ -29,10 +29,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'popper_js', '~> 1.12.9'
 gem 'sprockets-rails', '>= 2.3.2'
 
-# Use Bootstrap Form for form styling --- Github release necessary for Rails 5/Bootstrap 4 support as of 2018/05/15
-gem "bootstrap_form",
-    git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
-    branch: "master"
+# Use Formtastic for form styling
 gem "formtastic" # needed for surveyor forms, but may update from Bootstrap in the future
 gem 'record_tag_helper', '~> 1.0' # used by the `div_for` method in the surveyor partials
 
