@@ -7,7 +7,7 @@ RSpec.describe EventsController, type: :controller do
   # Event. As you add validations to Event, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: "March for Equality" }
+    { name: "March for Equality", start_date: Date.today }
   }
 
   let(:invalid_attributes) {

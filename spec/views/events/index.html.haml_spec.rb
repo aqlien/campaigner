@@ -4,10 +4,10 @@ RSpec.describe "events/index", type: :view do
   before(:each) do
     assign(:events, [
       Event.create!(
-        :name => "Name"
+        :name => "Name", start_date: Date.today
       ),
       Event.create!(
-        :name => "Name"
+        :name => "Name", start_date: Date.today
       )
     ])
 

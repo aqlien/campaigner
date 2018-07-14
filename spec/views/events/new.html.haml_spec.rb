@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "events/new", type: :view do
   before(:each) do
     assign(:event, Event.new(
-      :name => "MyString"
+      :name => "MyString", start_date: Date.today
     ))
   end
 
