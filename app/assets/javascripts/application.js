@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
+//= require bootstrap-multiselect
 //= require turbolinks
 //= require datatables
 //= require_tree .

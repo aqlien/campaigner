@@ -1,5 +1,6 @@
 $ ->
   $("#user-filter").dataTable( {
+    "pageLength": 50
     "searching": true
     initComplete: ->
       this.api().setupSearchFields()
@@ -91,3 +92,34 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
           labels.join(', ') + ''
     })
 )
+
+regexifyMultiSelect = (valueArray) ->
+  if valueArray.indexOf("") != -1
+    ".*"
+  else if valueArray.indexOf("^$") != -1 && valueArray.length > 1
+    valueArray.splice(valueArray.indexOf("^$"), 1)
+    counter = 1
+    last = valueArray.length
+    regex = "^$|^("
+    for v in valueArray
+      v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
+      if counter < last
+        regex = regex.concat(v + "|")
+      else
+        regex = regex.concat(v + ")$")
+      counter++
+    regex
+  else if valueArray.indexOf("^$") != -1
+    "^$"
+  else
+    counter = 1
+    last = valueArray.length
+    regex = "^("
+    for v in valueArray
+      v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
+      if counter < last
+        regex = regex.concat(v + "|")
+      else
+        regex = regex.concat(v + ")$")
+      counter++
+    regex
