@@ -14,6 +14,8 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :admin,  -> { where(admin: true) }
 
+  attr_accessor :pronoun_custom #only used during user creation/update, if setting custom pronouns
+
   def self.secure_password
     secure_password = ''
     while !valid_password?(secure_password)

@@ -69,6 +69,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name, :short_name, :pronoun, :active, :admin, :organization_id)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :short_name, :pronoun, :active, :admin, :organization_id, :pronoun_custom).tap do |p|
+        p[:pronoun] = p[:pronoun_custom].downcase unless p[:pronoun_custom].blank?
+      end
     end
 end

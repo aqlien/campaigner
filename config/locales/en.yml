@@ -11,6 +11,8 @@ en:
       user:
         name: 'Full Name'
         short_name: 'Display Name'
+        pronoun: 'Preferred Pronouns'
+        pronoun_custom: 'Other Pronoun'
   welcome:
     main: 'Welcome.'
 
@@ -28,4 +30,3 @@ en:
     select_one: "Select one ..."
     sections: "Sections"
     language: "Language"
-    

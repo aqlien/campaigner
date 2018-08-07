@@ -2,9 +2,14 @@
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-  = f.input :name, label: t('activerecord.label.user.name')
-  = f.input :short_name, label: t('activerecord.label.user.short_name')
-  = f.input :organization_id, as: :select, collection: Organization.all.map{|x| [x.display_name, x.id]}, input_html: {include_blank: true, class: 'form-control', data_placeholder: 'Choose an organization'}
+  = f.input :name, label: t('activerecord.label.user.name') + ': '
+  = f.input :short_name, label: t('activerecord.label.user.short_name') + ': '
+
+  = f.input :pronoun, as: :select, collection: pronouns_for_select, input_html: {prompt: 'Please select your preferred pronouns', selected: @user.pronoun, class: 'form-control', id: 'pronoun-select'}, label: t('activerecord.label.user.pronoun') + ': '
+  #custom-pronoun-div.hidden
+    = f.input :pronoun_custom, input_html: {id: 'pronoun-custom'}, label: t('activerecord.label.user.pronoun_custom') + ': '
+
+  = f.input :organization_id, as: :select, collection: Organization.all.map{|x| [x.display_name, x.id]}, input_html: {propmpt: 'Choose an organization', class: 'form-control'}
   - if current_user.present? && current_user.admin?
     = f.input :admin
     - if !@user.new_record?

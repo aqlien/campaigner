@@ -2,8 +2,12 @@
   %b Name:
   = @user.name
 %p
-  %b Short name:
+  %b= t('activerecord.label.user.name') + ':'
   = @user.short_name
+
+%p
+  %b= t('activerecord.label.user.pronoun')
+  = display_pronouns @user
 
 %p
   %b Email:
