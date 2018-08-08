@@ -25,8 +25,8 @@
         %td= user.email
         - @current_survey.sections.each do |section|
           - section.questions.each do |question|
-            - if (response_set = @response_sets.where(user_id: user.id).take).present? && response_set.responses.present? && (response = response_set.responses.where(question_id: question.id).take).present? && (answer = response.answer).present?
-              %td= answer_text(answer, response)
+            - if (response_set = @response_sets.where(user_id: user.id).take).present? && response_set.responses.present?
+              %td= display_answer_text(question, response_set)
             - else
               %td
         %td
