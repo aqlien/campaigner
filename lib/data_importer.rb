@@ -8,7 +8,7 @@ class DataImporter
     @filepath = [Rails.root, filepath].join('/')
   end
 
-  def read_lines
+  def read_survey
     counter = 0
     CSV.foreach(@filepath, { headers: true }) do |csv_row|
       counter += 1
