@@ -85,5 +85,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mail options, necessary for Devise and other emails to go through
-  config.action_mailer.default_url_options = { host: ENV['ROOT_DOMAIN'] }
+  config.action_mailer.default_url_options = { host: ENV['CAMPAIGNER_ROOT_DOMAIN'] }
 end
