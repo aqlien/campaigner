@@ -3,12 +3,12 @@ require 'csv'
 class DataImporter
   attr_accessor :filepath, :survey, :split_character
 
-  def initialize(survey_id, filepath)
+  def initialize(survey_id, filepath, options = {})
     @survey = Survey.find(survey_id)
     @filepath = [Rails.root, filepath].join('/')
   end
 
-  def read_survey
+  def read_survey_data
     counter = 0
     CSV.foreach(@filepath, { headers: true }) do |csv_row|
       counter += 1
