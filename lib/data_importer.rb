@@ -4,7 +4,7 @@ class DataImporter
   attr_accessor :filepath, :survey, :split_character
 
   def initialize(survey_id, filepath, options = {})
-    @survey = Survey.find(survey_id)
+    @survey = Survey.find(survey_id) unless (survey_id == 0 || survey_id == nil)
     @filepath = [Rails.root, filepath].join('/')
   end
 
@@ -14,8 +14,11 @@ class DataImporter
       counter += 1
       puts  "Processing row #{counter}" if counter % 100 == 0
 
-      user = User.find_or_create_by(email: csv_row['user_email']) do
-        #do stuff here
+      user = User.find_or_create_by(email: csv_row['user_email']) do |u|
+        u.name = csv_row['name'] || csv_row['full_name']
+        u.short_name = csv_row['short_name'] || csv_row['first_name']
+        u.pronoun = csv_row['pronoun'].try(:downcase)
+        # u.phone_number = csv_row['phone']
       end
 
       s = @survey
@@ -52,6 +55,21 @@ class DataImporter
             end
           end
         end
+      end
+    end
+  end
+
+  def read_user_data
+    counter = 0
+    CSV.foreach(@filepath, { headers: true }) do |csv_row|
+      counter += 1
+      puts  "Processing row #{counter}" if counter % 100 == 0
+
+      user = User.find_or_create_by(email: csv_row['user_email']) do |u|
+        u.name = csv_row['name'] || csv_row['full_name']
+        u.short_name = csv_row['short_name'] || csv_row['first_name']
+        u.pronoun = csv_row['pronoun'].try(:downcase)
+        # u.phone_number = csv_row['phone']
       end
     end
   end
