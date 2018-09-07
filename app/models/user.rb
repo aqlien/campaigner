@@ -7,6 +7,9 @@ class User < ApplicationRecord
   belongs_to :organization, optional: true
   has_many :response_sets
 
+  has_and_belongs_to_many :tags, optional: true
+  has_and_belongs_to_many :interests, optional: true
+
   validates :email, presence: true, email_format: true, if: (:email_changed? || :new_record?)
     # uniqueness: true (already checked by Devise)
   validates :password, presence: true, confirmation: true, length: { within: 6..128 }, if: :password_required?

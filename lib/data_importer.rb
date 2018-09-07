@@ -18,7 +18,11 @@ class DataImporter
         u.name = csv_row['name'] || csv_row['full_name']
         u.short_name = csv_row['short_name'] || csv_row['first_name']
         u.pronoun = csv_row['pronoun'].try(:downcase)
-        # u.phone_number = csv_row['phone']
+        u.phone_number = csv_row['phone']
+        if csv_row['organization']
+          u.organization_id = org_list[csv_row['organization']]
+        end
+        u.notes = csv_row['notes']
       end
 
       s = @survey
@@ -69,9 +73,16 @@ class DataImporter
         u.name = csv_row['name'] || csv_row['full_name']
         u.short_name = csv_row['short_name'] || csv_row['first_name']
         u.pronoun = csv_row['pronoun'].try(:downcase)
-        # u.phone_number = csv_row['phone']
+        u.phone_number = csv_row['phone']
+        if csv_row['organization']
+          u.organization_id = org_list[csv_row['organization']]
+        end
       end
     end
+  end
+
+  def org_list
+    @org_list ||= Organization.all.pluck(:name, :id).to_h
   end
 
   def split_character
