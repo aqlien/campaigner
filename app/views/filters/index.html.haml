@@ -7,8 +7,7 @@
       %th Email
       - @current_survey.sections.each do |section|
         - section.questions.each do |question|
-          -# TODO Change to question.short_text once surveys are fixed to actually have short_text
-          %th= question.text
+          %th= question.short_text
       %th.actions
     %tr#column_input
       %th.text_searchable

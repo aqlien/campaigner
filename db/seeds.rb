@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-User.find_or_create_by!(name: 'System Admin', short_name: 'Admin', admin: true, email: "admin@#{ENV['ROOT_DOMAIN']}") do |u|
+User.find_or_create_by!(name: 'System Admin', short_name: 'Admin', admin: true, email: "admin@#{ENV['CAMPAIGNER_ROOT_DOMAIN']}") do |u|
   admin_password = User.secure_password
   u.password = admin_password
   u.password_confirmation = admin_password
@@ -16,9 +16,6 @@ if ENV['SEED_WITH'] == 'existing_data'
     end
   end
 
-  # import events
-  # Event.create!(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
-
   # import organizations
   categories = Category.all.order(name: :asc)
   organizations_list = YAML.load_file(File.join(Rails.root, 'db', 'data', 'organizations.yml'))['organizations']
@@ -29,6 +26,24 @@ if ENV['SEED_WITH'] == 'existing_data'
       o.categories << categories.find_or_create_by(name: hash['category'])
     end
   end
+
+  # import events
+  wm_event = Event.create!(name: "Women's March", start_date: '2017/01/21', end_date: '2017/01/21')
+  Parser.parse_file('surveys/womens_march_survey.rb')
+  wm_survey = Survey.find_by(title: "Women's March")
+  wm_survey.update(event_id: wm_event.id)
+
+  cc_event = Event.create!(name: "Community Convergence", start_date: '2017/05/19', end_date: '2017/05/19')
+  Parser.parse_file('surveys/community_convergence_survey.rb')
+  cc_survey = Survey.find_by(title: "Community Convergence")
+  cc_survey.update(event_id: cc_event.id)
+
+  wa_event = Event.create!(name: "Womxn Act on Seattle", start_date: '2018/01/21', end_date: '2018/01/21')
+  Parser.parse_file('surveys/womxn_act_survey.rb')
+  wa_survey = Survey.find_by(title: "Womxn Act on Seattle")
+  wa_survey.update(event_id: wa_event.id)
+
+  # Event.create!(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
 end
 
 if ENV['SEED_WITH'] == 'fake_users'
