@@ -264,6 +264,7 @@ ActiveRecord::Schema.define(version: 20180907225749) do
     t.inet     "last_sign_in_ip"
     t.integer  "organization_id"
     t.string   "phone"
+    t.string   "city"
     t.text     "notes"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

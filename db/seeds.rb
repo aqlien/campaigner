@@ -44,6 +44,20 @@ if ENV['SEED_WITH'] == 'existing_data'
   wa_survey.update(event_id: wa_event.id)
 
   # Event.create!(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
+
+  # create user interests and tags
+  interests_list = YAML.load_file(File.join(Rails.root, 'db', 'data', 'interests.yml'))['interests']
+  interests_list.each do |index, hash|
+    Interest.find_or_create_by(text: hash['text']) do |i|
+      i.short_text = hash['short_text'] if hash['short_text']
+    end
+  end
+  tags_list = YAML.load_file(File.join(Rails.root, 'db', 'data', 'tags.yml'))['tags']
+  tags_list.each do |index, hash|
+    Tag.find_or_create_by(text: hash['text']) do |t|
+      t.short_text = hash['short_text'] if hash['short_text']
+    end
+  end
 end
 
 if ENV['SEED_WITH'] == 'fake_users'

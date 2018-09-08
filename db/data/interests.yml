@@ -1,0 +1,43 @@
+interests:
+  1:
+    text: PR & Gov't relations
+    short_text: pr
+  2:
+    text: Social media
+  3:
+    text: Outreach,
+  4:
+    text: Organizing Volunteers
+  5:
+    text: Event planning
+  6:
+    text: Legal
+  7:
+    text: Fundraising
+  8:
+    text: Travel
+  9:
+    text: Safety
+  10:
+    text: Coordinating a HUB
+    short_text: coordinating_hub
+  11:
+    text: Procurement
+  12:
+    text: Day-of
+    short_text: day_of
+  13:
+    text: Art/Signage
+    short_text: art_signage
+  14:
+    text: Diversity
+  15:
+    text: Affiliations
+  16:
+    text: Languages
+  17:
+    text: ASL
+  18:
+    text: Union
+  19:
+    text: Medic
