@@ -44,6 +44,9 @@ gem 'haml-rails'
 # Use Mustache for templating
 gem 'mustache'
 
+# setup mail service using Mailchimp
+gem 'gibbon'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
