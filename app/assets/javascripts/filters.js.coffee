@@ -3,7 +3,9 @@ $ ->
     "pageLength": 50
     "searching": true
     initComplete: ->
+      $(this).setupUserColumns()
       this.api().setupSearchFields()
+
   } )
 
 
@@ -132,3 +134,72 @@ regexifyMultiSelect = (valueArray) ->
         regex = regex.concat(v + ")$")
       counter++
     regex
+
+
+# Checkboxes for table rows
+$.fn.extend
+  setupUserColumns: ->
+    tableHandle = this.DataTable()
+    convertDatabaseIdsToCheckboxes(tableHandle)
+
+  selectDatatableCheckboxes: ->
+    return @each () ->
+      $this = $(this)
+      $this.on 'click', (e) ->
+        tableHandle = $($this.data('select-table')).DataTable()
+        targets = $($this.data('select-checkboxes'), tableHandle.$('tr', { "filter": "applied" }))
+        if $this.prop("checked") == true
+          targets.prop('checked', true)
+        else
+          targets.prop('checked', false)
+
+  selectedRowIds: ->
+    $this = $(this)
+    tableHandle = $this.DataTable()
+    checkedRowInputs = $('input.select-row-checkbox:checked', tableHandle.$('tr', { "filter": "applied" }))
+    return (item.value for item in checkedRowInputs.serializeArray())
+
+  sendSelectedIDs: ->
+    return @each () ->
+      $this = $(this)
+      $table = $($this.data("table-ids"))
+      if ($table)
+        $this.on 'click', (e) ->
+          e.preventDefault();
+        $this.on 'ajax:beforeSend', (event, jqXHR, settings) ->
+          selected_ids = $table.selectedRowIds()
+          if settings.url.match(/\?.*$/)
+            settings.url = settings.url + '&selected_ids=' + selected_ids
+          else
+            settings.url = settings.url + '?selected_ids=' + selected_ids
+
+  submitWithSelectedIDs: ->
+    return @each () ->
+      $this = $(this)
+      $this.on 'click', (e) ->
+        e.preventDefault()
+        $link = $(this)
+        $table = $($link.data("ids-selected"))
+        if ($table)
+          selected_ids = $table.selectedRowIds()
+          $.ajax
+            url:  $link.attr("href"),
+            dataType: 'json',
+            data: { selected_ids: selected_ids },
+            type: 'POST',
+            success: (response) ->
+              window.location.reload()
+
+convertDatabaseIdsToCheckboxes = (table) ->
+  input = $("<input type='checkbox'/>").addClass('select-row-checkbox').attr('name', 'user_ids[]')
+  $.each table.column(0).nodes(), ->
+    element = $(this)
+    value = element.text()
+    input.val(value)
+    element.attr('data-database-id', value).html(input.clone())
+
+$ ->
+  # Use checkboxes for selections and links to submit
+  $("input[data-select-checkboxes]").selectDatatableCheckboxes()
+  $("a[data-table-ids]").sendSelectedIDs()
+  $("a[data-ids-selected]").submitWithSelectedIDs()
