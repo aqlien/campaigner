@@ -16,12 +16,15 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     tableID = $(api.table().node()).attr('id')
     input = $('<input/>', {
       id: 'search_'+tableID+'_'+colIndex.toString(),
-      class: "form-control input-sm",
+      class: "form-control input-sm datatable-search",
       type: "text",
       placeholder: "Search",
       style: "width: 100%;"
     })
     input.css("height", "31px")
+    input.on 'click', (e) ->
+      # Prevent clicking on the search field from also triggering column ordering
+      e.stopPropagation();
     input.on('keyup change', ->
       api.column( colIndex ).search(this.value).draw();
     );
@@ -39,6 +42,9 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     input.css("height", "31px")
     input.append("<option value=''>(All)</option>")
     input.append("<option value='^$'>(Blank)</option>")
+    input.on 'click', (e) ->
+      # Prevent clicking on the search field from also triggering column ordering
+      e.stopPropagation();
     input.on('change', () ->
       val = $(this).val()
       if val != ''
@@ -61,6 +67,9 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     })
     input.attr('multiple', true)
     input.append("<option value='^$'>(Blank)</option>")
+    input.on 'click', (e) ->
+      # Prevent clicking on the search field from also triggering column ordering
+      e.stopPropagation();
     input.on('change', () ->
       val = $(this).val()
       regex = regexifyMultiSelect(val)

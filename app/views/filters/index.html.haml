@@ -20,7 +20,7 @@
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.name
+        %td= !user.name.blank? ? user.name : user.short_name
         %td= user.email
         - @current_survey.sections.each do |section|
           - section.questions.each do |question|
