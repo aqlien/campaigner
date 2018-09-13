@@ -1,4 +1,10 @@
-%h1 Listing users
+.row
+  .col-md-6
+    .btn-group.btn-group-md#user_filter_table_actions
+      %span.btn.btn-default#non-btn Listing Users:
+      = link_to emails_filters_path(), {data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
+        = fa_icon "envelope"
+        Get selected emails
 
 %table#user-filter
   %thead
