@@ -7,8 +7,11 @@ class User < ApplicationRecord
   belongs_to :organization, optional: true
   has_many :response_sets
 
-  has_and_belongs_to_many :tags, optional: true
-  has_and_belongs_to_many :interests, optional: true
+  has_and_belongs_to_many :tags, optional: true, inverse_of: :users
+  has_and_belongs_to_many :interests, optional: true, inverse_of: :users
+
+  accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes[:text].blank? }
+  accepts_nested_attributes_for :interests, reject_if: proc { |attributes| attributes[:text].blank? }
 
   validates :email, presence: true, email_format: true, if: (:email_changed? || :new_record?)
     # uniqueness: true (already checked by Devise)

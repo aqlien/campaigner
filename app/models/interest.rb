@@ -1,6 +1,6 @@
 class Interest < ApplicationRecord
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, inverse_of: :interests
   validates :text, presence: true
 
   def short_text

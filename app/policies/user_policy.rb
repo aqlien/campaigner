@@ -22,4 +22,12 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def make_admin?
+    user.admin?
+  end
+
+  def tag?
+    user.admin?
+  end
 end

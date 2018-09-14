@@ -1,19 +1,23 @@
 = semantic_form_for @user, layout: :horizontal do |f|
+  - if !@user.new_record? && policy(:user).tag?
+    = f.check_box :active
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-  = f.input :name, label: t('activerecord.label.user.name') + ': '
-  = f.input :short_name, label: t('activerecord.label.user.short_name') + ': '
+  = f.input :name
+  = f.input :short_name
 
-  = f.input :pronoun, as: :select, collection: pronouns_for_select, input_html: {prompt: 'Please select your preferred pronouns', selected: @user.pronoun, class: 'form-control', id: 'pronoun-select'}, label: t('activerecord.label.user.pronoun') + ': '
+  = f.input :pronoun, as: :select, collection: pronouns_for_select, input_html: {prompt: 'Please select your preferred pronouns', selected: @user.pronoun, class: 'form-control', id: 'pronoun-select'}
   #custom-pronoun-div.hidden
-    = f.input :pronoun_custom, input_html: {id: 'pronoun-custom'}, label: t('activerecord.label.user.pronoun_custom') + ': '
+    = f.input :pronoun_custom, input_html: {id: 'pronoun-custom'}
 
-  = f.input :organization_id, as: :select, collection: Organization.all.map{|x| [x.display_name, x.id]}, input_html: {propmpt: 'Choose an organization', class: 'form-control'}
-  - if current_user.present? && current_user.admin?
+  = f.input :organization_id, as: :select, collection: Organization.all.map{|x| [x.display_name, x.id]}, input_html: {prompt: 'Choose an organization', class: 'form-control'}
+  - if policy(:user).make_admin?
     = f.input :admin
-    - if !@user.new_record?
-      = f.check_box :active
+  - if policy(:user).tag?
+    = render "tags_form", {form: f}
+
+  = render "interests_form", {form: f}
 
   .actions
     = f.submit 'Save'
