@@ -2,14 +2,9 @@ class FiltersController < ApplicationController
   before_action :process_ids, except: :index
 
   def index
-    @users = User.all.active.where(admin: nil)
-    @current_events ||= Event.where("leadup_date <= :start_before AND followup_date >= :end_after", start_before: Date.today, end_after: Date.today)
-    @current_survey ||= Survey.where(event_id: @current_events.pluck(:id)).take
-    if @current_survey
-      @response_sets = ResponseSet.joins(:responses).where(user_id: @users.pluck(:id), survey_id: @current_survey.id)
-    else
-      render text: "No current events scheduled!"
-    end
+    @users = User.all.active.where(admin: nil).includes(:tags, :interests)
+    @surveys = Survey.none
+    @response_sets = ResponseSet.joins(:responses).where(user_id: @users.pluck(:id), survey_id: @surveys.pluck(:id))
   end
 
   def emails

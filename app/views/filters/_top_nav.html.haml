@@ -1,0 +1,30 @@
+.page-header.users-header
+  %h2 Users
+
+.row
+  .col-md-6
+    .btn-group.btn-group-md#users_table_actions
+      %span.btn.btn-default#non-btn Listing Users:
+      = link_to emails_filters_path(), {data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
+        = fa_icon "envelope"
+        Get selected emails
+
+  .col-md-6.text-right
+    .btn-group.btn-group-md#list_actions_toolbar
+      -# = link_to csv_filters_path(), class: 'btn btn-default', title: "Download as CSV" do
+      -#   %span.glyphicon.glyphicon-download
+      -#   %span{title: 'Download as CSV file'} CSV
+
+%br
+.row
+  .col-md-12
+    %ul.nav.nav-tabs{role: 'tablist'}
+      %li.active{role: 'presentation'}
+        %a#toggle-user-data{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".overview_column, .base_column" }}} Overview
+      - @surveys.each do |survey|
+        %li{role: 'presentation'}
+          %a{id: "toggle-survey-#{survey.id}", href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".survey_#{survey.id}_column, .base_column"}}}= "Survey: #{survey.title}"
+      %li{role: 'presentation'}
+        %a#toggle-interests{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".interest_column, .base_column"}}} Interests
+      %li{role: 'presentation'}
+        %a#toggle-tags{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".tag_column, .base_column"}}} Tags

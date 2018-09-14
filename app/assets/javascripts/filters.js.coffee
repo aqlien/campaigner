@@ -1,3 +1,5 @@
+$ = jQuery
+
 $ ->
   $("#user-filter").dataTable( {
     "pageLength": 50
@@ -5,7 +7,14 @@ $ ->
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
+      columns_to_show = this.api().columns($('.base_column, .overview_column'))
+      this.api().columns().visible(false, false)
+      columns_to_show.visible(true, false)
 
+    drawCallback: ->
+      $(this).redrawUsersColumns()
+
+    autoWidth: false
   } )
 
 
@@ -141,6 +150,9 @@ $.fn.extend
   setupUserColumns: ->
     tableHandle = this.DataTable()
     convertDatabaseIdsToCheckboxes(tableHandle)
+    addUserDataAttributesToTrs(tableHandle)
+    addSearchableClasses(tableHandle)
+    hideColumns(tableHandle)
 
   selectDatatableCheckboxes: ->
     return @each () ->
@@ -190,16 +202,49 @@ $.fn.extend
             success: (response) ->
               window.location.reload()
 
+  redrawUsersColumns: ->
+    tableHandle = this.DataTable()
+    hideColumns(tableHandle)
+
+addSearchableClasses = (table) ->
+  $.each table.columns().nodes(), (index) ->
+    if index > 1
+      columnType = $(table.column(index).header()).data('column-type')
+      dataType = $(table.column(index).header()).data('data-type')
+      $(this).addClass(columnType)
+      $(this).addClass(dataType)
+
+addUserDataAttributesToTrs = (table) ->
+  $.each table.rows().nodes(), ->
+    $(this).attr('data-user-id', $(this).children().eq(0).data('database-id'))
+
 convertDatabaseIdsToCheckboxes = (table) ->
   input = $("<input type='checkbox'/>").addClass('select-row-checkbox').attr('name', 'user_ids[]')
+  table.columns(0).nodes().to$().addClass('base_column')
   $.each table.column(0).nodes(), ->
     element = $(this)
     value = element.text()
     input.val(value)
     element.attr('data-database-id', value).html(input.clone())
 
+hideColumns = (table) ->
+  allColumns = table.columns().indexes()
+  for c in allColumns
+    if $(table.column(c).header()).data('permitted') is undefined
+      table.column(c).visible(false)
+
 $ ->
   # Use checkboxes for selections and links to submit
   $("input[data-select-checkboxes]").selectDatatableCheckboxes()
   $("a[data-table-ids]").sendSelectedIDs()
   $("a[data-ids-selected]").submitWithSelectedIDs()
+
+  # Use buttons to toggle visibility of DataTable columns by column class
+  $('a[data-toggle-table]').on 'click', ->
+    $this = $(this)
+    $this.tab('show')
+    $table = $( $this.data("toggle-table") )
+    tableHandle = $table.DataTable()
+    tableHandle.columns().visible(false, false)
+    tableHandle.columns($this.data("toggle-show")).visible(true, false)
+    tableHandle.columns.adjust().draw( false )

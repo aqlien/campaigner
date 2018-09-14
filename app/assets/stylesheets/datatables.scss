@@ -13,3 +13,12 @@
 //@import 'datatables/extensions/RowReorder/rowReorder.bootstrap4';
 //@import 'datatables/extensions/Scroller/scroller.bootstrap4';
 //@import 'datatables/extensions/Select/select.bootstrap4';
+
+
+.table-condensed thead tr th{
+  padding: 3px;
+}
+  
+.table-condensed thead tr#column_input th{
+  padding: 1px
+}

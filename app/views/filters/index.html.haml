@@ -1,44 +1,55 @@
-.row
-  .col-md-6
-    .btn-group.btn-group-md#user_filter_table_actions
-      %span.btn.btn-default#non-btn Listing Users:
-      = link_to emails_filters_path(), {data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
-        = fa_icon "envelope"
-        Get selected emails
+= render partial: "top_nav"
 
 %table#user-filter
   %thead
     %tr
-      %th.actions.base_column{data: {permitted: true}}
+      %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
         = check_box_tag 'select_user_ids', true, false, data: {select_table: '#user-filter', select_checkboxes: '.select-row-checkbox'}
-      %th Name
-      %th Email
-      - @current_survey.sections.each do |section|
-        - section.questions.each do |question|
-          %th= question.short_text
+      %th.base_column{data: {permitted: true, column_type: "base_column"}} Name
+      %th.base_column{data: {permitted: true, column_type: "base_column"}} Email
+      - @surveys.each do |survey|
+        - survey.sections.each do |section|
+          - section.questions.each do |question|
+            %th{class: "survey_#{survey.id}_column", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
+      - Interest.all.each do |interest|
+        %th.interest_column{data: {permitted: true, column_type: "interest_column"}}= interest.text
+      - Tag.all.each do |tag|
+        %th.tag_column{data: {permitted: true, column_type: "tag_column"}}= tag.text
       %th.actions
     %tr#column_input
-      %th.actions
-      %th.text_searchable
-      %th.text_searchable
-      - @current_survey.sections.each do |section|
-        - section.questions.each do |question|
-          %th{class: datatables_searchable_class(question)}
-      %th.actions
+      %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+      %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
+      %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
+      - @surveys.each do |survey|
+        - survey.sections.each do |section|
+          - section.questions.each do |question|
+            %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}
+      - Interest.all.each do |interest|
+        %th.interest_column.select_searchable{data: {permitted: true, column_type: "interest_column"}}
+      - Tag.all.each do |tag|
+        %th.tag_column.select_searchable{data: {permitted: true, column_type: "tag_column"}}
+      %th.actions.base_column
 
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.id
-        %td= !user.name.blank? ? user.name : user.short_name
-        %td= user.email
-        - @current_survey.sections.each do |section|
-          - section.questions.each do |question|
-            - if (response_set = @response_sets.where(user_id: user.id).take).present? && response_set.responses.present?
-              %td= display_answer_text(question, response_set)
-            - else
-              %td
-        %td
+        %td.actions.base_column= user.id
+        %td.base_column= !user.name.blank? ? user.name : user.short_name
+        %td.base_column= user.email
+        - @surveys.each do |survey|
+          - survey.sections.each do |section|
+            - section.questions.each do |question|
+              -# - response_set = @response_sets.where(user_id: user.id, survey_id: survey.id).take
+              - response_set = @response_sets.detect{|rs| rs.user_id == user.id && rs.survey_id == survey.id}
+              - if response_set.present? && response_set.responses.present?
+                %td{class: "survey_#{survey.id}_column"}= display_answer_text(question, response_set)
+              - else
+                %td{class: "survey_#{survey.id}_column"}
+        - Interest.all.each do |interest|
+          %td.interest_column= user.interests.include?(interest) ? 'Yes' : ''
+        - Tag.all.each do |tag|
+          %td.tag_column= user.tags.include?(tag) ? 'Yes' : ''
+        %td.actions.base_column
           - if policy(:user).show?
             = link_to user, title: 'Show', class: 'icon' do
               = fa_icon 'eye'
