@@ -2,7 +2,7 @@ class EventPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def index?
-    true
+    user.admin?
   end
 
   def show?

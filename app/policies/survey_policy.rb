@@ -22,4 +22,8 @@ class SurveyPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def take?
+    true
+  end
 end

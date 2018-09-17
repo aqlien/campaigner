@@ -2,15 +2,15 @@ class OrganizationPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def index?
-    true
+    user.admin?
   end
 
   def show?
-    true
+    user.admin?
   end
 
   def create?
-    true
+    user.admin?
   end
   alias :new? :create?
 
