@@ -4,6 +4,8 @@ class FiltersController < ApplicationController
   def index
     @users = User.all.active.where(admin: nil).includes(:tags, :interests)
     @surveys = Survey.none
+    @interests = Interest.all
+    @tags = Tag.all
     @response_sets = ResponseSet.joins(:responses).where(user_id: @users.pluck(:id), survey_id: @surveys.pluck(:id))
   end
 
