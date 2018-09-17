@@ -1,23 +1,41 @@
 = semantic_form_for @user, layout: :horizontal do |f|
-  - if !@user.new_record? && policy(:user).tag?
-    = f.check_box :active
-  = f.input :email
-  = f.input :password
-  = f.input :password_confirmation
-  = f.input :name
-  = f.input :short_name
-
-  = f.input :pronoun, as: :select, collection: pronouns_for_select, input_html: {prompt: 'Please select your preferred pronouns', selected: @user.pronoun, class: 'form-control', id: 'pronoun-select'}
-  #custom-pronoun-div.hidden
-    = f.input :pronoun_custom, input_html: {id: 'pronoun-custom'}
-
-  = f.input :organization_id, as: :select, collection: Organization.all.map{|x| [x.display_name, x.id]}, input_html: {prompt: 'Choose an organization', class: 'form-control'}
-  - if policy(:user).make_admin?
-    = f.input :admin
-  - if policy(:user).tag?
-    = render "tags_form", {form: f}
-
-  = render "interests_form", {form: f}
-
+  - if !@user.new_record?
+    - if policy(:user).tag?
+      = f.check_box :active
+    %br
+    .alert.alert-warning
+      = t(:update_message, scope: [:formtastic, :notice, :user])
+  .card
+    .card-body
+      = f.input :email
+      = f.input :password
+      = f.input :password_confirmation
+  .card
+    .card-body
+      = f.input :name
+      = f.input :short_name
+      = f.input :pronoun, as: :select, collection: pronouns_for_select, input_html: {prompt: 'Please select your preferred pronouns', selected: @user.pronoun, class: 'form-control', id: 'pronoun-select'}
+      #custom-pronoun-div.hidden
+        = f.input :pronoun_custom, input_html: {id: 'pronoun-custom'}
+  .card
+    .card-body
+      = f.input :phone
+      = f.input :city
+  .card
+    .card-body
+      = f.input :organization_id, as: :select, collection: Organization.all.map{|x| [x.display_name, x.id]}, input_html: {prompt: 'Choose an organization', class: 'form-control'}
+  - if policy(:user).make_admin? || policy(:user).tag?
+    .card
+      .card-body
+        - if policy(:user).make_admin?
+          = f.input :admin
+        - if policy(:user).tag?
+          = render "tags_form", {form: f}
+  .card
+    .card-body
+      = render "interests_form", {form: f}
+  .card
+    .card-body
+      = f.input :notes, input_html: { class: 'autogrow', rows: 3, cols: 30, maxlength: 10  }
   .actions
     = f.submit 'Save'

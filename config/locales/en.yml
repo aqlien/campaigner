@@ -10,6 +10,7 @@ en:
         pronoun: 'Preferred Pronouns'
         pronoun_custom: 'Other Pronoun'
         active: "Currently active?"
+        phone: 'Phone Number'
         interests: "Please indicate which of the following you'd be interested in assisting with:"
         tags: "Please select which attributes are appropriate for this user:"
     hints:
@@ -17,6 +18,9 @@ en:
         password: 'Your password must be at least 6 characters long.'
         password_confirmation: 'Please re-type your password to confirm it here.'
         short_name: "Do you have a preferred name you'd like us to call you?"
+    notice:
+      user:
+        update_message: "Please update your profile information to reflect your relevant interests and skills for this event."
   welcome:
     main: 'Welcome.'
 

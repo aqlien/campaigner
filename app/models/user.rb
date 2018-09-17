@@ -35,6 +35,14 @@ class User < ApplicationRecord
     password.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/) && password.length >= 6
   end
 
+  def display_phone
+    if phone.present? && phone.chomp =~ /^(\d{3})(\d{3})(\d{4})$/
+      return "(#{$1})#{$2}-#{$3}"
+    else
+      phone
+    end
+  end
+
 private
   # Only used for validations. Overrides Devise's 'password_required?' method.
   # Passwords should not be needed for new records.

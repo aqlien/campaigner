@@ -5,6 +5,7 @@
     %tr
       %th Name
       %th Email
+      %th Phone
       %th Admin?
       %th.actions
 
@@ -13,6 +14,7 @@
       %tr
         %td= user.name
         %td= user.email
+        %td= user.display_phone
         %td= user.admin? ? fa_icon('check') : ''
         %td
           - if policy(:user).show?
