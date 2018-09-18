@@ -1,63 +1,63 @@
 = render partial: "top_nav"
 
-
-%table#user-filter
-  %thead
-    %tr
-      %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
-        = check_box_tag 'select_user_ids', true, false, data: {select_table: '#user-filter', select_checkboxes: '.select-row-checkbox'}
-      %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Name
-      %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Email
-      %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}} Phone
-      - @surveys.each do |survey|
-        - survey.sections.each do |section|
-          - section.questions.each do |question|
-            %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
-      %th.interest_column{data: {permitted: true, column_type: "interest_column"}} Interests
-      %th.tag_column{data: {permitted: true, column_type: "tag_column"}} Tags
-      %th.actions{data: {permitted: true, column_type: "base_column"}}
-
-    %tr#column_input
-      %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
-      %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
-      %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
-      %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}}
-      - @surveys.each do |survey|
-        - survey.sections.each do |section|
-          - section.questions.each do |question|
-            %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}
-      %th.interest_column.multi_select_searchable{data: {permitted: true, column_type: "interest_column"}}
-      %th.tag_column.multi_select_searchable{data: {permitted: true, column_type: "tag_column"}}
-      %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
-
-  %tbody
-    - @users.each do |user|
+.table-responsive
+  %table#user-filter.table.table-sm.table-bordered.table-striped.table-hover
+    %thead
       %tr
-        %td.actions.base_column= user.id
-        %td.base_column= !user.name.blank? ? user.name : user.short_name
-        %td.base_column= user.email
-        %td.overview_column= user.phone
+        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+          = check_box_tag 'select_user_ids', true, false, data: {select_table: '#user-filter', select_checkboxes: '.select-row-checkbox'}
+        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Name
+        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Email
+        %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}} Phone
         - @surveys.each do |survey|
           - survey.sections.each do |section|
             - section.questions.each do |question|
-              -# - response_set = @response_sets.where(user_id: user.id, survey_id: survey.id).take
-              - response_set = @response_sets.detect{|rs| rs.user_id == user.id && rs.survey_id == survey.id}
-              - if response_set.present? && response_set.responses.present?
-                %td{class: "survey_#{survey.id}_column"}= display_answer_text(question, response_set)
-              - else
-                %td{class: "survey_#{survey.id}_column"}
-        %td.interest_column= user.interests.pluck(:text).join(', ')
-        %td.tag_column= user.tags.pluck(:text).join(';')
-        %td.actions.base_column
-          - if policy(:user).show?
-            = link_to user, title: 'Show', class: 'icon' do
-              = fa_icon 'eye'
-          - if policy(:user).edit?
-            = link_to edit_user_path(user), title: 'Edit', class: 'icon' do
-              = fa_icon 'wrench'
-          - if policy(:user).destroy?
-            = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
-              = fa_icon 'times'
+              %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
+        %th.interest_column{data: {permitted: true, column_type: "interest_column"}} Interests
+        %th.tag_column{data: {permitted: true, column_type: "tag_column"}} Tags
+        %th.actions{data: {permitted: true, column_type: "base_column"}}
+
+      %tr#column_input
+        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
+        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
+        %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}}
+        - @surveys.each do |survey|
+          - survey.sections.each do |section|
+            - section.questions.each do |question|
+              %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}
+        %th.interest_column.multi_select_searchable{data: {permitted: true, column_type: "interest_column"}}
+        %th.tag_column.multi_select_searchable{data: {permitted: true, column_type: "tag_column"}}
+        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td.actions.base_column= user.id
+          %td.base_column= !user.name.blank? ? user.name : user.short_name
+          %td.base_column= user.email
+          %td.overview_column= user.phone
+          - @surveys.each do |survey|
+            - survey.sections.each do |section|
+              - section.questions.each do |question|
+                -# - response_set = @response_sets.where(user_id: user.id, survey_id: survey.id).take
+                - response_set = @response_sets.detect{|rs| rs.user_id == user.id && rs.survey_id == survey.id}
+                - if response_set.present? && response_set.responses.present?
+                  %td{class: "survey_#{survey.id}_column"}= display_answer_text(question, response_set)
+                - else
+                  %td{class: "survey_#{survey.id}_column"}
+          %td.interest_column= user.interests.pluck(:text).join(', ')
+          %td.tag_column= user.tags.pluck(:text).join(';')
+          %td.actions.base_column
+            - if policy(:user).show?
+              = link_to user, title: 'Show', class: 'icon' do
+                = fa_icon 'eye'
+            - if policy(:user).edit?
+              = link_to edit_user_path(user), title: 'Edit', class: 'icon' do
+                = fa_icon 'wrench'
+            - if policy(:user).destroy?
+              = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+                = fa_icon 'times'
 
 %br
 -if policy(:user).new?
