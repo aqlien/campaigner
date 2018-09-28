@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   scope '/admin' do
     resources :users
+    resources :campaign_files
     resources :filters, only: :index do
       collection do
         get :emails

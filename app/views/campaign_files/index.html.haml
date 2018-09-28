@@ -1,0 +1,34 @@
+%h1 Listing Files
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th File name
+      %th File size
+      %th Content type
+      %th Updated at
+      %th.actions
+
+  %tbody
+    - @campaign_files.each do |campaign_file|
+      %tr
+        %td= campaign_file.name
+        %td= campaign_file.file_file_name if campaign_file.file
+        %td= campaign_file.file_file_size if campaign_file.file
+        %td= campaign_file.file_content_type if campaign_file.file
+        %td= campaign_file.file_updated_at if campaign_file.file
+        %td
+          - if policy(:campaign_file).show?
+            = link_to campaign_file, title: 'Show', class: 'icon' do
+              = fa_icon 'eye'
+          - if policy(:campaign_file).edit?
+            = link_to edit_campaign_file_path(campaign_file), title: 'Edit', class: 'icon' do
+              = fa_icon 'wrench'
+          - if policy(:campaign_file).destroy?
+            = link_to campaign_file, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
+              = fa_icon 'times'
+
+%br
+-if policy(:campaign_file).new?
+  = link_to 'New File', new_campaign_file_path

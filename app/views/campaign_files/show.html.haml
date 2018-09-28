@@ -1,0 +1,20 @@
+%p
+  %b Name:
+  = @campaign_file.name
+- if @campaign_file.file.present?
+  %p
+    %b File name:
+    = @campaign_file.file_file_name
+  %p
+    %b File size:
+    = @campaign_file.file_file_size
+  %p
+    %b Content type:
+    = @campaign_file.file_content_type
+  %p
+    %b Updated at:
+    = @campaign_file.file_updated_at
+
+= link_to 'Edit', edit_campaign_file_path(@campaign_file)
+\|
+= link_to 'Back', campaign_files_path
