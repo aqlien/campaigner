@@ -1,17 +1,21 @@
 class FiltersController < ApplicationController
   before_action :process_ids, except: :index
 
+  respond_to :html, :js, :json
+
   def index
-    @users = User.all.active.where(admin: nil).includes(:tags, :interests)
     @surveys = Survey.none
-    @interests = Interest.all
-    @tags = Tag.all
-    @response_sets = ResponseSet.joins(:responses).where(user_id: @users.pluck(:id), survey_id: @surveys.pluck(:id))
+
+    @users = UserFilterSet.new(filters: {active: true})
+    respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
   end
 
   def emails
     @raw_user_ids = process_ids(params[:selected_ids]) if @raw_user_ids.empty?
-    puts "RAW USER IDS = " + @raw_user_ids.to_s
     @emails = User.find(@raw_user_ids).pluck(:email)
     respond_to do |format|
       format.html {render template: 'filters/emails'}

@@ -8,13 +8,23 @@ $ ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
       columns_to_show = this.api().columns($('.base_column, .overview_column'))
-      this.api().columns().visible(false, false)
-      columns_to_show.visible(true, false)
+      # this.api().columns().visible(false, false)
+      # columns_to_show.visible(true, false)
 
     drawCallback: ->
       $(this).redrawUsersColumns()
 
     autoWidth: false
+    ajax: $("#user-filter").data('source'),
+    sAjaxDataProp: "data",
+    columns: [
+      {data: "id"},
+      {data: "name"},
+      {data: "email"},
+      {data: "phone"},
+      {data: "interests"},
+      {data: "tags"}
+    ]
   } )
 
 

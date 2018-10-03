@@ -1,0 +1,111 @@
+require 'pg'
+class UserFilterQuery
+
+  def initialize(options = {})
+    @filters = options[:filters] || {active: true}
+  end
+
+  def results
+    @results ||= combined_data
+  end
+
+private
+  def base_user_ids_query
+    <<-SQL
+      WITH user_ids AS (
+        SELECT users.id
+        FROM users
+        WHERE users.admin IS NOT TRUE
+
+    SQL
+  end
+
+  def filtered_user_ids_query
+    sql = base_user_ids_query
+    sql << filter_active if @filters[:active]
+    sql << ')'
+  end
+
+  def user_ids
+    User.find_by_sql(filtered_user_ids_query + 'SELECT id FROM user_ids').collect{|x| x['id']}
+  end
+
+  def combined_data
+    all_data = []
+    overview_data.keys.each_with_index do |user_id, index|
+      all_data[index] = {}
+      all_data[index].merge!(overview_data[user_id] || {})
+      all_data[index].merge!(survey_data[user_id] || {})
+      all_data[index].merge!(interest_data[user_id] || {})
+      all_data[index].merge!(tag_data[user_id] || {})
+    end
+    all_data
+  end
+
+  def overview_data
+    @overview_data ||= Hash[User.find_by_sql(overview_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+  end
+
+  def survey_data
+    @survey_data ||= Hash[User.find_by_sql(survey_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+  end
+
+  def interest_data
+    @interest_data ||= Hash[User.find_by_sql(interest_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+  end
+
+  def tag_data
+    @tag_data ||= Hash[User.find_by_sql(tag_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+  end
+
+  def overview_query
+    filtered_user_ids_query +
+    <<-SQL
+      SELECT users.*
+      FROM users
+      WHERE users.id IN (select id from user_ids)
+      GROUP BY users.id
+    SQL
+  end
+
+  def survey_query
+    filtered_user_ids_query +
+    <<-SQL
+      SELECT users.*, response_sets.*
+      FROM users
+      JOIN response_sets ON users.id = response_sets.user_id
+      WHERE response_sets.user_id IN (select id from user_ids)
+      GROUP BY users.id, response_sets.id, response_sets.survey_id
+    SQL
+  end
+
+  def interest_query
+    filtered_user_ids_query +
+    <<-SQL
+      SELECT interests_users.*,
+        array_agg(interests.text) interest_names
+      FROM interests_users
+      JOIN interests ON interests.id = interests_users.interest_id
+      WHERE interests_users.user_id IN (select id from user_ids)
+      GROUP BY interests_users.user_id, interests_users.interest_id
+    SQL
+  end
+
+  def tag_query
+    filtered_user_ids_query +
+    <<-SQL
+      SELECT tags_users.*,
+        array_agg(tags.text) tag_names
+      FROM tags_users
+      JOIN tags ON tags.id = tags_users.tag_id
+      WHERE tags_users.user_id IN (select id from user_ids)
+      GROUP BY tags_users.user_id, tags_users.tag_id
+    SQL
+  end
+
+  def filter_active
+    <<-SQL
+      AND users.active = true
+    SQL
+  end
+end
