@@ -98,9 +98,19 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     );
     $(this.column(colIndex).footer()).html(input)
     $('#column_input th').eq($(this.column(colIndex).header()).index()).html(input)
-    this.column(colIndex).data().unique().sort().each (d, j) ->
+
+    unprocessed_options_list = this.column(colIndex).data().unique()
+    processed_options_list = []
+    unprocessed_options_list.sort().each (d, j) ->
+      if d && d not in processed_options_list
+        option_sublist = d.split(';');
+        option_sublist.forEach (d, j) ->
+          if d && d not in processed_options_list
+            processed_options_list.push d
+    processed_options_list.sort().forEach (d, j) ->
       if d
         $('#search_'+tableID+'_'+colIndex.toString()).append('<option value="'+d+'">'+d+'</option>')
+
     input.multiselect({
       includeSelectAllOption: true
       selectAllText: "(All)"
@@ -124,19 +134,21 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
 )
 
 regexifyMultiSelect = (valueArray) ->
-  if valueArray.indexOf("") != -1
+  if valueArray == null
+    ".*"
+  else if valueArray.indexOf("") != -1
     ".*"
   else if valueArray.indexOf("^$") != -1 && valueArray.length > 1
     valueArray.splice(valueArray.indexOf("^$"), 1)
     counter = 1
     last = valueArray.length
-    regex = "^$|^("
+    regex = "^$|("
     for v in valueArray
       v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
       if counter < last
         regex = regex.concat(v + "|")
       else
-        regex = regex.concat(v + ")$")
+        regex = regex.concat(v + ")")
       counter++
     regex
   else if valueArray.indexOf("^$") != -1
@@ -144,13 +156,15 @@ regexifyMultiSelect = (valueArray) ->
   else
     counter = 1
     last = valueArray.length
-    regex = "^("
+    # regex = "^(" # Only match from start of line
+    regex = "("
     for v in valueArray
       v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
       if counter < last
         regex = regex.concat(v + "|")
       else
-        regex = regex.concat(v + ")$")
+        # regex = regex.concat(v + ")$") # Only match to end of line
+        regex = regex.concat(v + ")")
       counter++
     regex
 
