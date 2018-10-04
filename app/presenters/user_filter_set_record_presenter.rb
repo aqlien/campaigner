@@ -32,11 +32,11 @@ class UserFilterSetRecordPresenter < BasePresenter
 
   # Interests
   def interests
-    (record['interest_names'] || []).sort.to_set
+    (record['interest_names'] || []).sort.join(';')
   end
 
   # Tags Tab
   def tags
-    (record['tag_names'] || []).sort.to_set
+    (record['tag_names'] || []).sort.join(';')
   end
 end

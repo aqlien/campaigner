@@ -16,7 +16,6 @@ private
         SELECT users.id
         FROM users
         WHERE users.admin IS NOT TRUE
-
     SQL
   end
 
@@ -47,15 +46,15 @@ private
   end
 
   def survey_data
-    @survey_data ||= Hash[User.find_by_sql(survey_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+    @survey_data ||= Hash[User.find_by_sql(survey_query).collect{|x| x.attributes}.collect{|x| [x['user_id'], x]}]
   end
 
   def interest_data
-    @interest_data ||= Hash[User.find_by_sql(interest_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+    @interest_data ||= Hash[User.find_by_sql(interest_query).collect{|x| x.attributes}.collect{|x| [x['user_id'], x]}]
   end
 
   def tag_data
-    @tag_data ||= Hash[User.find_by_sql(tag_query).collect{|x| x.attributes}.collect{|x| [x['id'], x]}]
+    @tag_data ||= Hash[User.find_by_sql(tag_query).collect{|x| x.attributes}.collect{|x| [x['user_id'], x]}]
   end
 
   def overview_query
@@ -82,24 +81,24 @@ private
   def interest_query
     filtered_user_ids_query +
     <<-SQL
-      SELECT interests_users.*,
-        array_agg(interests.text) interest_names
+      SELECT interests_users.user_id as id, interests_users.user_id,
+        array_agg(DISTINCT interests.text) interest_names
       FROM interests_users
-      JOIN interests ON interests.id = interests_users.interest_id
+      INNER JOIN interests ON interests.id = interests_users.interest_id
       WHERE interests_users.user_id IN (select id from user_ids)
-      GROUP BY interests_users.user_id, interests_users.interest_id
+      GROUP BY interests_users.user_id
     SQL
   end
 
   def tag_query
     filtered_user_ids_query +
     <<-SQL
-      SELECT tags_users.*,
-        array_agg(tags.text) tag_names
+      SELECT tags_users.user_id as id, tags_users.user_id,
+        array_agg(DISTINCT tags.text) tag_names
       FROM tags_users
-      JOIN tags ON tags.id = tags_users.tag_id
+      INNER JOIN tags ON tags.id = tags_users.tag_id
       WHERE tags_users.user_id IN (select id from user_ids)
-      GROUP BY tags_users.user_id, tags_users.tag_id
+      GROUP BY tags_users.user_id
     SQL
   end
 
