@@ -35,7 +35,7 @@ namespace :survey do
 
   desc "remove surveys (that don't have response sets)"
   task remove: :environment do
-    surveys = Surveyor::Survey.all.delete_if { |s| !s.response_sets.blank? }
+    surveys = Survey.all.delete_if { |s| !s.response_sets.blank? }
     if surveys
       puts 'The following surveys do not have any response sets'
       surveys.each do |survey|
@@ -65,7 +65,7 @@ namespace :survey do
 
     params_string = "code #{access_code}"
 
-    surveys = Surveyor::Survey.where(access_code: access_code).order('survey_version ASC')
+    surveys = Survey.where(access_code: access_code).order('survey_version ASC')
 
     if survey_version.blank?
       survey = surveys.last

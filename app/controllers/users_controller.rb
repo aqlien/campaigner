@@ -48,7 +48,12 @@ class UsersController < ApplicationController
         format.html do
           notice_text = "#{current_user.admin? ? 'User was' : 'Profile'} successfully updated."
           if (current_user && !current_user.admin? && current_survey)
-            redirect_to take_survey_path(current_survey), notice: notice_text
+            if ResponseSet.exists?(survey_id: current_survey.id, user_id: current_user.id)
+              redirect_to edit_my_survey_path(current_survey.access_code, ResponseSet.find_by(survey_id: current_survey.id, user_id: current_user.id).access_code), notice: notice_text
+            else
+              rs = ResponseSet.create(survey_id: current_survey.id, user_id: current_user.id)
+              redirect_to edit_my_survey_path(current_survey.access_code, rs.access_code), notice: notice_text
+            end
           else
             redirect_to @user, notice: notice_text
           end

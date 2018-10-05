@@ -28,22 +28,27 @@ if ENV['SEED_WITH'] == 'existing_data'
   end
 
   # import events
-  wm_event = Event.create!(name: "Women's March", start_date: '2017/01/21', end_date: '2017/01/21')
-  Parser.parse_file('surveys/womens_march_survey.rb')
+  wm_event = Event.find_or_create_by(name: "Women's March", start_date: '2017/01/21', end_date: '2017/01/21')
+  Parser.parse_file('surveys/womens_march_survey.rb') unless Survey.find_by(title: "Women's March")
   wm_survey = Survey.find_by(title: "Women's March")
   wm_survey.update(event_id: wm_event.id)
 
-  cc_event = Event.create!(name: "Community Convergence", start_date: '2017/05/19', end_date: '2017/05/19')
-  Parser.parse_file('surveys/community_convergence_survey.rb')
+  cc_event = Event.find_or_create_by(name: "Community Convergence", start_date: '2017/05/19', end_date: '2017/05/19')
+  Parser.parse_file('surveys/community_convergence_survey.rb') unless Survey.find_by(title: "Community Convergence")
   cc_survey = Survey.find_by(title: "Community Convergence")
   cc_survey.update(event_id: cc_event.id)
 
-  wa_event = Event.create!(name: "Womxn Act on Seattle", start_date: '2018/01/21', end_date: '2018/01/21')
-  Parser.parse_file('surveys/womxn_act_survey.rb')
+  wa_event = Event.find_or_create_by(name: "Womxn Act on Seattle", start_date: '2018/01/21', end_date: '2018/01/21')
+  Parser.parse_file('surveys/womxn_act_survey.rb') unless Survey.find_by(title: "Womxn Act on Seattle")
   wa_survey = Survey.find_by(title: "Womxn Act on Seattle")
   wa_survey.update(event_id: wa_event.id)
 
-  # Event.create!(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
+  fbt_event = Event.find_or_create_by(name: 'Families Belong Together', start_date: '2018/06/30', end_date: '2018/07/07')
+
+  wc_event = Event.find_or_create_by(name: "Womxn Connect Seattle", leadup_date: '2018/10/04', start_date: '2018/01/19', end_date: '2018/01/21')
+  Parser.parse_file('surveys/2019_anniversary_survey.rb') unless Survey.find_by(title: "2019 Anniversary Survey")
+  wc_survey = Survey.find_by(title: "2019 Anniversary Survey")
+  wc_survey.update(event_id: wc_event.id)
 
   # create user interests and tags
   interests_list = YAML.load_file(File.join(Rails.root, 'db', 'data', 'interests.yml'))['interests']
