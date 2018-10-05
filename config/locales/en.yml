@@ -11,6 +11,7 @@ en:
         pronoun_custom: 'Other Pronoun'
         active: "Currently active?"
         phone: 'Phone Number'
+        city: 'Address'
         interests: "Please indicate which of the following you'd be interested in assisting with:"
         tags: "Please select which attributes are appropriate for this user:"
     hints:
@@ -20,7 +21,7 @@ en:
         short_name: "Do you have a preferred name you'd like us to call you?"
     notice:
       user:
-        update_message: "Please update your profile information to reflect your relevant interests and skills for this event."
+        update_message: "Please update your profile information, then hit 'Save' to view the survey."
   welcome:
     main: 'Welcome.'
 
