@@ -45,7 +45,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html do
+          notice_text = "#{current_user.admin? ? 'User was' : 'Profile'} successfully updated."
+          if (current_user && !current_user.admin? && current_survey)
+            redirect_to take_survey_path(current_survey), notice: notice_text
+          else
+            redirect_to @user, notice: notice_text
+          end
+        end
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
