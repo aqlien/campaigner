@@ -70,11 +70,11 @@ private
   def survey_query
     filtered_user_ids_query +
     <<-SQL
-      SELECT users.*, response_sets.*
+      SELECT response_sets.*
       FROM users
       JOIN response_sets ON users.id = response_sets.user_id
       WHERE response_sets.user_id IN (select id from user_ids)
-      GROUP BY users.id, response_sets.id, response_sets.survey_id
+      GROUP BY response_sets.user_id, response_sets.id, response_sets.survey_id
     SQL
   end
 
