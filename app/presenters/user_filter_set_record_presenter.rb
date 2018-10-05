@@ -28,6 +28,11 @@ class UserFilterSetRecordPresenter < BasePresenter
     record['city']
   end
 
+  #Organization
+  def organization
+    record['organization_id'].present? ? 'Y' : ''
+  end
+
   # Surveys
 
   # Interests

@@ -22,6 +22,7 @@ $ ->
       {data: "name"},
       {data: "email"},
       {data: "phone"},
+      {data: "organization"},
       {data: "interests"},
       {data: "tags"}
     ]

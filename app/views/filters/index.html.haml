@@ -11,6 +11,7 @@
         %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Name
         %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Email
         %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}} Phone
+        %th.organization_column.multi_select_searchable{data: {permitted: true, column_type: "organization_column"}} Organization
         - @surveys.each do |survey|
           - survey.sections.each do |section|
             - section.questions.each do |question|
@@ -23,6 +24,7 @@
         %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
         %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
         %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}}
+        %th.organization_column.multi_select_searchable{data: {permitted: true, column_type: "organization_column"}}
         - @surveys.each do |survey|
           - survey.sections.each do |section|
             - section.questions.each do |question|
@@ -31,7 +33,7 @@
         %th.tag_column.multi_select_searchable{data: {permitted: true, column_type: "tag_column"}}
 
     %tbody
-
+    -# see JSON
 
 %br
 -if policy(:user).new?
