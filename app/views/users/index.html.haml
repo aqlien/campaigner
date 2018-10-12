@@ -1,3 +1,5 @@
+- user_presenter = UserPresenter.new(@users.first, self)
+
 %h1 Listing users
 
 %table
@@ -11,21 +13,16 @@
 
   %tbody
     - @users.each do |user|
+      - user_presenter.__setobj__(user)
       %tr
-        %td= user.name
-        %td= user.email
-        %td= user.display_phone
-        %td= user.admin? ? fa_icon('check') : ''
+        %td= user_presenter.name
+        %td= user_presenter.email
+        %td= user_presenter.display_phone
+        %td= user_presenter.admin? ? fa_icon('check') : ''
         %td
-          - if policy(:user).show?
-            = link_to user, title: 'Show', class: 'icon' do
-              = fa_icon 'eye'
-          - if policy(:user).edit?
-            = link_to edit_user_path(user), title: 'Edit', class: 'icon' do
-              = fa_icon 'wrench'
-          - if policy(:user).destroy?
-            = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon' do
-              = fa_icon 'times'
+          = user_presenter.show_link
+          = user_presenter.edit_link
+          = user_presenter.destroy_link
 
 %br
 -if policy(:user).new?

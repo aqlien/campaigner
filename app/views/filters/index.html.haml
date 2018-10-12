@@ -18,6 +18,7 @@
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
         %th.interest_column{data: {permitted: true, column_type: "interest_column"}} Interests
         %th.tag_column{data: {permitted: true, column_type: "tag_column"}} Tags
+        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
 
       %tr#column_input
         %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
@@ -31,6 +32,7 @@
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}
         %th.interest_column.multi_select_searchable{data: {permitted: true, column_type: "interest_column"}}
         %th.tag_column.multi_select_searchable{data: {permitted: true, column_type: "tag_column"}}
+        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
 
     %tbody
     -# see JSON

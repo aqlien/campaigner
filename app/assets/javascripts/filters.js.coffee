@@ -14,7 +14,7 @@ $ ->
     drawCallback: ->
       $(this).redrawUsersColumns()
 
-    autoWidth: false
+    autoWidth: false,
     ajax: $("#user-filter").data('source'),
     sAjaxDataProp: "data",
     columns: [
@@ -24,7 +24,8 @@ $ ->
       {data: "phone"},
       {data: "organization"},
       {data: "interests"},
-      {data: "tags"}
+      {data: "tags"},
+      {data: "actions"}
     ]
   } )
 

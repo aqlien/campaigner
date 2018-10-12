@@ -1,5 +1,5 @@
-presenter_options = UserFilterSetPresenter.new(@users, nil).options
-user = UserFilterSetRecordPresenter.new(@users.first, nil, presenter_options)
+presenter_options = UserFilterSetPresenter.new(@users, self).options
+user = UserFilterSetRecordPresenter.new(@users.first, self, presenter_options)
 filters = @filters || {}
 
 keys = []
@@ -17,6 +17,7 @@ keys << "organization"
 keys << "interests"
 # Tags Tab
 keys << "tags"
+keys << "actions"
 
 collection_array = @users.collect do |user_record|
   user.__setobj__(user_record)
@@ -43,6 +44,8 @@ collection_array = @users.collect do |user_record|
   a << user.interests
   # Tags Tab
   a << user.tags
+  # actions
+  a << user.link_set
   a
 end
 
