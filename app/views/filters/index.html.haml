@@ -6,33 +6,33 @@
   %table#user-filter.table.table-sm.table-bordered.table-striped.table-hover{data: {source: data_source}}
     %thead
       %tr
-        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+        %th.actions.base_column{data: {name: 'id', permitted: true, column_type: "base_column"}}
           = check_box_tag 'select_user_ids', true, false, data: {select_table: '#user-filter', select_checkboxes: '.select-row-checkbox'}
-        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Name
-        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}} Email
-        %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}} Phone
-        %th.organization_column.multi_select_searchable{data: {permitted: true, column_type: "organization_column"}} Organization
+        %th.base_column.text_searchable{data: {name: 'name', permitted: true, column_type: "base_column"}} Name
+        %th.base_column.text_searchable{data: {name: 'email', permitted: true, column_type: "base_column"}} Email
+        %th.overview_column.text_searchable{data: {name: 'phone', permitted: true, column_type: "overview_column"}} Phone
+        %th.organization_column.multi_select_searchable{data: {name: 'organization', permitted: true, column_type: "organization_column"}} Organization
         - @surveys.each do |survey|
           - survey.sections.each do |section|
             - section.questions.each do |question|
-              %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
-        %th.interest_column{data: {permitted: true, column_type: "interest_column"}} Interests
-        %th.tag_column{data: {permitted: true, column_type: "tag_column"}} Tags
-        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+              %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {name: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
+        %th.interest_column{data: {name: 'interests', permitted: true, column_type: "interest_column"}} Interests
+        %th.tag_column{data: {name: 'tags', permitted: true, column_type: "tag_column"}} Tags
+        %th.actions.base_column{data: {name: 'actions', permitted: true, column_type: "base_column"}}
 
       %tr#column_input
-        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
-        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
-        %th.base_column.text_searchable{data: {permitted: true, column_type: "base_column"}}
-        %th.overview_column.text_searchable{data: {permitted: true, column_type: "overview_column"}}
-        %th.organization_column.multi_select_searchable{data: {permitted: true, column_type: "organization_column"}}
+        %th.actions.base_column{data: {name: 'id', permitted: true, column_type: "base_column"}}
+        %th.base_column.text_searchable{data: {name: 'name', permitted: true, column_type: "base_column"}}
+        %th.base_column.text_searchable{data: {name: 'email', permitted: true, column_type: "base_column"}}
+        %th.overview_column.text_searchable{data: {name: 'phone', permitted: true, column_type: "overview_column"}}
+        %th.organization_column.multi_select_searchable{data: {name: 'organization', permitted: true, column_type: "organization_column"}}
         - @surveys.each do |survey|
           - survey.sections.each do |section|
             - section.questions.each do |question|
-              %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {permitted: true, column_type: "survey_#{survey.id}_column"}}
-        %th.interest_column.multi_select_searchable{data: {permitted: true, column_type: "interest_column"}}
-        %th.tag_column.multi_select_searchable{data: {permitted: true, column_type: "tag_column"}}
-        %th.actions.base_column{data: {permitted: true, column_type: "base_column"}}
+              %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {name: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}
+        %th.interest_column{data: {name: 'interests', permitted: true, column_type: "interest_column"}}
+        %th.tag_column{data: {name: 'tags', permitted: true, column_type: "tag_column"}}
+        %th.actions.base_column{data: {name: 'actions', permitted: true, column_type: "base_column"}}
 
     %tbody
     -# see JSON

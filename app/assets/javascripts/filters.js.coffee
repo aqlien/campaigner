@@ -1,6 +1,9 @@
 $ = jQuery
 
 $ ->
+  column_data = $("#user-filter").find("thead tr:first th").toArray().map (element)->
+    {data: $(element).data('name')}
+
   $("#user-filter").dataTable( {
     "pageLength": 50
     "searching": true
@@ -17,16 +20,7 @@ $ ->
     autoWidth: false,
     ajax: $("#user-filter").data('source'),
     sAjaxDataProp: "data",
-    columns: [
-      {data: "id"},
-      {data: "name"},
-      {data: "email"},
-      {data: "phone"},
-      {data: "organization"},
-      {data: "interests"},
-      {data: "tags"},
-      {data: "actions"}
-    ]
+    columns: column_data
   } )
 
 
