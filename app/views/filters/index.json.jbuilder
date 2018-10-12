@@ -12,7 +12,13 @@ keys << "phone"
 # Organization Tab
 keys << "organization"
 ## Surveys Tab
-# keys <<
+@surveys.each do |survey|
+  survey.sections.each do |section|
+    section.questions.each do |question|
+      keys << "q_#{question.id}"
+    end
+  end
+end
 # Interests Tab
 keys << "interests"
 # Tags Tab
@@ -31,15 +37,13 @@ collection_array = @users.collect do |user_record|
   #Organization Tab
   a << user.organization
   ## Surveys Tab
-  # - @surveys.each do |survey|
-  #   - survey.sections.each do |section|
-  #     - section.questions.each do |question|
-  #       - response_set = @response_sets.detect{|rs| rs.user_id == user.id && rs.survey_id == survey.id}
-  #       - if response_set.present? && response_set.responses.present?
-  #         a << display_answer_text(question, response_set)
-  #       - else
-  #         a << ""
-
+  @surveys.each do |survey|
+    survey.sections.each do |section|
+      section.questions.each do |question|
+        a << user.answer(question)
+      end
+    end
+  end
   # Interests Tab
   a << user.interests
   # Tags Tab

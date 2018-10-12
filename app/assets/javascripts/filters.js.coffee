@@ -2,7 +2,7 @@ $ = jQuery
 
 $ ->
   column_data = $("#user-filter").find("thead tr:first th").toArray().map (element)->
-    {data: $(element).data('name')}
+    {data: $(element).data('key')}
 
   $("#user-filter").dataTable( {
     "pageLength": 50

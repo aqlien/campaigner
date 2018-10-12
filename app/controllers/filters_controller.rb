@@ -4,7 +4,8 @@ class FiltersController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @surveys = Survey.none
+    @surveys = current_survey.present? ? Survey.where(id: current_survey.id).limit(1) : Survey.none
+    @surveys = Survey.all if Rails.env.development?
 
     @users = UserFilterSet.new(filters: {active: true})
     respond_to do |format|

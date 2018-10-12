@@ -4,7 +4,7 @@ class UserFilterSetRecordPresenter < BasePresenter
 
   #User
   def id
-    record['id']
+    record['id'] || record['user_id']
   end
 
   def name
@@ -34,6 +34,12 @@ class UserFilterSetRecordPresenter < BasePresenter
   end
 
   # Surveys
+  def answer(question_object)
+    question_id = question_object.id
+    if record['answer_data']
+      record['answer_data'].select{|k,v| k == question_id}.collect{|k,v| v}.join(';')
+    end
+  end
 
   # Interests
   def interests
@@ -48,19 +54,19 @@ class UserFilterSetRecordPresenter < BasePresenter
   #actions
   def show_link
     if policy(:user).show?
-      link_to(user_path(record['id']), {title: 'Show', class: 'icon'}){fa_icon('eye')}
+      link_to(user_path(id), {title: 'Show', class: 'icon'}){fa_icon('eye')}
     end
   end
 
   def edit_link
     if policy(:user).edit?
-      link_to(edit_user_path(record['id']), {title: 'Edit', class: 'icon'}){fa_icon('wrench')}
+      link_to(edit_user_path(id), {title: 'Edit', class: 'icon'}){fa_icon('wrench')}
     end
   end
 
   def destroy_link
     if policy(:user).destroy?
-      link_to(user_path(record['id']), {method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon'}){fa_icon('times')}
+      link_to(user_path(id), {method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy', class: 'icon'}){fa_icon('times')}
     end
   end
 

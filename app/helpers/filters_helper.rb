@@ -24,8 +24,7 @@ module FiltersHelper
     when 'one'
       'select_searchable'
     when 'any'
-      'text_searchable'
-      # 'multi_select_searchable'
+      'multi_select_searchable'
     when 'none'
       'text_searchable'
     end
