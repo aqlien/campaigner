@@ -8,8 +8,8 @@ $ ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
       columns_to_show = this.api().columns($('.base_column, .overview_column'))
-      # this.api().columns().visible(false, false)
-      # columns_to_show.visible(true, false)
+      this.api().columns().visible(false, false)
+      columns_to_show.visible(true, false)
 
     drawCallback: ->
       $(this).redrawUsersColumns()
@@ -266,7 +266,8 @@ $ ->
   $("a[data-ids-selected]").submitWithSelectedIDs()
 
   # Use buttons to toggle visibility of DataTable columns by column class
-  $('a[data-toggle-table]').on 'click', ->
+  $('a[data-toggle-table]').on 'click', (e) ->
+    e.preventDefault();
     $this = $(this)
     $this.tab('show')
     $table = $( $this.data("toggle-table") )
