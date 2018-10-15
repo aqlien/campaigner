@@ -77,6 +77,8 @@ group :production do
   gem 'rails_12factor'
   # use SendGrid as the mail service
   gem 'sendgrid-ruby'
+  #use bugsnag for error reporting
+  gem 'bugsnag'
 end
 
 group :development, :test do

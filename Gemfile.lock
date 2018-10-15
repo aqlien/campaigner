@@ -51,6 +51,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bugsnag (6.8.0)
+      concurrent-ruby (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
     coderay (1.1.2)
@@ -284,6 +286,7 @@ PLATFORMS
 DEPENDENCIES
   ajax-datatables-rails
   bootstrap (~> 4.1.1)
+  bugsnag
   byebug
   coffee-rails (~> 4.2)
   database_cleaner
