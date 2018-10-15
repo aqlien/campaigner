@@ -16,8 +16,8 @@
           - survey.sections.each do |section|
             - section.questions.each do |question|
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {key: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
-        %th.interest_column{data: {key: 'interests', permitted: true, column_type: "interest_column"}} Interests
-        %th.tag_column{data: {key: 'tags', permitted: true, column_type: "tag_column"}} Tags
+        %th.interest_column.multi_select_searchable{data: {key: 'interests', permitted: true, column_type: "interest_column"}} Interests
+        %th.tag_column.multi_select_searchable{data: {key: 'tags', permitted: true, column_type: "tag_column"}} Tags
         %th.actions.base_column{data: {key: 'actions', permitted: true, column_type: "base_column"}}
 
       %tr#column_input
@@ -30,8 +30,8 @@
           - survey.sections.each do |section|
             - section.questions.each do |question|
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {key: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}
-        %th.interest_column{data: {key: 'interests', permitted: true, column_type: "interest_column"}}
-        %th.tag_column{data: {key: 'tags', permitted: true, column_type: "tag_column"}}
+        %th.interest_column.multi_select_searchable{data: {key: 'interests', permitted: true, column_type: "interest_column"}}
+        %th.tag_column.multi_select_searchable{data: {key: 'tags', permitted: true, column_type: "tag_column"}}
         %th.actions.base_column{data: {key: 'actions', permitted: true, column_type: "base_column"}}
 
     %tbody
