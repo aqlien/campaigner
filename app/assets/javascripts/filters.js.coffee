@@ -1,6 +1,4 @@
-$ = jQuery
-
-$ ->
+$(document).on 'ready turbolinks:load', ->
   column_data = $("#user-filter").find("thead tr:first th").toArray().map (element)->
     {data: $(element).data('key')}
 
@@ -253,7 +251,7 @@ hideColumns = (table) ->
     if $(table.column(c).header()).data('permitted') is undefined
       table.column(c).visible(false)
 
-$ ->
+$(document).on 'ready turbolinks:load', ->
   # Use checkboxes for selections and links to submit
   $("input[data-select-checkboxes]").selectDatatableCheckboxes()
   $("a[data-table-ids]").sendSelectedIDs()

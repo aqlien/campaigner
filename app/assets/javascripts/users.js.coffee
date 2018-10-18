@@ -1,6 +1,5 @@
-$ ->
+$(document).on 'ready turbolinks:load', ->
   $(".hidden").hide()
-
   $('#pronoun-select').on 'change', (e) ->
     e.preventDefault();
     $this = $(this)
