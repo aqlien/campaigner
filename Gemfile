@@ -32,6 +32,7 @@ gem 'sprockets-rails', '>= 2.3.2'
 # Use Formtastic for form styling
 gem "formtastic" # needed for surveyor forms, but may update from Bootstrap in the future
 gem 'record_tag_helper', '~> 1.0' # used by the `div_for` method in the surveyor partials
+gem 'nested_form_fields' # used for nested forms add_link and remove_link
 
 # DataTables for table sorting, filtering, and pagination
 gem 'jquery-datatables' # note that jquery-datatables depends on gem 'jquery-rails'

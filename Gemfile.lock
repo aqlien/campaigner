@@ -140,6 +140,10 @@ GEM
     multipart-post (2.0.0)
     mustache (1.0.5)
     mustermann (1.0.2)
+    nested_form_fields (0.8.2)
+      coffee-rails (>= 3.2.1)
+      jquery-rails
+      rails (>= 3.2.0)
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -303,6 +307,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   mustache
+  nested_form_fields
   pg
   popper_js (~> 1.12.9)
   pry-rails

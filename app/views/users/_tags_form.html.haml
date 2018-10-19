@@ -1,1 +1,7 @@
 = form.input :tags, as: :check_boxes, collection: Tag.all.pluck(:text, :id)
+= form.nested_fields_for :tags do |f|
+  - next unless f.input(:text).match(/___/).present? #this keeps nested_fields_for from showing duplicate fields for all existing tags, the 3 underscores matches Formtastic's implementation of a blank "has-many" nested field
+  = f.input :text, label: 'Tag Text'
+  = f.hidden_field :id
+= form.add_nested_fields_link :tags do
+  New Tag

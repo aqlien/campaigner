@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-multiselect
+//= require nested_form_fields
 //= require turbolinks
 //= require datatables
 //= require_tree .
