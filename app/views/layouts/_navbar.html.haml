@@ -2,7 +2,7 @@
   %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
     %ul.nav.navbar-nav
       %li.nav-item
-        = link_to 'home', 'http://www.seattlewomxnmarchingforward.org', class: 'navbar-brand', id: 'homepage_link'
+        = link_to image_tag('SWMF_logo_header.png'), 'http://www.seattlewomxnmarchingforward.org', class: 'navbar-brand', id: 'homepage_link'
 
     %ul.nav.navbar-nav.justify-content-center
       - if policy(:user).index?
