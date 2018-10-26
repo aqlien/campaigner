@@ -8,6 +8,8 @@ class WelcomeController < ApplicationController
   end
 
   def thanks
+    @user = current_user
+    @org = current_user.organization if current_user
   end
 
 end

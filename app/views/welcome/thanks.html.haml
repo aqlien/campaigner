@@ -1,7 +1,12 @@
 
 #welcome_header_wrapper
   %h1#welcome_header_content
-    Thank you for signing up to volunteer with
+    Thank you for signing up to
+    - if @org
+      partner
+    - else
+      volunteer
+    with
     %br
     Seattle Womxn Marching Forward.
     %br
