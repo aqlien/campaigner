@@ -3,7 +3,19 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create] #Will need this to register
 
   def index
-    @users = User.all.order(created_at: :asc)
+    params['filters'] ||= 'volunteers'
+    @users = case params['filters']
+    when 'all'
+      User.all.order(created_at: :asc)
+    when 'team'
+      User.where(admin: true).order(created_at: :asc)
+    when 'volunteers'
+      User.where(active: true, admin: nil, organization_id: nil).order(created_at: :asc)
+    when 'org'
+      User.where(active: true).where.not(organization_id: nil).order(created_at: :asc)
+    when 'inactive'
+      User.where(active: false).order(created_at: :asc)
+    end
     authorize @users
   end
 

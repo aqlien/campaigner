@@ -2,13 +2,27 @@
 
 %h1 Listing users
 
+%br
+.row
+  .col-md-12
+    %ul.nav.nav-tabs{role: 'tablist'}
+      %li.nav-item{role: 'presentation'}
+        %a.nav-link{href: users_url(filters: :all), name: 'users_link', class: params['filters'] == 'all' ? 'active' : '' } All Users
+      %li.nav-item{role: 'presentation'}
+        %a.nav-link{href: users_url(filters: :volunteers), name: 'users_link', class: params['filters'] == 'volunteers' ? 'active' : '' } Volunteers
+      %li.nav-item{role: 'presentation'}
+        %a.nav-link{href: users_url(filters: :team), name: 'users_link', class: params['filters'] == 'team' ? 'active' : '' } Team
+      %li.nav-item{role: 'presentation'}
+        %a.nav-link{href: users_url(filters: :org), name: 'users_link', class: params['filters'] == 'org' ? 'active' : '' } Organization Reps
+
 %table
   %thead
     %tr
       %th Name
       %th Email
       %th Phone
-      %th Admin?
+      - if params['filters'] == 'org'
+        %th Organization
       %th.actions
 
   %tbody
@@ -18,7 +32,8 @@
         %td= user_presenter.name
         %td= user_presenter.email
         %td= user_presenter.display_phone
-        %td= user_presenter.admin? ? fa_icon('check') : ''
+        - if params['filters'] == 'org'
+          %td= user_presenter.organization.name
         %td
           = user_presenter.show_link
           = user_presenter.edit_link
