@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     put '/:survey_code/:response_set_code', to: 'surveys#update', as: 'update_my_survey'
   end
 
+  get '/thanks', to: 'welcome#thanks'
   root 'welcome#index'
 end
