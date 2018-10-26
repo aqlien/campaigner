@@ -1,4 +1,4 @@
-$(document).on 'ready turbolinks:load', ->
+$(document).on 'turbolinks:load', ->
   column_data = $("#user-filter").find("thead tr:first th").toArray().map (element)->
     {data: $(element).data('key')}
 
@@ -128,6 +128,7 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
 )
 
 regexifyMultiSelect = (valueArray) ->
+  console.log(valueArray)
   if valueArray == null
     ".*"
   else if valueArray.indexOf("") != -1
@@ -140,7 +141,7 @@ regexifyMultiSelect = (valueArray) ->
     for v in valueArray
       v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
       if counter < last
-        regex = regex.concat(v + "|")
+        regex = regex.concat(v + ".*") # use .* to match all and | to match any
       else
         regex = regex.concat(v + ")")
       counter++
@@ -155,7 +156,7 @@ regexifyMultiSelect = (valueArray) ->
     for v in valueArray
       v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
       if counter < last
-        regex = regex.concat(v + "|")
+        regex = regex.concat(v + ".*") # use .* to match all and | to match any
       else
         # regex = regex.concat(v + ")$") # Only match to end of line
         regex = regex.concat(v + ")")
