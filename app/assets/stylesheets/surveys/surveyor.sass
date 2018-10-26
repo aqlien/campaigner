@@ -1,20 +1,14 @@
-// TODO: FULL REMOVAL
+// TODO: Integrate into base options and/or replace w/ custom as appropriate
 /* Do not change surveyor.sass or the generated
  * surveyor.css. They will be overwritten by
  * the surveyor generator. Instead, add
  * custom styles to custom.sass, which will be
  * loaded after the surveyor stylesheets */
 
-$background_color:#EEEEEE
 $surveyor_flash_background_color:#FFF1A8
-$surveyor_color:#FFFFF1
-$surveyor_text_color:#333333
-$surveyor_dependent_color:#FFFFDF
 $surveyor_menus_active_color:#EBEBCC
 $surveyor_menus_border_color:#ccc
 
-body
-  :background-color $background_color
 #surveyor
   :font-family "Century Gothic"
   :width 960px
@@ -23,10 +17,7 @@ body
   :text-align left
   :font-family Helvetica
   :font-size 100%
-  :background-color $surveyor_color
-  :color $surveyor_text_color
   .surveyor_flash
-    :background-color $surveyor_flash_background_color
     :margin 0 auto
     :padding 5px
     :width 300px
@@ -39,15 +30,12 @@ body
   .surveyor_menu
     :float right
     ul
-      :background-color $background_color
       :border 1px solid $surveyor_menus_border_color
       :border-bottom-width 0
       :list-style none
       li
         :border 0 solid $surveyor_menus_border_color
         :border-bottom-width 1px
-      li.active, li.active input[type="submit"]
-        :background-color $surveyor_menus_active_color
   .surveyor_language_selection
     :display none
   //.previous_section
@@ -108,9 +96,7 @@ body
   fieldset.q_hidden, fieldset.g_hidden, fieldset.g_grid tr.q_hidden
     :display none !important
   fieldset.q_dependent, fieldset.g_dependent
-    :background-color $surveyor_dependent_color
     legend
-      :background-color $surveyor_dependent_color
       :padding 3px 3px 3px 0
   fieldset.q_dropdown, fieldset.q_inline_dropdown, fieldset.q_default_dropdown, fieldset.q_slider, fieldset.q_repeater_dropdown
     label
@@ -130,4 +116,3 @@ body
     :border 1px
     :padding 5px
     :cursor pointer
-    :background-color $background_color

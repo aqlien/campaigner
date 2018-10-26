@@ -1,26 +1,27 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-  %ul.nav.navbar-nav
-    %li.nav-item
-      = link_to 'home', 'http://www.seattlewomxnmarchingforward.org', class: 'navbar-brand', id: 'homepage_link'
+%header{role: :banner}
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+    %ul.nav.navbar-nav
+      %li.nav-item
+        = link_to 'home', 'http://www.seattlewomxnmarchingforward.org', class: 'navbar-brand', id: 'homepage_link'
 
-  %ul.nav.navbar-nav.justify-content-center
-    - if policy(:user).index?
-      = navbar_link 'Directory', users_path, title: 'User List'
-    - if policy(:filter).index?
-      = navbar_link 'Database', filters_path, title: 'User Filters'
-    - if policy(:organization).index?
-      = navbar_link 'Organizations', organizations_path, title: 'Organization List'
-    - if policy(:event).index?
-      = navbar_link 'Events', events_path, title: 'Event List'
-    - if policy(:survey).index?
-      = navbar_link 'Surveys', available_surveys_path, title: 'Survey List'
-    - elsif current_survey.present? && policy(current_survey).take?
-      - if current_user.present? && ResponseSet.exists?(survey_id: current_survey.id, user_id: current_user.id)
-        = navbar_link 'Edit Survey', edit_my_survey_path(current_survey.access_code, ResponseSet.find_by(survey_id: current_survey.id, user_id: current_user.id).access_code), title: current_survey.title
-      - elsif current_user.present?
-        = navbar_link 'Survey', take_survey_path(current_survey.access_code), title: current_survey.title, method: :post
+    %ul.nav.navbar-nav.justify-content-center
+      - if policy(:user).index?
+        = navbar_link 'Directory', users_path, title: 'User List'
+      - if policy(:filter).index?
+        = navbar_link 'Database', filters_path, title: 'User Filters'
+      - if policy(:organization).index?
+        = navbar_link 'Organizations', organizations_path, title: 'Organization List'
+      - if policy(:event).index?
+        = navbar_link 'Events', events_path, title: 'Event List'
+      - if policy(:survey).index?
+        = navbar_link 'Surveys', available_surveys_path, title: 'Survey List'
+      - elsif current_survey.present? && policy(current_survey).take?
+        - if current_user.present? && ResponseSet.exists?(survey_id: current_survey.id, user_id: current_user.id)
+          = navbar_link 'Edit Survey', edit_my_survey_path(current_survey.access_code, ResponseSet.find_by(survey_id: current_survey.id, user_id: current_user.id).access_code), title: current_survey.title
+        - elsif current_user.present?
+          = navbar_link 'Survey', take_survey_path(current_survey.access_code), title: current_survey.title, method: :post
 
-  %ul.nav.navbar-nav.justify-content-end.pull-right
-    - if current_user.present?
-      %li= navbar_link fa_icon('user-circle-o'), user_path(current_user), title: 'Profile'
-      %li= navbar_link fa_icon('user-times'), destroy_user_session_path, method: :delete, title: 'Sign Out'
+    %ul.nav.navbar-nav.justify-content-end.pull-right
+      - if current_user.present?
+        %li= navbar_link fa_icon('user-circle-o'), user_path(current_user), title: 'Profile'
+        %li= navbar_link fa_icon('user-times'), destroy_user_session_path, method: :delete, title: 'Sign Out'
