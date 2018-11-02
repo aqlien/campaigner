@@ -1,6 +1,10 @@
 $(document).on 'turbolinks:load', ->
-  column_data = $("#user-filter").find("thead tr:first th").toArray().map (element)->
+  column_data = $("#user-filter").find("thead tr:first th").toArray().map (element) ->
     {data: $(element).data('key')}
+
+  column_data.forEach (column_definition) ->
+    if column_definition['data'] == 'name'
+      column_definition['orderDataType'] = 'name-list'
 
   $("#user-filter").dataTable( {
     "pageLength": 50
@@ -21,6 +25,10 @@ $(document).on 'turbolinks:load', ->
     columns: column_data
   } )
 
+#sort name column by last name. Names are assumed to be separated by spaces, and the final section of the string is considered the last name.
+$.fn.dataTable.ext.order['name-list'] = ( settings, col ) ->
+  this.api().column( col, {order:'index'} ).nodes().map ( td, i ) ->
+    ($(td).text().trim().match(/\S*$/) || [])[0]
 
 # Setting up search fields requires the table to have a footer
 # or a second header row with the id '#column_input'
