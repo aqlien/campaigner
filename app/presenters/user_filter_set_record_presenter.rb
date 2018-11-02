@@ -40,19 +40,19 @@ class UserFilterSetRecordPresenter < BasePresenter
       survey_id = question_object.survey_section.survey_id
       answer_data = record['survey_data'][survey_id]
       if answer_data
-        answer_data.select{|k,v| k == question_id}.collect{|k,v| v}.join(';')
+        answer_data.select{|k,v| k == question_id}.collect{|k,v| v}.join(split_character)
       end
     end
   end
 
   # Interests
   def interests
-    (record['interest_names'] || []).sort.join(';')
+    (record['interest_names'] || []).sort.join(split_character)
   end
 
   # Tags Tab
   def tags
-    (record['tag_names'] || []).sort.join(';')
+    (record['tag_names'] || []).sort.join(split_character)
   end
 
   #actions
@@ -76,6 +76,11 @@ class UserFilterSetRecordPresenter < BasePresenter
 
   def link_set
     [show_link, edit_link, destroy_link].compact.join('')
+  end
+
+  #filter info
+  def split_character
+    '; '
   end
 
 end

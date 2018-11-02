@@ -105,7 +105,7 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     processed_options_list = []
     unprocessed_options_list.sort().each (d, j) ->
       if d && d not in processed_options_list
-        option_sublist = d.split(';');
+        option_sublist = d.split('; ');
         option_sublist.forEach (d, j) ->
           if d && d not in processed_options_list
             processed_options_list.push d
