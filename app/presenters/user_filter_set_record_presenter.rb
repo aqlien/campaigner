@@ -36,8 +36,12 @@ class UserFilterSetRecordPresenter < BasePresenter
   # Surveys
   def answer(question_object)
     question_id = question_object.id
-    if record['answer_data']
-      record['answer_data'].select{|k,v| k == question_id}.collect{|k,v| v}.join(';')
+    if record['survey_data']
+      survey_id = question_object.survey_section.survey_id
+      answer_data = record['survey_data'][survey_id]
+      if answer_data
+        answer_data.select{|k,v| k == question_id}.collect{|k,v| v}.join(';')
+      end
     end
   end
 
