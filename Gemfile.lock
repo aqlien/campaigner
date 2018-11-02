@@ -80,6 +80,8 @@ GEM
     factory_girl_rails (4.9.0)
       factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
@@ -296,6 +298,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  faker
   font-awesome-rails
   formtastic
   gibbon

@@ -48,6 +48,9 @@ gem 'mustache'
 # setup mail service using Mailchimp
 gem 'gibbon'
 
+# Use Faker to create fake emails/phones/etc in order to easily anonymize data while maintaining patterns for analysis.
+gem 'faker'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
