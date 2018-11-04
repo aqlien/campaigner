@@ -64,6 +64,7 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     })
     input.css("height", "31px")
     input.append("<option value=''>(All)</option>")
+    input.append("<option value='^.+$'>(Any)</option>")
     input.append("<option value='^$'>(Blank)</option>")
     input.on 'click', (e) ->
       # Prevent clicking on the search field from also triggering column ordering
@@ -89,6 +90,7 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
       style: "width: 100%;"
     })
     input.attr('multiple', true)
+    input.append("<option value='^.+$'>(Any)</option>")
     input.append("<option value='^$'>(Blank)</option>")
     input.on 'click', (e) ->
       # Prevent clicking on the search field from also triggering column ordering
@@ -156,6 +158,8 @@ regexifyMultiSelect = (valueArray) ->
     regex
   else if valueArray.indexOf("^$") != -1
     "^$"
+  else if valueArray.indexOf("^.+$") != -1
+    "^.+$"
   else
     counter = 1
     last = valueArray.length
