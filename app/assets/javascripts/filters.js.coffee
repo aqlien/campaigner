@@ -7,8 +7,13 @@ $(document).on 'turbolinks:load', ->
       column_definition['orderDataType'] = 'name-list'
 
   $("#user-filter").dataTable( {
-    "pageLength": 50
-    "searching": true
+    ajax: $("#user-filter").data('source'),
+    sAjaxDataProp: "data",
+    autoWidth: false,
+    columns: column_data,
+    pageLength: 50,
+    searching: true,
+    
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
@@ -18,11 +23,6 @@ $(document).on 'turbolinks:load', ->
 
     drawCallback: ->
       $(this).redrawUsersColumns()
-
-    autoWidth: false,
-    ajax: $("#user-filter").data('source'),
-    sAjaxDataProp: "data",
-    columns: column_data
   } )
 
 #sort name column by last name. Names are assumed to be separated by spaces, and the final section of the string is considered the last name.
