@@ -74,10 +74,12 @@ class Survey < ApplicationRecord
   end
 
   def increment_version
-    surveys = self.class.select(:survey_version).where(access_code: access_code).order("survey_version DESC")
-    next_version = surveys.any? ? surveys.first.survey_version.to_i + 1 : 0
+    unless self.changed == ['survey_version']
+      surveys = self.class.select(:survey_version).where(access_code: access_code).order("survey_version DESC")
+      next_version = surveys.any? ? surveys.first.survey_version.to_i + 1 : 0
 
-    self.survey_version = next_version
+      self.survey_version = next_version
+    end
   end
 
   def translation(locale_symbol)
