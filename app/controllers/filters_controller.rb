@@ -4,7 +4,7 @@ class FiltersController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @surveys = current_survey.present? ? Survey.where(id: current_survey.id).limit(1) : Survey.none
+    @surveys = current_events.present? ? Survey.where(event_id: current_events.pluck(:id)) : Survey.none
     @surveys = Survey.all if Rails.env.development?
 
     @users = UserFilterSet.new(filters: {active: true})

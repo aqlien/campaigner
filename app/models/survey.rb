@@ -61,6 +61,14 @@ class Survey < ApplicationRecord
     self.class.normalize_string(title)
   end
 
+  def display_title
+    if Survey.where(event_id: event_id).where.not(survey_version: survey_version).exists?
+      title + " (v#{survey_version})"
+    else
+      title
+    end
+  end
+
   def generate_access_code
     self.access_code ||= default_access_code
   end

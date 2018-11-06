@@ -8,8 +8,12 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def current_events
+    @current_events ||= Event.where("leadup_date <= :start_before AND followup_date >= :end_after", start_before: Date.today, end_after: Date.today)
+  end
+
   def current_survey
-    @current_survey ||= Survey.where(event_id: Event.where("leadup_date <= :start_before AND followup_date >= :end_after", start_before: Date.today, end_after: Date.today).pluck(:id)).take
+    @current_survey ||= Survey.where(event_id: current_events.pluck(:id)).order(survey_version: :desc).take
   end
 
 private
