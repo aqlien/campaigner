@@ -10,7 +10,8 @@
           = check_box_tag 'select_user_ids', true, false, data: {select_table: '#user-filter', select_checkboxes: '.select-row-checkbox'}
         %th.base_column.text_searchable{data: {key: 'name', permitted: true, column_type: "base_column"}} Name
         %th.base_column.text_searchable{data: {key: 'email', permitted: true, column_type: "base_column"}} Email
-        %th.overview_column.text_searchable{data: {key: 'phone', permitted: true, column_type: "overview_column"}} Phone
+        %th.overview_column.outreach_column.text_searchable{data: {key: 'phone', permitted: true, column_type: "overview_column"}} Phone
+        %th.overview_column.text_searchable{data: {key: 'city', permitted: true, column_type: "overview_column"}} City
         %th.organization_column.multi_select_searchable{data: {key: 'organization', permitted: true, column_type: "organization_column"}} Organization
         - @surveys.each do |survey|
           - survey.sections.each do |section|
@@ -24,7 +25,8 @@
         %th.actions.base_column{data: {key: 'id', permitted: true, column_type: "base_column"}}
         %th.base_column.text_searchable{data: {key: 'name', permitted: true, column_type: "base_column"}}
         %th.base_column.text_searchable{data: {key: 'email', permitted: true, column_type: "base_column"}}
-        %th.overview_column.text_searchable{data: {key: 'phone', permitted: true, column_type: "overview_column"}}
+        %th.overview_column.outreach_column.text_searchable{data: {key: 'phone', permitted: true, column_type: "overview_column"}}
+        %th.overview_column.text_searchable{data: {key: 'city', permitted: true, column_type: "overview_column"}}
         %th.organization_column.multi_select_searchable{data: {key: 'organization', permitted: true, column_type: "organization_column"}}
         - @surveys.each do |survey|
           - survey.sections.each do |section|

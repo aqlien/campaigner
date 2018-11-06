@@ -12,7 +12,7 @@ $(document).on 'turbolinks:load', ->
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
-      columns_to_show = this.api().columns($('.base_column, .overview_column'))
+      columns_to_show = this.api().columns($('.base_column, .outreach_column, .tag_column'))
       this.api().columns().visible(false, false)
       columns_to_show.visible(true, false)
 
