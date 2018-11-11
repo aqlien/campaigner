@@ -1,7 +1,7 @@
 class Survey < ApplicationRecord
   belongs_to :event, optional: true # TODO: make non-optional
 
-  has_many :sections, class_name: 'SurveySection', dependent: :destroy
+  has_many :sections, class_name: 'SurveySection', dependent: :destroy #TODO: add ordering for sections
   has_many :response_sets
   has_many :translations, class_name: 'SurveyTranslation'
 

@@ -1,5 +1,5 @@
 class SurveySection < ApplicationRecord
-  has_many :questions, dependent: :destroy
+  has_many :questions, ->{ order(display_order: :asc) }, dependent: :destroy
   belongs_to :survey
 
   validates_presence_of :title, :display_order

@@ -1,6 +1,6 @@
 class QuestionGroup < ApplicationRecord
   include MustacheContext
-  has_many :questions
+  has_many :questions, ->{ order(display_order: :asc) }
   has_one :dependency
 
   def initialize(*args)

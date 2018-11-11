@@ -2,7 +2,7 @@ class Question < ApplicationRecord
   include MustacheContext
   belongs_to :survey_section
   belongs_to :question_group, dependent: :destroy, optional: true
-  has_many :answers, dependent: :destroy # it might not always have answers
+  has_many :answers, ->{ order(display_order: :asc) }, dependent: :destroy # it might not always have answers
   has_one :dependency, dependent: :destroy
   belongs_to :correct_answer, class_name: "Answer", dependent: :destroy, optional: true
 
