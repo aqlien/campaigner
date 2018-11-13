@@ -1,6 +1,6 @@
 = render partial: "top_nav"
 
-- data_source = filters_path
+- data_source = filters_path(filters: filter_params)
 
 .table-responsive
   %table#user-filter.table.table-sm.table-bordered.table-striped.table-hover{data: {source: data_source}}

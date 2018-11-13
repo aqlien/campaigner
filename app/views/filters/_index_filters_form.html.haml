@@ -1,0 +1,7 @@
+-# layout: :inline doesn't affect this form. See forms.scss for actual inline styling
+= semantic_form_for :filters, layout: :inline, html: { :method => :get } do |f|
+  = f.inputs do
+    = f.input :active, as: :boolean, label: 'Active Users', input_html: {checked: (filter_params[:active] != '0' && filter_params[:active] != 0 && filter_params[:active] != false)}
+    = f.input :contactable, as: :boolean, label: 'Fully Contactable', input_html: {checked: (filter_params[:contactable] != '0' && filter_params[:contactable] != 0 && filter_params[:contactable] != false)}
+    = f.input :no_org, as: :boolean, label: 'Volunteers Only', input_html: {checked: (filter_params[:no_org] != '0' && filter_params[:no_org] != 0 && filter_params[:no_org] != false)}
+    = f.submit 'Filter'

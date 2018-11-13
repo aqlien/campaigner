@@ -7,7 +7,7 @@ class FiltersController < ApplicationController
     @surveys = current_events.present? ? Survey.where(event_id: current_events.pluck(:id)) : Survey.none
     @surveys = Survey.all if Rails.env.development?
 
-    @users = UserFilterSet.new(filters: {active: true})
+    @users = UserFilterSet.new(filters: filter_params)
     respond_to do |format|
       format.html
       format.js
@@ -24,6 +24,8 @@ class FiltersController < ApplicationController
     end
   end
 
+  helper_method :filter_params
+
 private
   def process_ids(user_ids = params[:user_ids])
     if user_ids.blank?
@@ -34,6 +36,10 @@ private
       end
       @raw_user_ids = user_ids.map!(&:to_i)
     end
+  end
+
+  def filter_params
+    params[:filters] ? params.permit(filters: [:active, :contactable, :no_org])[:filters].transform_values{|v| v!='0' && v!=0} : {active: true, contactable: true, no_org: true}
   end
 
 end

@@ -1,5 +1,10 @@
-.page-header.users-header
-  %h2 Users
+.row
+  .col-md-4
+    .page-header.users-header
+      %h2 Users
+  .col-md-8
+    .filters_listing
+      = render partial: 'index_filters_form'
 
 .row
   .col-md-6
@@ -30,6 +35,6 @@
         %a.nav-link#toggle-interests{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".interest_column, .base_column"}}} Interests
       %li.nav-item{role: 'presentation'}
         %a.nav-link#toggle-tags{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".tag_column, .base_column"}}} Tags
-        
+
       -# %li.nav-item{role: 'presentation'}
       -#   %a.nav-link#toggle-tags{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".overview_column, #{@surveys.collect{|s| ".survey_#{s.id}_column"}.join(', ')}, .interest_column, .tag_column, .base_column"}}} Test Everything

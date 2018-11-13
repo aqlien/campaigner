@@ -22,6 +22,8 @@ private
   def filtered_user_ids_query
     sql = base_user_ids_query
     sql << filter_active if @filters[:active]
+    sql << filter_contactable if @filters[:contactable]
+    sql << filter_not_in_organization if @filters[:no_org]
     sql << ')'
   end
 
@@ -112,4 +114,18 @@ private
       AND users.active = true
     SQL
   end
+
+  def filter_contactable
+    # we want users with email and phone, email is already requred so no need to check
+    <<-SQL
+      AND users.phone <> ''
+    SQL
+  end
+
+  def filter_not_in_organization
+    <<-SQL
+      AND users.organization_id IS NULL
+    SQL
+  end
+
 end
