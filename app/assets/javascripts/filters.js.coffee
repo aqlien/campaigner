@@ -5,6 +5,8 @@ $(document).on 'turbolinks:load', ->
   column_data.forEach (column_definition) ->
     if column_definition['data'] == 'name'
       column_definition['orderDataType'] = 'name-list'
+    if column_definition['data'] == 'id' || column_definition['data'] == 'actions'
+      column_definition['orderable'] = false
 
   $("#user-filter").dataTable( {
     ajax: $("#user-filter").data('source'),
@@ -13,13 +15,14 @@ $(document).on 'turbolinks:load', ->
     columns: column_data,
     pageLength: 50,
     searching: true,
-    
+
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
       columns_to_show = this.api().columns($('.base_column, .outreach_column, .tag_column'))
       this.api().columns().visible(false, false)
       columns_to_show.visible(true, false)
+      this.api().order(1, 'asc').draw()
 
     drawCallback: ->
       $(this).redrawUsersColumns()
