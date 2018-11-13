@@ -22,6 +22,15 @@
   %b Completed Surveys:
   =render partial: 'surveys', locals: {user: @user}
 
+%p
+  %b Notes:
+  = @user.notes
+
+- if policy(@user).tag?
+  %p
+    %b Admin Notes:
+    = @user.admin_notes
+
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path

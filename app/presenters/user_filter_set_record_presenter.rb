@@ -28,6 +28,10 @@ class UserFilterSetRecordPresenter < BasePresenter
     record['city']
   end
 
+  def notes
+    record['notes']
+  end
+
   #Organization
   def organization
     record['organization_id'].present? ? 'Y' : ''
@@ -43,6 +47,11 @@ class UserFilterSetRecordPresenter < BasePresenter
         answer_data.select{|k,v| k == question_id}.collect{|k,v| v}.join(split_character)
       end
     end
+  end
+
+  # Outreach
+  def admin_notes
+    record['admin_notes']
   end
 
   # Interests

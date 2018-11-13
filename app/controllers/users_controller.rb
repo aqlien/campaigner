@@ -94,7 +94,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :short_name, :pronoun, :pronoun_custom,
-        :phone, :city,
+        :phone, :city, :notes, :admin_notes,
         :active, :admin, :organization_id, interest_ids: [], tag_ids: [],
         organization_attributes: [:id, :name, :short_name, :url, :_destroy, :category_ids],
         interests_attributes: [:id, :text, :short_text, :_destroy],

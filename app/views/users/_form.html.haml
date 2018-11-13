@@ -32,6 +32,7 @@
           = f.input :admin
         - if policy(:user).tag?
           = render "tags_form", {form: f}
+          = f.input :admin_notes
   -# .card
   -#   .card-body
   -#     = render "interests_form", {form: f}

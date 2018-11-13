@@ -12,7 +12,7 @@ keys << "phone"
 keys << "city"
 # Organization Tab
 keys << "organization"
-## Surveys Tab
+# Surveys Tab
 @surveys.each do |survey|
   survey.sections.each do |section|
     section.questions.each do |question|
@@ -20,6 +20,8 @@ keys << "organization"
     end
   end
 end
+# Outreach Tab
+keys << "admin_notes"
 # Interests Tab
 keys << "interests"
 # Tags Tab
@@ -46,6 +48,8 @@ collection_array = @users.collect do |user_record|
       end
     end
   end
+  # Outreach Tab
+  a << user.admin_notes
   # Interests Tab
   a << user.interests
   # Tags Tab
