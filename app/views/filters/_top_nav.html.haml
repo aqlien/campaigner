@@ -13,6 +13,9 @@
       = link_to emails_filters_path(), {data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
         = fa_icon "envelope"
         Get selected emails
+      = link_to tags_filters_path(), {data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
+        = fa_icon "tag"
+        Tag selected users
 
   .col-md-6.text-right
     .btn-group.btn-group-md#list_actions_toolbar

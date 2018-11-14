@@ -1,0 +1,13 @@
+.modal-header
+  %h5.modal-title#campaignerModalLabel Apply Tag to Selected Users:
+  %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+    %span{aria: {hidden: true}} &times;
+.modal-body
+  %p
+    = @raw_user_ids.join(', ')
+    = semantic_form_for :user_tags, controller: :filters, action: :apply_tag do |f|
+      = f.input :user_ids, as: :hidden, input_html: {value: @raw_user_ids.join(','), name: :user_ids}, required: false
+      = f.input :tag_ids, as: :check_boxes, collection: Tag.pluck(:text, :id), required: false
+.modal-footer
+  %button.btn.btn-secondary{type: 'button', data: {dismiss: 'modal'}} Close
+  %button#modal-apply.btn.btn-primary{type: 'button', data: {dismiss: 'modal'}, onclick: "$('.modal-body form').submit()"} Apply
