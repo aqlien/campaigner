@@ -1,0 +1,10 @@
+.modal-header
+  %h5.modal-title#campaignerModalLabel Database Filter Link
+  %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+    %span{aria: {hidden: true}} &times;
+.modal-body
+  %p
+    = @link_url
+.modal-footer
+  %button.btn.btn-secondary{type: 'button', data: {dismiss: 'modal'}} Close
+  -# %button.btn.btn-primary{type: 'button'} Save changes

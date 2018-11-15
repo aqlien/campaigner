@@ -9,7 +9,6 @@
 .row
   .col-md-6
     .btn-group.btn-group-md#users_table_actions
-      %span.btn.btn-default#non-btn Listing Users:
       = link_to emails_filters_path(), {data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
         = fa_icon "envelope"
         Get selected emails
@@ -19,6 +18,10 @@
 
   .col-md-6.text-right
     .btn-group.btn-group-md#list_actions_toolbar
+      = link_to link_filters_path(), {id: 'user-filter-link', data: {toggle: "modal", target: "#modal-window", table_ids: "#user-filter"}, remote: true, class: "btn btn-default"} do
+        = fa_icon "link"
+        Link
+
       -# = link_to csv_filters_path(), class: 'btn btn-default', title: "Download as CSV" do
       -#   %span.glyphicon.glyphicon-download
       -#   %span{title: 'Download as CSV file'} CSV

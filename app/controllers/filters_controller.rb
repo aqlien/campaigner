@@ -43,6 +43,16 @@ class FiltersController < ApplicationController
     redirect_to filters_path
   end
 
+  def link
+    index_filters = filter_params.blank? ? nil : filter_params.to_param
+    table_filters = table_params.blank? ? nil : table_params.to_param
+    @link_url = [filters_url, [index_filters, table_filters].compact.join('&')].compact.join('?')
+    respond_to do |format|
+      format.html {render template: 'filters/link'}
+      format.js {render template: 'filters/link'}
+    end
+  end
+
   helper_method :filter_params
 
 private
@@ -63,5 +73,9 @@ private
 
   def filter_params
     params[:filters] ? params.permit(filters: [:active, :contactable, :no_org])[:filters].transform_values{|v| v!='0' && v!=0} : {active: true, contactable: true, no_org: true}
+  end
+
+  def table_params
+    params[:table_params] ? params.require(:table_params).permit! : {}
   end
 end

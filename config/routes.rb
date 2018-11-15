@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :filters, only: :index do
       collection do
         get :emails
+        get :link
         get :tags, to: 'filters#select_tag'
         post :tags, to: 'filters#apply_tag'
       end

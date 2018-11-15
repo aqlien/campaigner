@@ -19,6 +19,7 @@ $(document).on 'turbolinks:load', ->
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
+      this.api().prefilterColumns()
       columns_to_show = this.api().columns($('.base_column, .outreach_column, .tag_column'))
       this.api().columns().visible(false, false)
       columns_to_show.visible(true, false)
@@ -141,7 +142,6 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
 )
 
 regexifyMultiSelect = (valueArray) ->
-  console.log(valueArray)
   if valueArray == null
     ".*"
   else if valueArray.indexOf("") != -1
@@ -177,6 +177,42 @@ regexifyMultiSelect = (valueArray) ->
         regex = regex.concat(v + ")")
       counter++
     regex
+
+
+# Find the URL param matching with the key that matches (name)
+searchFromUrl = (name) ->
+  results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+  if (!results) then '' else results[1] || '';
+
+# Allows params passed in the URL to alter table columns
+$.fn.dataTable.Api.register('prefilterColumns', ->
+  api = this
+  tableID = $(api.table().node()).attr('id')
+
+  api.columns().eq(0).each (colIndex) ->
+    searchString = decodeURIComponent(searchFromUrl('c' + colIndex.toString()).replace(/\+/g, '%20'))
+    if searchString
+      api.column( colIndex ).search(searchString).draw();
+      # Alter existing fields to match URL params - assumes SetupSearchFields created IDs
+      $('#search_'+tableID+'_'+colIndex.toString()).val(searchString)
+);
+
+# Retrieve values of applied column searches
+$.fn.dataTable.Api.register('filteredColumnParams', ->
+  api = this
+  tableID = $(api.table().node()).attr('id')
+  results = {'table_params': {}}
+
+  api.columns().eq(0).each (colIndex) ->
+    searchKey = 'c' + colIndex.toString()
+    # Get value of existing fields - assumes SetupSearchFields created IDs
+    searchVal = $('#search_'+tableID+'_'+colIndex.toString()).val()
+    if searchVal
+      results['table_params'][searchKey] = searchVal
+  params = decodeURIComponent($.param(results)).replace(/\[\]/g, '')
+  params
+);
+
 
 
 # Checkboxes for table rows
@@ -236,6 +272,20 @@ $.fn.extend
             success: (response) ->
               window.location.reload()
 
+  sendFilteredColumnParams: ->
+    return @each () ->
+      $this = $(this)
+      $table = $($this.data("table-ids"))
+      if ($table)
+        $this.on 'click', (e) ->
+          e.preventDefault();
+        $this.on 'ajax:beforeSend', (event, jqXHR, settings) ->
+          tableParams = $table.DataTable().filteredColumnParams()
+          if settings.url.match(/\?.*$/)
+            settings.url = settings.url + '&' + tableParams
+          else
+            settings.url = settings.url + '?' + tableParams
+
   redrawUsersColumns: ->
     tableHandle = this.DataTable()
     hideColumns(tableHandle)
@@ -272,6 +322,7 @@ $(document).on 'ready turbolinks:load', ->
   $("input[data-select-checkboxes]").selectDatatableCheckboxes()
   $("a[data-table-ids]").sendSelectedIDs()
   $("a[data-ids-selected]").submitWithSelectedIDs()
+  $("#user-filter-link").sendFilteredColumnParams()
 
   # Use buttons to toggle visibility of DataTable columns by column class
   $('a[data-toggle-table]').on 'click', (e) ->
@@ -283,3 +334,18 @@ $(document).on 'ready turbolinks:load', ->
     tableHandle.columns().visible(false, false)
     tableHandle.columns($this.data("toggle-show")).visible(true, false)
     tableHandle.columns.adjust().draw( false )
+
+  # $('#user-filter-link').on 'click', (e) ->
+  #   e.preventDefault();
+  #   $this = $(this)
+  #   $this.tab('show')
+  #   $table = $( $this.data("table_ids") )
+  #   tableHandle = $table.DataTable()
+  #   tableParams = tableHandle.filteredColumnParams()
+  #   $.ajax
+  #     url:  $this.attr("href"),
+  #     dataType: 'json',
+  #     data: { table_params: tableParams },
+  #     type: 'GET',
+  #     success: (response) ->
+  #       window.location.reload()
