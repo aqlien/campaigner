@@ -44,8 +44,15 @@ class UserFilterSetRecordPresenter < BasePresenter
       survey_id = question_object.survey_section.survey_id
       answer_data = record['survey_data'][survey_id]
       if answer_data
-        answer_data.select{|k,v| k == question_id}.collect{|k,v| v}.join(split_character)
+        answer_data.select{|k,v| k == question_id}.collect{|k,v| v[1]}.join(split_character)
       end
+    end
+  end
+
+  def event_names
+    participation_checker = @options[:participation_rules] || ParticipationRules.new
+    if record['survey_data']
+      participation_checker.check(record['survey_data']).join(split_character)
     end
   end
 

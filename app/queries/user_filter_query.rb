@@ -48,7 +48,7 @@ private
   end
 
   def survey_data
-    @survey_data ||= Hash[User.find_by_sql(survey_query).collect{|x| x.attributes}.collect{|x| x['answer_data'] = x['question_ids'].zip(x['answer_text']); h = {}; x['survey_ids'].zip(x['answer_data']).group_by{|x| x[0]}.each{|k,v| h[k] = v.collect{|x| x[1,x.length]}.flatten(1)}; x['survey_data'] = h; x.delete('answer_text'); x.delete('question_ids'); x.delete('survey_ids'); x.delete('answer_data'); x}.collect{|x| [x['user_id'], x]}]
+    @survey_data ||= Hash[User.find_by_sql(survey_query).collect{|x| x.attributes}.collect{|x| x['answer_data'] = x['question_ids'].zip(x['answer_ids'].zip(x['answer_text'])); h = {}; x['survey_ids'].zip(x['answer_data']).group_by{|x| x[0]}.each{|k,v| h[k] = v.collect{|x| x[1,x.length]}.flatten(1)}; x['survey_data'] = h; x.delete('answer_text'); x.delete('answer_ids'); x.delete('question_ids'); x.delete('survey_ids'); x.delete('answer_data'); x}.collect{|x| [x['user_id'], x]}]
   end
 
   def interest_data
@@ -76,6 +76,7 @@ private
       array_agg(response_sets.survey_id) AS survey_ids,
       array_agg(responses.id) AS response_ids,
       array_agg(responses.question_id) AS question_ids,
+      array_agg(responses.answer_id) AS answer_ids,
       array_agg(CASE WHEN answers.short_text ISNULL THEN answers.text ELSE answers.short_text END) AS answer_text
       FROM response_sets
       JOIN responses ON responses.response_set_id = response_sets.id

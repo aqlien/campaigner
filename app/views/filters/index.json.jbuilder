@@ -1,4 +1,4 @@
-presenter_options = UserFilterSetPresenter.new(@users, self).options
+presenter_options = UserFilterSetPresenter.new(@users, self, {participation_rules: ParticipationRules.new}).options
 user = UserFilterSetRecordPresenter.new(@users.first, self, presenter_options)
 filters = @filters || {}
 
@@ -22,6 +22,7 @@ keys << "organization"
 end
 # Outreach Tab
 keys << "admin_notes"
+keys << "event_names"
 # Interests Tab
 keys << "interests"
 # Tags Tab
@@ -50,6 +51,7 @@ collection_array = @users.collect do |user_record|
   end
   # Outreach Tab
   a << user.admin_notes
+  a << user.event_names
   # Interests Tab
   a << user.interests
   # Tags Tab
