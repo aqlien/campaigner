@@ -10,12 +10,16 @@ class ParticipationRules
     user_record_survey_data.each do |survey_id, survey_answer_data|
       in_event = false
       user_answer_ids = survey_answer_data.collect{|question_id, answer_data| answer_data[0]}
-      if @@rules[:events][@@rules[:surveys][survey_id][:event_name]][:conditions][:modifier] == 'any_of'
-        in_event = (@@rules[:events][@@rules[:surveys][survey_id][:event_name]][:conditions][:answer_ids] & user_answer_ids).any?
-      elsif @@rules[:events][@@rules[:surveys][survey_id][:event_name]][:conditions][:modifier] == 'all_of'
-        in_event = @@rules[:events][@@rules[:surveys][survey_id][:event_name]][:conditions][:answer_ids].sort == user_answer_ids.sort
+      event_name = @@rules[:surveys][survey_id][:event_name] if @@rules[:surveys][survey_id].present?
+      event_name ||= "unknown"
+      if @@rules[:events][event_name].present?
+        if @@rules[:events][event_name][:conditions][:modifier] == 'any_of'
+          in_event = (@@rules[:events][event_name][:conditions][:answer_ids] & user_answer_ids).any?
+        elsif @@rules[:events][event_name][:conditions][:modifier] == 'all_of'
+          in_event = @@rules[:events][event_name][:conditions][:answer_ids].sort == user_answer_ids.sort
+        end
       end
-      events_participated_in << @@rules[:surveys][survey_id][:event_name] if in_event
+      events_participated_in << event_name if in_event
     end
     @@event_order & events_participated_in
   end
