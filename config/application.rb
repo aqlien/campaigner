@@ -14,6 +14,7 @@ module Campaigner
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/presenters #{config.root}/app/queries)
+    config.eager_load_paths << Rails.root.join('lib')
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
