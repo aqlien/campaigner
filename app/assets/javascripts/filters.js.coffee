@@ -19,6 +19,7 @@ $(document).on 'turbolinks:load', ->
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
+      this.api().setupSecondarySearchFields()
       this.api().prefilterColumns()
       columns_to_show = this.api().columns($('.base_column, .outreach_column, .tag_column'))
       this.api().columns().visible(false, false)
@@ -141,7 +142,12 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
     })
 )
 
-regexifyMultiSelect = (valueArray) ->
+regexifyMultiSelect = (valueArray, boolean_and = true) ->
+  if boolean_and
+    match_join = ".*" # match all selected options
+  else
+    match_join = "|" # match any selected option
+
   if valueArray == null
     ".*"
   else if valueArray.indexOf("") != -1
@@ -152,9 +158,9 @@ regexifyMultiSelect = (valueArray) ->
     last = valueArray.length
     regex = "^$|("
     for v in valueArray
-      v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
+      # v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
       if counter < last
-        regex = regex.concat(v + ".*") # use .* to match all and | to match any
+        regex = regex.concat(v + match_join)
       else
         regex = regex.concat(v + ")")
       counter++
@@ -169,15 +175,68 @@ regexifyMultiSelect = (valueArray) ->
     # regex = "^(" # Only match from start of line
     regex = "("
     for v in valueArray
-      v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
+      # v = v.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")
       if counter < last
-        regex = regex.concat(v + ".*") # use .* to match all and | to match any
+        regex = regex.concat(v + match_join)
       else
         # regex = regex.concat(v + ")$") # Only match to end of line
         regex = regex.concat(v + ")")
       counter++
     regex
 
+
+# Setting up secondary search fields requires the table to have a footer
+# or a second header row with the id '#column_input', and assumes 'setupSearchFields' has been called
+$.fn.dataTable.Api.register('setupSecondarySearchFields', ->
+  api = this
+  api.columns($('th[data-key="name"]')).eq(0).each (colIndex) ->
+    tableID = $(api.table().node()).attr('id')
+    input = $('<select/>',{
+      id: 'search_'+tableID+'_'+colIndex.toString()+'-2',
+      class: "form-control input-sm",
+      style: "width: 50%;"
+    })
+    input.attr('multiple', true)
+    input.append("<option value=" + "[^\\w-'][ABCDEF]\\S*$" + ">A-F</option>")
+    input.append("<option value=" + "[^\\w-'][GHIJKLM]\\S*$" + ">G-M</option>")
+    input.append("<option value=" + "[^\\w-'][NOPQRS]\\S*$" + ">N-S</option>")
+    input.append("<option value=" + "[^\\w-'][TUVWXYZ]\\S*$" + ">T-Z</option>")
+    input.on 'click', (e) ->
+      # Prevent clicking on the search field from also triggering column ordering
+      e.stopPropagation();
+    input.on('change', ->
+      val = $(this).val()
+      regex = regexifyMultiSelect(val, false)
+      api.column( colIndex ).search(regex, true, false).draw();
+      currOrder = api.order()
+      if (currOrder[0][0] != colIndex) || (currOrder[0][1] != 'asc')
+        api.order([colIndex, 'asc']);
+        api.draw();
+    );
+    $(this.column(colIndex).footer()).append(input)
+    $('#column_input th').eq($(this.column(colIndex).header()).index()).append(input)
+
+    input.multiselect({
+      includeSelectAllOption: false
+      selectAllText: "(All)"
+      selectAllValue: ""
+      buttonWidth: "120px"
+      buttonText: (options, select) ->
+        if options.length == 0
+          "(All)"
+        else if options.length > 1
+          options.length + " selected"
+        else
+          labels = []
+          options.each ->
+            if $(this).attr('label') != undefined
+              labels.push $(this).attr('label')
+            else
+              labels.push $(this).html()
+            return
+          labels.join(', ') + ''
+    })
+)
 
 # Find the URL param matching with the key that matches (name)
 searchFromUrl = (name) ->
@@ -334,18 +393,3 @@ $(document).on 'ready turbolinks:load', ->
     tableHandle.columns().visible(false, false)
     tableHandle.columns($this.data("toggle-show")).visible(true, false)
     tableHandle.columns.adjust().draw( false )
-
-  # $('#user-filter-link').on 'click', (e) ->
-  #   e.preventDefault();
-  #   $this = $(this)
-  #   $this.tab('show')
-  #   $table = $( $this.data("table_ids") )
-  #   tableHandle = $table.DataTable()
-  #   tableParams = tableHandle.filteredColumnParams()
-  #   $.ajax
-  #     url:  $this.attr("href"),
-  #     dataType: 'json',
-  #     data: { table_params: tableParams },
-  #     type: 'GET',
-  #     success: (response) ->
-  #       window.location.reload()
