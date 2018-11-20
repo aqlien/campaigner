@@ -18,8 +18,8 @@
             - section.questions.each do |question|
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {key: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
         %th.outreach_column.text_searchable{data: {key: 'admin_notes', permitted: true, column_type: "outreach_column"}} Admin Notes
-        %th.outreach_column.multi_select_searchable{data: {key: 'event_names', permitted: true, column_type: "outreach_column"}} Participation
         %th.interest_column.multi_select_searchable{data: {key: 'interests', permitted: true, column_type: "interest_column"}} Interests
+        %th.outreach_column.multi_select_searchable{data: {key: 'event_names', permitted: true, column_type: "outreach_column"}} Participation
         %th.tag_column.multi_select_searchable{data: {key: 'tags', permitted: true, column_type: "tag_column"}} Tags
         %th.actions.base_column{data: {key: 'actions', permitted: true, column_type: "base_column"}}
 
@@ -35,8 +35,8 @@
             - section.questions.each do |question|
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {key: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}
         %th.outreach_column.text_searchable{data: {key: 'admin_notes', permitted: true, column_type: "outreach_column"}}
-        %th.outreach_column.multi_select_searchable{data: {key: 'event_names', permitted: true, column_type: "outreach_column"}}
         %th.interest_column.multi_select_searchable{data: {key: 'interests', permitted: true, column_type: "interest_column"}}
+        %th.outreach_column.multi_select_searchable{data: {key: 'event_names', permitted: true, column_type: "outreach_column"}}
         %th.tag_column.multi_select_searchable{data: {key: 'tags', permitted: true, column_type: "tag_column"}}
         %th.actions.base_column{data: {key: 'actions', permitted: true, column_type: "base_column"}}
 

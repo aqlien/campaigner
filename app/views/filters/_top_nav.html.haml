@@ -33,7 +33,7 @@
       %li.nav-item{role: 'presentation'}
         %a.nav-link#toggle-user-data{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".overview_column, .base_column" }}} Overview
       %li.nav-item{role: 'presentation'}
-        %a.nav-link.active#toggle-outreach{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".outreach_column, .base_column, .tag_column" }}} Outreach
+        %a.nav-link.active#toggle-outreach{href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".outreach_column, .base_column, .interest_column, .tag_column" }}} Outreach
       - @surveys.each do |survey|
         %li.nav-item{role: 'presentation'}
           %a.nav-link{id: "toggle-survey-#{survey.id}", href: "#", name: 'filters_toggle', data: {toggle: {table: '#user-filter', show: ".survey_#{survey.id}_column, .base_column"}}}= "Survey: #{survey.display_title}"

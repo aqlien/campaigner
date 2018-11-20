@@ -21,7 +21,7 @@ $(document).on 'turbolinks:load', ->
       this.api().setupSearchFields()
       this.api().setupSecondarySearchFields()
       this.api().prefilterColumns()
-      columns_to_show = this.api().columns($('.base_column, .outreach_column, .tag_column'))
+      columns_to_show = this.api().columns($('.base_column, .outreach_column, .interest_column, .tag_column'))
       this.api().columns().visible(false, false)
       columns_to_show.visible(true, false)
       this.api().order(1, 'asc').draw()

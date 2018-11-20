@@ -22,9 +22,10 @@ keys << "organization"
 end
 # Outreach Tab
 keys << "admin_notes"
-keys << "event_names"
 # Interests Tab
 keys << "interests"
+# Outreach Tab (II)
+keys << "event_names"
 # Tags Tab
 keys << "tags"
 keys << "actions"
@@ -51,9 +52,10 @@ collection_array = @users.collect do |user_record|
   end
   # Outreach Tab
   a << user.admin_notes
-  a << user.event_names
   # Interests Tab
   a << user.interests
+  # Outreach Tab (II)
+  a << user.event_names
   # Tags Tab
   a << user.tags
   # actions
