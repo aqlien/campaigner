@@ -179,7 +179,7 @@ private
     available_surveys_path
   end
   def surveyor_finish
-    thanks_path
+    (current_user && current_user.admin?) ? filters_path : thanks_path
   end
 
   def redirect_with_message(path, message_type, message)
