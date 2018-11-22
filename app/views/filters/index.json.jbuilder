@@ -14,6 +14,7 @@ keys << "city"
 keys << "organization"
 # Surveys Tab
 @surveys.each do |survey|
+  keys << "responded_#{survey.id}"
   survey.sections.each do |section|
     section.questions.each do |question|
       keys << "q_#{question.id}"
@@ -44,6 +45,7 @@ collection_array = @users.collect do |user_record|
   a << user.organization
   ## Surveys Tab
   @surveys.each do |survey|
+    a << user.responded?(survey.id)
     survey.sections.each do |section|
       section.questions.each do |question|
         a << user.answer(question)

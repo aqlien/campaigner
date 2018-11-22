@@ -38,6 +38,11 @@ class UserFilterSetRecordPresenter < BasePresenter
   end
 
   # Surveys
+  def responded?(survey_id)
+    response_boolean = record['survey_data'].present? && record['survey_data'].keys.include?(survey_id)
+    response_boolean ? 'Y' : ''
+  end
+
   def answer(question_object)
     question_id = question_object.id
     if record['survey_data']

@@ -14,6 +14,7 @@
         %th.overview_column.text_searchable{data: {key: 'city', permitted: true, column_type: "overview_column"}} City
         %th.organization_column.multi_select_searchable{data: {key: 'organization', permitted: true, column_type: "organization_column"}} Organization
         - @surveys.each do |survey|
+          %th{class: "survey_#{survey.id}_column select_searchable", data: {key: "responded_#{survey.id}", permitted: true, column_type: "survey_#{survey.id}_column"}} Responded?
           - survey.sections.each do |section|
             - section.questions.each do |question|
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {key: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}= question.short_text
@@ -31,6 +32,7 @@
         %th.overview_column.text_searchable{data: {key: 'city', permitted: true, column_type: "overview_column"}}
         %th.organization_column.multi_select_searchable{data: {key: 'organization', permitted: true, column_type: "organization_column"}}
         - @surveys.each do |survey|
+          %th{class: "survey_#{survey.id}_column select_searchable", data: {key: "responded_#{survey.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}
           - survey.sections.each do |section|
             - section.questions.each do |question|
               %th{class: "survey_#{survey.id}_column #{datatables_searchable_class(question)}", data: {key: "q_#{question.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}
