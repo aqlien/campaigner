@@ -28,6 +28,10 @@ class UserFilterSetRecordPresenter < BasePresenter
     record['city']
   end
 
+  def signup
+    record['created_at'].to_date.strftime("%Y/%m/%d")
+  end
+
   def notes
     record['notes']
   end

@@ -12,6 +12,7 @@
         %th.base_column.text_searchable{data: {key: 'email', permitted: true, column_type: "base_column"}} Email
         %th.overview_column.outreach_column.text_searchable{data: {key: 'phone', permitted: true, column_type: "overview_column"}} Phone
         %th.overview_column.text_searchable{data: {key: 'city', permitted: true, column_type: "overview_column"}} City
+        %th.overview_column.text_searchable{data: {key: 'signup', permitted: true, column_type: "overview_column"}} Signup
         %th.organization_column.multi_select_searchable{data: {key: 'organization', permitted: true, column_type: "organization_column"}} Organization
         - @surveys.each do |survey|
           %th{class: "survey_#{survey.id}_column select_searchable", data: {key: "responded_#{survey.id}", permitted: true, column_type: "survey_#{survey.id}_column"}} Responded?
@@ -30,6 +31,7 @@
         %th.base_column.text_searchable{data: {key: 'email', permitted: true, column_type: "base_column"}}
         %th.overview_column.outreach_column.text_searchable{data: {key: 'phone', permitted: true, column_type: "overview_column"}}
         %th.overview_column.text_searchable{data: {key: 'city', permitted: true, column_type: "overview_column"}}
+        %th.overview_column.text_searchable{data: {key: 'signup', permitted: true, column_type: "overview_column"}} Signup
         %th.organization_column.multi_select_searchable{data: {key: 'organization', permitted: true, column_type: "organization_column"}}
         - @surveys.each do |survey|
           %th{class: "survey_#{survey.id}_column select_searchable", data: {key: "responded_#{survey.id}", permitted: true, column_type: "survey_#{survey.id}_column"}}

@@ -10,6 +10,7 @@ keys << "email"
 # Overview Tab
 keys << "phone"
 keys << "city"
+keys << "signup"
 # Organization Tab
 keys << "organization"
 # Surveys Tab
@@ -41,6 +42,7 @@ collection_array = @users.collect do |user_record|
   # Overview Tab
   a << user.phone
   a << user.city
+  a << user.signup
   #Organization Tab
   a << user.organization
   ## Surveys Tab
