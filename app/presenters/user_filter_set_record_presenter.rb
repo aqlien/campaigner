@@ -47,6 +47,12 @@ class UserFilterSetRecordPresenter < BasePresenter
     response_boolean ? 'Y' : ''
   end
 
+  def response_date(survey_id)
+    response_indicator = record['survey_dates'].present? && record['survey_dates'].keys.include?(survey_id)
+    response_indicator = response_indicator ? record['survey_dates'][survey_id] : nil
+    response_indicator ? response_indicator.to_date.strftime("%Y/%m/%d") : ''
+  end
+
   def answer(question_object)
     question_id = question_object.id
     if record['survey_data']

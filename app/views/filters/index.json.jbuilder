@@ -47,7 +47,7 @@ collection_array = @users.collect do |user_record|
   a << user.organization
   ## Surveys Tab
   @surveys.each do |survey|
-    a << user.responded?(survey.id)
+    a << user.response_date(survey.id)
     survey.sections.each do |section|
       section.questions.each do |question|
         a << user.answer(question)
