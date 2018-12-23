@@ -13,3 +13,15 @@
 //@import 'datatables/extensions/RowReorder/rowReorder.bootstrap4';
 //@import 'datatables/extensions/Scroller/scroller.bootstrap4';
 //@import 'datatables/extensions/Select/select.bootstrap4';
+
+
+.dataTables_length{
+  display: inline;
+  margin-right: 15px;
+}
+
+.dataTables_filter{
+  display: inline;
+  position: absolute;
+  right: 100px;
+}

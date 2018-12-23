@@ -15,12 +15,23 @@ $(document).on 'turbolinks:load', ->
     columns: column_data,
     pageLength: 50,
     searching: true,
+    dom: 'lBfrtip',
+    buttons: [],
 
     initComplete: ->
       $(this).setupUserColumns()
       this.api().setupSearchFields()
       this.api().setupSecondarySearchFields()
       this.api().prefilterColumns()
+
+      this.api().button().add( 0, {
+        text: 'Reset Filters',
+        action: ( e, dt, button, config ) ->
+          # dt.columns().search('').draw()  #just reset columns, do not change filters
+          location.reload() #reload full page
+      } )
+
+
       columns_to_show = this.api().columns($('.base_column, .outreach_column, .interest_column, .tag_column'))
       this.api().columns().visible(false, false)
       columns_to_show.visible(true, false)
@@ -40,6 +51,9 @@ $.fn.dataTable.ext.order['name-list'] = ( settings, col ) ->
 $.fn.dataTable.Api.register('setupSearchFields', ->
   api = this
   api.columns($('.text_searchable')).eq(0).each (colIndex) ->
+    colStyle = "width: 100%; display: inline;"
+    if $(this.column(colIndex).header()).data('key') == 'name'
+      colStyle = "width: 40%; display: inline;"
     title = $(this.column(colIndex).header()).text().replace(/\W/, '').toLowerCase();
     tableID = $(api.table().node()).attr('id')
     input = $('<input/>', {
@@ -47,7 +61,7 @@ $.fn.dataTable.Api.register('setupSearchFields', ->
       class: "form-control input-sm datatable-search",
       type: "text",
       placeholder: "Search",
-      style: "width: 100%;"
+      style: colStyle
     })
     input.css("height", "31px")
     input.on 'click', (e) ->
@@ -194,7 +208,7 @@ $.fn.dataTable.Api.register('setupSecondarySearchFields', ->
     input = $('<select/>',{
       id: 'search_'+tableID+'_'+colIndex.toString()+'-2',
       class: "form-control input-sm",
-      style: "width: 50%;"
+      style: "width: 50%; display: inline;"
     })
     input.attr('multiple', true)
     input.append("<option value=" + "[^\\w-'][ABCDEF]\\S*$" + ">A-F</option>")
@@ -220,7 +234,7 @@ $.fn.dataTable.Api.register('setupSecondarySearchFields', ->
       includeSelectAllOption: false
       selectAllText: "(All)"
       selectAllValue: ""
-      buttonWidth: "120px"
+      buttonWidth: "60%"
       buttonText: (options, select) ->
         if options.length == 0
           "(All)"
