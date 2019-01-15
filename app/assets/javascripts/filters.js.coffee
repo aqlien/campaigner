@@ -27,10 +27,15 @@ $(document).on 'turbolinks:load', ->
       this.api().button().add( 0, {
         text: 'Reset Filters',
         action: ( e, dt, button, config ) ->
-          # dt.columns().search('').draw()  #just reset columns, do not change filters
-          location.reload() #reload full page
+          tableID = $(dt.table().node()).attr('id')
+          dt.columns().search('')   #just reset columns, do not change filters
+          dt.search('')             #reset general search
+          dt.columns().eq(0).each (colIndex) ->
+            # Reset column search fields - assumes SetupSearchFields created IDs
+            $('#search_'+tableID+'_'+colIndex.toString()).val('')
+          $('#'+tableID+'_filter.dataTables_filter input').val('')
+          dt.draw()
       } )
-
 
       columns_to_show = this.api().columns($('.base_column, .outreach_column, .interest_column, .tag_column'))
       this.api().columns().visible(false, false)
