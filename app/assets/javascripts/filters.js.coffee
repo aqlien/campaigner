@@ -268,6 +268,11 @@ $.fn.dataTable.Api.register('prefilterColumns', ->
       api.column( colIndex ).search(searchString).draw();
       # Alter existing fields to match URL params - assumes SetupSearchFields created IDs
       $('#search_'+tableID+'_'+colIndex.toString()).val(searchString)
+  # also set value of built-in Datatables search field
+  generalSearchString = decodeURIComponent(searchFromUrl('search').replace(/\+/g, '%20'))
+  if generalSearchString
+    api.search(generalSearchString).draw();
+    $('#'+tableID+'_filter.dataTables_filter input').val(generalSearchString)
 );
 
 # Retrieve values of applied column searches
@@ -282,6 +287,10 @@ $.fn.dataTable.Api.register('filteredColumnParams', ->
     searchVal = $('#search_'+tableID+'_'+colIndex.toString()).val()
     if searchVal
       results['table_params'][searchKey] = searchVal
+  # also get value of built-in Datatables search field
+  generalSearchValue = api.search()
+  if generalSearchValue
+    results['table_params']['search'] = generalSearchValue
   params = decodeURIComponent($.param(results)).replace(/\[\]/g, '')
   params
 );
