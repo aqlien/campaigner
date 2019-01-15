@@ -1,0 +1,148 @@
+.info_icon {
+  cursor: pointer;
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 6px;
+	line-height: 12px;
+	height: 12px;
+	background: transparent image-url("help_icon.png") top left no-repeat;
+}
+.info_icon.tooltip_icon {
+  vertical-align: baseline;
+  background-position: center center;
+}
+/*.info_icon, .rollover { border: 1px solid #ff00ff; }
+/* XX-ROLLOVER LINK BLURB */
+.rollover {
+	position: relative;
+	display: inline;
+	line-height: 12px;
+}
+  .rollover.hide {
+    display: none;
+  }
+.rollover .blurb {
+	display: none;
+	font-weight: normal;
+	font-size: 11px;
+	text-align: left;
+	background: #FFF;
+	border: #00609a 2px solid;
+	line-height: 130%;
+	color: #333;
+	position: absolute;
+	min-width: 142px;
+	max-width: 192px;
+	padding: 8px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	white-space: normal;
+	z-index: 9999;
+}
+.rollover .big-blurb {
+	display: none;
+	font-weight: normal;
+	font-size: 11px;
+	text-align: left;
+	background: #FFF;
+	border: #00609a 2px solid;
+	line-height: 130%;
+	color: #333;
+	position: absolute;
+	min-width: 300px;
+	padding: 8px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	white-space: normal;
+	z-index: 9999;
+}
+.rollover .med-blurb {
+	display: none;
+	font-weight: normal;
+	font-size: 11px;
+	text-align: left;
+	background: #FFF;
+	border: #00609a 2px solid;
+	line-height: 130%;
+	color: #333;
+	position: absolute;
+	min-width: 240px;
+	padding: 8px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	white-space: normal;
+	z-index: 9999;
+}
+.big-blurb ul {
+	margin: 0 0 5px 10px;
+	padding: 0;
+	list-style: none;
+}
+.big-blurb li {
+	margin: 0 0 0 10px;
+	padding: 0;
+	list-style: none;
+	background: none;
+	border: none;
+}
+
+.rollover:hover .blurb {
+	display: block;
+}
+.rollover:hover .big-blurb {
+	display: block;
+}
+.rollover:hover .med-blurb {
+	display: block;
+}
+.bot-right {
+	right: 100%;
+	top: 100%;
+}
+.bot-left {
+	left: 100%;
+	top: 100%;
+}
+.top-right {
+	right: 100%;
+	bottom: 100%;
+}
+.top-left {
+	left: 100%;
+	bottom: 100%;
+}
+.icon-hover {
+	left: 28px;
+	top: -12px;
+
+}
+.rollover .icon-hover.blurb {
+	max-width: 200px;
+	min-width: 40px;
+}
+/* TEXT ROLLOVER  */
+.rollover.text {
+	color:#5c9324;
+	cursor: help;
+}
+.rollover.text:hover .blurb {
+	border: 2px solid #477c12;
+}
+.rollover.text .bot-right {
+	right: 0px;
+	top: 18px;
+}
+.rollover.text .bot-left {
+	left: 0px;
+	top: 18px;
+}
+.rollover.text .top-right {
+	right: 0px;
+	bottom: 18px;
+}
+.rollover.text .top-left {
+	left: 0px;
+	bottom: 18px;
+}

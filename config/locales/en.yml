@@ -9,7 +9,7 @@ en:
         short_name: 'Display Name'
         pronoun: 'Preferred Pronouns'
         pronoun_custom: 'Other Pronoun'
-        active: "Currently active?"
+        active: 'Currently active?'
         phone: 'Phone Number'
         city: 'Address'
         interests: "Please indicate which of the following you'd be interested in assisting with:"
@@ -39,3 +39,7 @@ en:
     select_one: "Select one ..."
     sections: "Sections"
     language: "Language"
+
+  users:
+    form:
+      active_tooltip: "Active users will be displayed in all searches, while inactive users will only be displayed if specifically searching for inactive users. Mark a user as inactive to filter them from results but not delete them from the database."

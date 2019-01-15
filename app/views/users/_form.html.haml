@@ -1,7 +1,7 @@
 = semantic_form_for @user, layout: :horizontal do |f|
   - if !@user.new_record?
     - if policy(:user).tag?
-      = f.check_box :active
+      = f.input :active, label: (' ' + t('formtastic.labels.user.active') + ' ' + variable_info_tooltip(t('.active_tooltip'), 'big', 'top', 'left')).html_safe
     %br
     .alert.alert-warning
       = t(:update_message, scope: [:formtastic, :notice, :user])
