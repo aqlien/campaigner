@@ -5,12 +5,13 @@
     %br
     .alert.alert-warning
       = t(:update_message, scope: [:formtastic, :notice, :user])
-  - if params[:action] == 'new'
+  - if params[:action] == 'new' || policy(:user).make_admin?
     .card
       .card-body
         = f.input :email
-        = f.input :password
-        = f.input :password_confirmation
+        - if params[:action] == 'new'
+          = f.input :password
+          = f.input :password_confirmation
   .card
     .card-body
       = f.input :name
